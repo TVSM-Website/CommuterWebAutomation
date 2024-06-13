@@ -122,6 +122,7 @@ public class PriceValidationStepDef
                 uiPrices.put(model, finalPrice);
             }
 
+            System.out.println("git check");
             System.out.println("uiprices -"+uiPrices);
 
             JsonPath json= new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));

@@ -15,4 +15,10 @@ Feature: TVS motor HomePage Validations
     Then each image src has the same name as vehicle displayed on each card
     And  selected state should be updated on vehicle page
 
+  @scooters
+  Scenario: Verify scooter vehicle pages on TVS Motor website
+    Given navigate to the TVS Motor home page
+    When navigate to the "Our Products" section
+    Then user should see scooters listed with their respective names and 'Know More' links
+    And clicks on 'Know More' for each scooter and verifies the title
 

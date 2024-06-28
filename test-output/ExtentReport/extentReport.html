@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 13, 2024 12:07:00 AM</span></a>
+<a href="#"><span class="badge badge-primary">Jun 28, 2024 05:45:19 pm</span></a>
 </li>
 </ul>
 </div>
@@ -66,13 +66,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 13, 2024 12:07:00 AM</h3>
+<h3>Jun 28, 2024 05:45:19 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 13, 2024 12:09:53 AM</h3>
+<h3>Jun 28, 2024 05:48:55 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -162,7 +162,7 @@
 </div></div>
 <script>
 var timeline = {
-"Validating Onroad and Ex-showroom price updated correctly on brand pages":172.762
+"TVS motor HomePage Validations":214.654
 };
 </script>
 <div class="row">
@@ -172,8 +172,16 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@priceValidation</td>
-<td>2</td>
+<td>@HomePage</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@scooters</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -246,7 +254,7 @@ eventsCount: 5,
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@priceValidation</a>
+<a class="dropdown-item" href="#">@HomePage</a><a class="dropdown-item" href="#">@scooters</a>
 </ul>
 </li>
 </ul>
@@ -257,9 +265,9 @@ eventsCount: 5,
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Validating Onroad and Ex-showroom price updated correctly on brand pages</p>
+            <p class="name">TVS motor HomePage Validations</p>
             <p class="text-sm">
-              <span>12:07:00 AM</span> / <span>00:02:52:762</span>
+              <span>5:45:20 pm</span> / <span>00:03:34:654</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -267,54 +275,47 @@ eventsCount: 5,
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Validating Onroad and Ex-showroom price updated correctly on brand pages</h5>
-<span class='badge badge-success'>06.13.2024 12:07:00 AM</span>
-<span class='badge badge-danger'>06.13.2024 12:09:53 AM</span>
-<span class='badge badge-default'>00:02:52:762</span>
+<h5 class="test-status text-pass">TVS motor HomePage Validations</h5>
+<span class='badge badge-success'>06.28.2024 5:45:20 pm</span>
+<span class='badge badge-danger'>06.28.2024 5:48:55 pm</span>
+<span class='badge badge-default'>00:03:34:654</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
-<div class="m-t-10 m-l-5"> for all the states and variants</div>
+<div class="m-t-10 m-l-5"></div>
 </div>
 </div>
 <div class="accordion mt-4">
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify scooter vehicle pages on TVS Motor website</div>
       </div>
     </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</div>
-                </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_the_tvs_motor_home_page()">
+                <span>Given navigate to the TVS Motor home page</span>
+      <div>
+      </div>
               </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given navigate to the tvs brand "JUPITER_125" page</span>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_our_products_section()">
+                <span>When navigate to the "Our Products" section</span>
       <div>
       </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When user navigated to the price section and accept the cookies pop up</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When click on the state dropdown and select the state</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then get the prices for ex-showroom for the variants</span>
-      <div>
-      </div>
-                  </div>
               </div>
-            </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verify_scooters_listed_with_know_more_links()">
+                <span>Then user should see scooters listed with their respective names and 'Know More' links</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.click_know_more_for_each_scooter()">
+                <span>And clicks on 'Know More' for each scooter and verifies the title</span>
+      <div>
+      </div>
+              </div>
+          </div>
         </div>
   </div>
 </div>
@@ -333,22 +334,22 @@ eventsCount: 5,
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>2</span>
+<span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">@priceValidation</p>
-<p class="duration text-sm">2 tests</p>
+<p class="name">@HomePage</p>
+<p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@priceValidation</h4>
-<span status="pass" class='badge log pass-bg'>2 passed</span>
+<h4>@HomePage</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -361,21 +362,47 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>00:07:00 AM</td>
+<td>17:45:20 pm</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</a>
+<a href="#" class="linked" test-id='1' id='2'>Verify scooter vehicle pages on TVS Motor website</a>
 <div class="">
-<span class="badge badge-default">Validating Onroad and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and Onroad prices for all states on TVS brand pages</span>
+<span class="badge badge-default">TVS motor HomePage Validations.Verify scooter vehicle pages on TVS Motor website</span>
 </div>
 </td>
 </tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@scooters</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@scooters</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>00:07:00 AM</td>
+<td>17:45:20 pm</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</a>
+<a href="#" class="linked" test-id='1' id='2'>Verify scooter vehicle pages on TVS Motor website</a>
 <div class="">
-<span class="badge badge-default">Validating Onroad and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and Onroad prices for all states on TVS brand pages</span>
+<span class="badge badge-default">TVS motor HomePage Validations.Verify scooter vehicle pages on TVS Motor website</span>
 </div>
 </td>
 </tr>

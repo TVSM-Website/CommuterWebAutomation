@@ -1,5 +1,6 @@
 package StepDefs;
 
+import Utils.ExplicitWait;
 import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.HomePage;
@@ -123,14 +124,6 @@ public class HomePageStepDef
             System.out.println(scooterName);
             Assert.assertTrue("Know More link not found for scooter: " + scooterName , vehiclesPage.isKnowMoreLinkAvailable(scooterName));
         }
-//        List<WebElement> scooters = driver.findElements(By.xpath("//div[@data-id='#set1']/descendant::p[@class='name']"));
-////        Assert.assertEquals("Number of scooters listed is not 5", 5, scooters.size());
-//
-//        for (WebElement scooter : scooters) {
-//            String scooterName = scooter.getText();
-//            WebElement knowMoreLink = driver.findElement(By.xpath("//p[text()='"+scooterName+"']/../../../descendant::a"));
-//            Assert.assertTrue("Know More link not found for scooter", knowMoreLink.isDisplayed());
-//        }
     }
 
     @And("clicks on 'Know More' for each scooter and verifies the title")
@@ -161,96 +154,127 @@ public class HomePageStepDef
                 System.out.println(expectedUrlSubstring);
                 Assert.assertTrue("URL does not contain the scooter's name: " + scooterName, normalisedCurrentUrl.contains(expectedUrlSubstring));
                 Assert.assertTrue("Page title does not contain the scooter's name: " + scooterName, normalisedPpageTitle.contains(normalisedScooterName));
-//                if (newTabOpened) {
-//                    vehiclesPage.switchBackToOriginalTab();
-//                } else {
-//                    driver.navigate().back();
-//                }
-//                driver.navigate().back();
-//                vehiclesPage.clickMotorCycleTab();;
+
                 navigate_to_our_products_section();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @When("navigate to the \"Our Products\" page and click 'motorcycles'")
+    public void navigate_to_our_products_page_and_click_motorcycles() throws InterruptedException {
+    homePage.ClickOurProducts();
+    vehiclesPage.clickMotorCycleTab();
+    try {
+        homePage.ClickAcceptCookies();
+    }
+    catch(Exception e) {
+        log.info("Cookies handled");
+    }
+    ExplicitWait.waitUntilLoaderDisappears(driver);
+}
+
+    @Then("user should see motorcycles listed with their respective names and 'Know More' links")
+    public void verify_motorcycles_listed_with_know_more_links() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> motorcycles = vehiclesPage.getMotorcyclesList();
+        for (WebElement motorcycle : motorcycles) {
+            String motorcycleName = motorcycle.getText();
+            System.out.println(motorcycleName);
+            Assert.assertTrue("Know More link not found for motorcycle: " + motorcycleName, vehiclesPage.isKnowMoreLinkAvailable(motorcycleName));
+        }
+    }
+
+
+    @Then("verifies the url for each motorcycle page after clicking on their respective Know More links")
+    public void verifies_the_url_for_each_motorcycle_page_after_clicking_on_their_respective_know_more_links() throws InterruptedException
+    {
+        Thread.sleep(2000);
+        List<WebElement> motorcycles = vehiclesPage.getMotorcyclesList();
+        for (int i = 0; i < motorcycles.size(); i++) {
+            Thread.sleep(2000);
+            try {
+                motorcycles = vehiclesPage.getMotorcyclesList();
+                String motorcycleName = motorcycles.get(i).getText();
+                vehiclesPage.clickKnowMoreLink(motorcycleName);
+                vehiclesPage.handlePopups();
+
+                boolean newTabOpened = vehiclesPage.switchToNewTabIfOpened();
+
+                String currentUrl = driver.getCurrentUrl();
+                log.info("Url of vehicle: "+currentUrl+" for vehicle: "+motorcycleName+""); //for logs
+                String normalisedCurrentUrl = Utilities.normalizeString(currentUrl);
+                System.out.println(normalisedCurrentUrl);									//for console
+                String normalisedMotorcycleName = Utilities.normalizeString(motorcycleName);
+                System.out.println(normalisedMotorcycleName);								//for console
+                Assert.assertTrue("URL does not contain the motorcycle's name: " + motorcycleName, normalisedCurrentUrl.contains(normalisedMotorcycleName));
+
+                if (newTabOpened) {
+                    vehiclesPage.switchBackToOriginalTab();
+                } else {
+                    driver.navigate().back();
+                }
+
+                vehiclesPage.clickMotorCycleTab();;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @When("navigate to the \"Our Products\" page and click 'mopeds'")
+    public void navigate_to_our_products_page_and_click_mopeds() throws InterruptedException {
+        ExplicitWait.waitUntilLoaderDisappears(driver);
+        homePage.ClickOurProducts();
+        vehiclesPage.clickMopedTab();
+        try {
+            homePage.ClickAcceptCookies();
+        }
+        catch(Exception e) {
+            log.info("Cookies handled");
+        }
+        ExplicitWait.waitUntilLoaderDisappears(driver);
+    }
+
+
+    @Then("user should see moped listed with its respective name and 'Know More' links")
+    public void verify_moped_listed_with_know_more_links() {
+        List<WebElement> mopeds = vehiclesPage.getMopedsList();
+        Assert.assertEquals("Number of mopeds listed is not 1", 1, mopeds.size());
+
+        for (WebElement moped : mopeds) {
+            String mopedName = moped.getText();
+            System.out.println(mopedName);
+            Assert.assertTrue("Know More link not found for moped", vehiclesPage.isKnowMoreLinkAvailable(mopedName));
+        }
+    }
+
+
+
+    @Then("verifies the url for moped page after clicking on its respective Know More links")
+    public void verifies_the_url_for_moped_page_after_clicking_on_its_respective_know_more_links() {
+        List<WebElement> mopeds = vehiclesPage.getMopedsList();
+        for (int i = 0; i < mopeds.size(); i++) {
+            try {
+                mopeds = vehiclesPage.getMopedsList();
+                String mopedName = mopeds.get(i).getText();
+                vehiclesPage.clickKnowMoreLink(mopedName);
+                vehiclesPage.handlePopups();
+                String currentUrl = driver.getCurrentUrl();
+                String normalizedCurrentUrl = Utilities.normalizeString(currentUrl);
+                String normalizedMopedName = Utilities.normalizeString(mopedName);
+                Assert.assertTrue("URL does not contain the moped's name: " + mopedName, normalizedCurrentUrl.contains(normalizedMopedName));
+                driver.navigate().back();
+                vehiclesPage.clickMopedTab();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         driver.close();
     }
-//    	 List<WebElement> scooters = driver.findElements(By.xpath("//div[@data-id='#set1']/descendant::p[@class='name']"));
-//    	 for (int i = 0; i < scooters.size(); i++) {
-//    	     try {
-//    	            // Re-locate the scooters list to avoid stale element exception
-//    	            scooters = driver.findElements(By.xpath("//div[@data-id='#set1']/descendant::p[@class='name']"));
-//    	            String scooterName = scooters.get(i).getText();
-//    	            WebElement knowMoreLink = driver.findElement(By.xpath("//p[text()='" + scooterName + "']/../../../descendant::a"));
-//    	            knowMoreLink.click();
-//
-////        for (WebElement scooter : scooters) {
-////        	String scooterName = scooter.getText();
-////            WebElement knowMoreLink = driver.findElement(By.xpath("//p[text()='"+scooterName+"']/../../../descendant::a"));
-////            knowMoreLink.click();
-//
-//    	            try {
-//
-//    	            	if (selectlanguagePopUp.isDisplayed()) {
-//
-//    	            		By languageSelector = priceSectionPage.getLanguageSelector("English");
-//
-//    	            		WebElement languageElement = driver.findElement(languageSelector);
-//
-//    	            		waitForElementToBeClickable(driver, languageElement, 10);
-//
-//    	            		languageElement.click();
-//
-//    	            	}
-//
-//    	            } catch (Exception e) {
-//
-//    	            	log.info("Language selection pop-up not found or handled.");
-//
-//            }
-//
-////       	 Utilities.scrollToView(driver, priceBtn);
-////       	 priceBtn.click();
-//
-//       	try
-//       	{
-//       		Thread.sleep(Duration.ofSeconds(5));
-//       	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//       	 WebElement popupElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Request A Call Back')]")));
-////       	 //Changed codeS
-//
-//       	 RemoteWebElement popup=(RemoteWebElement)driver.findElement(By.xpath("//*[contains(text(),'Request A Call Back')]"));
-//       	 if(popup.isDisplayed())
-//       	 {
-//       		 RemoteWebElement cancel=(RemoteWebElement)driver.findElement(By.xpath("//button[@class='close evg-close evg-btn-dismissal']"));
-//       		 cancel.click();
-//       	 }
-//       	}
-//       	catch(Exception e)
-//       	{
-//       		log.info("Pop-Up not displayed");
-//
-//       	}
-//
-//            // Verify the title contains the scooter's name
-//            String pageTitle = driver.getTitle();
-//            pageTitle = Utilities.normalizeString(pageTitle);
-//            scooterName = Utilities.normalizeString(scooterName);
-//            Assert.assertTrue("Page title does not contain the scooter's name: " + scooterName, pageTitle.contains(scooterName));
-//
-//            // Navigate back to the "Our Products" section
-//
-//				navigate_to_our_products_section();
-//    	     }	catch(StaleElementReferenceException e) {
-//    	    	 log.error("Stale element reference exception caught and handled: \" + e.getMessage()");
-// 			     i--;
-//    	     } catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-
-//   }
-
 
 
 

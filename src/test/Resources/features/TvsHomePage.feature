@@ -21,8 +21,8 @@ Feature: TVS motor HomePage Validations
     When navigate to the "Our Products" section
     Then user should see scooters listed with their respective names and 'Know More' links
     And clicks on 'Know More' for each scooter and verifies the title
-  @motorcycles
 
+  @motorcycles
   Scenario: verify each motorcycle page navigation from home page on TVS Motor website
     Given navigate to the TVS Motor home page
     When navigate to the "Our Products" page and click 'motorcycles'
@@ -35,3 +35,17 @@ Feature: TVS motor HomePage Validations
     When navigate to the "Our Products" page and click 'mopeds'
     Then user should see moped listed with its respective name and 'Know More' links
     And verifies the url for moped page after clicking on its respective Know More links
+
+  @stateDropDownVerification
+  Scenario Outline: Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds
+    Given navigate to the TVS Motor home page in "<environment>" environment
+    When navigate to the "Our Products" page for state drop down
+    And navigates through state drop down and check visibility for each vehicle type
+    Then the state name should be displayed along with ex-showroom price for the vehicle name for each scooter
+    And the state name should be displayed along with ex-showroom price for the vehicle name for each motorcycle
+    And the state name should be displayed along with ex-showroom price for the vehicle name for each moped
+
+    Examples:
+      | environment |
+#      | UAT         |
+      | PROD        |

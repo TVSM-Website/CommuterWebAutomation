@@ -3,6 +3,8 @@ package Utils;
 import java.text.Normalizer;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +14,29 @@ import org.openqa.selenium.WebElement;
 public class Utilities
 {
     public static Properties properties = new Properties();
+
+    public static String getUrl(String environment) {
+        if ("UAT".equalsIgnoreCase(environment)) {
+            return "https://uat-www.tvsmotor.net/";
+        } else if ("PROD".equalsIgnoreCase(environment)) {
+            return "https://www.tvsmotor.com/";
+        } else {
+            throw new IllegalArgumentException("Invalid environment: " + environment);
+        }
+    }
+
+    public static void verifyUrl(WebDriver driver, String environment) {
+        String currentUrl = driver.getCurrentUrl();
+        if ("UAT".equalsIgnoreCase(environment)) {
+            if (!currentUrl.contains("uat")) {
+                throw new AssertionError("URL does not contain 'uat'");
+            }
+        } else if ("PROD".equalsIgnoreCase(environment)) {
+            if (currentUrl.contains("uat")) {
+                throw new AssertionError("URL contains 'uat'");
+            }
+        }
+    }
 
     public static void clickElementUsingJS(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -26,15 +51,27 @@ public class Utilities
     public static String normalizeString(String input) {
         // Normalize the string by converting to lower case and replacing '+' with 'plus'
 
-        return Normalizer.normalize(input, Normalizer.Form.NFD)
+        String normalized =  Normalizer.normalize(input, Normalizer.Form.NFD)
                 .replaceAll("\\p{M}", "")
                 .toLowerCase(Locale.ENGLISH)
-                .replace("+", "plus")
+                .replace("+", " plus")
                 .replaceAll("[^a-z0-9]", " ")  // Replace non-alphanumeric characters with a space
-                .replaceAll("\\s+", "")        // Remove all spaces
+                .replaceAll("\\s+", " ")        // Remove all spaces
                 .trim();                       // Trim leading/trailing spaces
+        // Perform case-insensitive replacement of "orissa" with "odisha"
+        Pattern pattern = Pattern.compile("\\b(orissa)\\b", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(normalized);
+        normalized = matcher.replaceAll("odisha");
+        System.out.println(normalized + "here at utilities");
+        normalized.replaceAll("\\s+", "");
+        return normalized;
     }
 
+    public static String normalizeStateName(String stateName) {
+        // Normalize the state name by converting to lower case, replacing variations of "orissa" with "odisha" for TVS Sport
+        String normalizedStateName = normalizeString(stateName);
+        return normalizedStateName;
+    }
     public static WebElement refreshElement(WebElement element, WebDriver driver) {
         // Get the locator from the WebElement
         By locator = getLocatorFromElement(element);

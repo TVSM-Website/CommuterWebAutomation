@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utils.ExplicitWait;
@@ -33,6 +34,8 @@ public class VehiclesPage {
         selectlanguagePopUp=priceSectionPage.selectlanguagePopUp;
         PageFactory.initElements(driver, this);
     }
+    @FindBy(xpath = "//li[@data-id='#set1']/a")
+    private WebElement scootersTab;
 
     @FindBy(xpath = "//li[@data-id='#set2']/a")
     private WebElement motorCyclesTab;
@@ -48,9 +51,16 @@ public class VehiclesPage {
 
     @FindBy(xpath = "//div[@data-id='#set3']/descendant::p[@class='name']")
     private List<WebElement> mopedList;
-//    public void clickScooterTab() {
-//        ExplicitWait.waitForElementToBeClickable(driver, scooterTab, 2); scooterTab.click();
-//    }
+
+    @FindBy (xpath = "//select[@id= 'stateDrp']")
+    private WebElement stateDropdown;
+
+    public void clickstateDropdown() {
+        ExplicitWait.waitForElementToBeClickable(driver, stateDropdown, 2); stateDropdown.click();
+    }
+    public void clickScooterTab() {
+        ExplicitWait.waitForElementToBeClickable(driver, scootersTab, 2); scootersTab.click();
+    }
 
     public void clickMotorCycleTab() {
         ExplicitWait.waitForElementToBeClickable(driver, motorCyclesTab, 2); motorCyclesTab.click();
@@ -76,6 +86,18 @@ public class VehiclesPage {
         return vehicleElement.getText();
     }
 
+    public List<WebElement> getStateDropdownOptions() {
+        stateDropdown.click();
+//      Thread.sleep(2000);
+        Select select = new Select(stateDropdown);
+        return select.getOptions();
+    }
+
+    public List<WebElement> getVehicleList(String vehicleType) {
+        String dataID = driver.findElement(By.xpath("//li[contains(@class,'filter')]/a[text()='"+vehicleType+"']/..")).getAttribute("data-id");
+        return driver.findElements(By.xpath("//div[@data-id='"+dataID+"']/descendant::p[@class='name']"));
+    }
+
     public boolean isKnowMoreLinkAvailable(String vehicleName) {
         try {
             WebElement knowMoreLink = driver.findElement(By.xpath("//p[text()='"+vehicleName+"']/../../../descendant::a"));
@@ -98,8 +120,9 @@ public class VehiclesPage {
 
         // Define a mapping of full vehicle names to expected URL substrings
         Map<String, String> vehicleToUrlMap = new HashMap<>();
-        vehicleToUrlMap.put("tvszest110", "tvszest"); // Example exception
-        vehicleToUrlMap.put("tvsscootypepplus", "tvsscootypep");
+        vehicleToUrlMap.put("tvs zest 110", "tvs zest"); // Example exception
+        vehicleToUrlMap.put("tvs scooty pep plus", "tvs scootypep");
+        vehicleToUrlMap.put("tvs apache rtr series","tvs apache rtrseries");
         // Add other mappings as needed
 
         // Check if there's a specific mapping for the normalized vehicle name

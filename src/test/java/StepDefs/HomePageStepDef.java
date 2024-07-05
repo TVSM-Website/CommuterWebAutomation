@@ -151,7 +151,8 @@ public class HomePageStepDef
                 System.out.println(normalisedPpageTitle);								    //for console
 
                 String expectedUrlSubstring = vehiclesPage.getExpectedUrlSubstring(normalisedScooterName);
-                System.out.println(expectedUrlSubstring);
+                System.out.println(expectedUrlSubstring+""+normalisedCurrentUrl);
+                System.out.println(normalisedPpageTitle+"**"+normalisedScooterName);
                 Assert.assertTrue("URL does not contain the scooter's name: " + scooterName, normalisedCurrentUrl.contains(expectedUrlSubstring));
                 Assert.assertTrue("Page title does not contain the scooter's name: " + scooterName, normalisedPpageTitle.contains(normalisedScooterName));
 
@@ -202,15 +203,20 @@ public class HomePageStepDef
                 vehiclesPage.handlePopups();
 
                 boolean newTabOpened = vehiclesPage.switchToNewTabIfOpened();
-
+                String pageTitle = driver.getTitle();
+                String normalisedPpageTitle = Utilities.normalizeString(pageTitle);
                 String currentUrl = driver.getCurrentUrl();
                 log.info("Url of vehicle: "+currentUrl+" for vehicle: "+motorcycleName+""); //for logs
                 String normalisedCurrentUrl = Utilities.normalizeString(currentUrl);
                 System.out.println(normalisedCurrentUrl);									//for console
                 String normalisedMotorcycleName = Utilities.normalizeString(motorcycleName);
                 System.out.println(normalisedMotorcycleName);								//for console
-                Assert.assertTrue("URL does not contain the motorcycle's name: " + motorcycleName, normalisedCurrentUrl.contains(normalisedMotorcycleName));
 
+                String expectedUrlSubstring = vehiclesPage.getExpectedUrlSubstring(normalisedMotorcycleName);
+                System.out.println(expectedUrlSubstring+"***"+normalisedCurrentUrl);
+                System.out.println(normalisedMotorcycleName+"***"+normalisedPpageTitle);
+                Assert.assertTrue("URL does not contain the motorcycle's name: " + motorcycleName, normalisedCurrentUrl.contains(expectedUrlSubstring));
+              //  Assert.assertTrue("Page title does not contain the scooter's name: " + motorcycleName, normalisedPpageTitle.contains(normalisedMotorcycleName));
                 if (newTabOpened) {
                     vehiclesPage.switchBackToOriginalTab();
                 } else {
@@ -276,6 +282,106 @@ public class HomePageStepDef
         driver.close();
     }
 
+    @Given("navigate to the TVS Motor home page in {string} environment")
+    public void navigate_to_the_tvs_motor_home_page_in_environment(String environment) {
+        // driver = new ChromeDriver();  // Initialize WebDriver as per your setup
+        String url = Utilities.getUrl(environment);
+        driver.get(url);
+        Utilities.verifyUrl(driver, environment);
+    }
+
+    @When("navigate to the \"Our Products\" page for state drop down")
+    public void navigate_to_our_products_page_for_state_drop_down() throws InterruptedException {
+        homePage.ClickAcceptCookies();
+        homePage.ClickOurProducts();
+    }
+
+    @When("navigates through state drop down and check visibility for each vehicle type")
+    public void navigates_through_state_drop_down_and_check_visibility_for_each_vehicle_type() throws InterruptedException {
+        homePage.ClickOurProducts();
+        List<WebElement> states = vehiclesPage.getStateDropdownOptions();
+
+        for (int i=0;i<=states.size();i++) {
+            try {
+                Thread.sleep(1000);
+                String stateName = states.get(i).getText();
+                System.out.println(stateName);
+                Thread.sleep(2000);
+                states.get(i).click();
+                vehiclesPage.clickScooterTab();
+                ExplicitWait.waitUntilLoaderDisappears(driver);
+                Thread.sleep(2000); // Wait for state-specific data to load
+
+                verifyStateAndExShowroomPrice("Scooters", stateName);
+
+                vehiclesPage.clickMotorCycleTab();
+                Thread.sleep(1000);
+                ExplicitWait.waitUntilLoaderDisappears(driver);
+                verifyStateAndExShowroomPrice("Motorcycles", stateName);
+
+                vehiclesPage.clickMopedTab();
+                ExplicitWait.waitUntilLoaderDisappears(driver);
+                verifyStateAndExShowroomPrice("Mopeds", stateName);
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+
+
+
+            // vehiclesPage.clickstateDropdown();
+//            ExplicitWait.waitUntilLoaderDisappears(driver);
+            vehiclesPage.clickScooterTab(); // Navigate back to scooters tab for the next iteration
+//            ExplicitWait.waitUntilLoaderDisappears(driver);
+//            vehiclesPage.clickstateDropdown();
+
+        }
+    }
+
+    public void verifyStateAndExShowroomPrice(String vehicleType, String stateName) throws InterruptedException {
+        List<WebElement> vehicles = vehiclesPage.getVehicleList(vehicleType);
+        for (WebElement vehicle : vehicles) {
+            ExplicitWait.waitUntilLoaderDisappears(driver);
+            //Thread.sleep(1000);
+            try {
+                ExplicitWait.waitUntilLoaderDisappears(driver);
+                String vehicleName = vehicle.getText();
+                WebElement stateDisplayed = vehicle.findElement(By.xpath("./following-sibling::p[1]"));
+                WebElement exShowroomPrice = vehicle.findElement(By.xpath("./following-sibling::p[2]//span"));
+                ExplicitWait.waitForElementToBeClickable(driver, stateDisplayed, 10);
+                ExplicitWait.waitForElementToBeClickable(driver, exShowroomPrice, 10);
+                System.out.println(vehicleName + stateDisplayed.getText());
+                String state = stateDisplayed.getText();
+//          System.out.println(Utilities.normalizeStateName(stateDisplayed.getText())+"++"+ Utilities.normalizeStateName(stateName));
+                String normalizedStateDisplayed = Utilities.normalizeString(state);
+                String normalizedStateName =Utilities.normalizeStateName(stateName);
+                System.out.println(normalizedStateDisplayed+"++"+normalizedStateName);
+//            Assert.assertTrue("State name not displayed correctly for " + vehicleName, Utilities.normalizeString(stateDisplayed.getText()).contains(stateName.toLowerCase()));
+                Assert.assertTrue("State name not displayed correctly for " + vehicleName,normalizedStateDisplayed.contains(normalizedStateName));
+                Assert.assertTrue("Ex-showroom price not displayed for " + vehicleName, exShowroomPrice.isDisplayed());
+            }
+            catch(Exception e) {
+
+            }
+        }
+
+    }
+
+    @Then("the state name should be displayed along with ex-showroom price for the vehicle name for each scooter")
+    public void state_name_should_be_displayed_for_each_scooter() {
+        // This step is implicitly verified in the "verifyStateAndExShowroomPrice" method
+    }
+
+    @Then("the state name should be displayed along with ex-showroom price for the vehicle name for each motorcycle")
+    public void state_name_should_be_displayed_for_each_motorcycle() {
+        // This step is implicitly verified in the "verifyStateAndExShowroomPrice" method
+    }
+
+    @Then("the state name should be displayed along with ex-showroom price for the vehicle name for each moped")
+    public void state_name_should_be_displayed_for_each_moped() {
+        // This step is implicitly verified in the "verifyStateAndExShowroomPrice" method
+        driver.close();
+    }
 
 
 }

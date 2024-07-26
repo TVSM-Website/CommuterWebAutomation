@@ -18,7 +18,8 @@ public class HomePage
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
+    @FindBy(xpath = "//div[@class='cookie_but']/a")
+    public WebElement AcceptCookie;
     @FindBy(xpath = "//a[contains(text(), 'Our Products')]")
     private WebElement ourProducts;
 
@@ -48,6 +49,11 @@ public class HomePage
     public void ClickOurProducts() throws InterruptedException {
         //Thread.sleep(3000);
         ourProducts.click();
+    }
+
+    public void ClickAcceptCookies()
+    {
+        AcceptCookie.click();
     }
 
     public  void ClickStateDropdown()

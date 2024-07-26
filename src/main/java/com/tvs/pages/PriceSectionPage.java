@@ -21,6 +21,9 @@ public class PriceSectionPage
     @FindBy(xpath = "//div[@class='cookie_but']/a")
     public WebElement AcceptCookie;
 
+    @FindBy(xpath = "//a[@title='Price']")
+    public WebElement priceBtn;
+
     @FindBy(xpath = "//div[@class='filter-option']")
     public WebElement stateDropdown;
 
@@ -29,6 +32,16 @@ public class PriceSectionPage
 
     @FindBy(id = "brand-page-orp")
     private WebElement brandPageOrp;
+
+    @FindBy(xpath = "//h2[text()='Please Select Language']")
+    public WebElement selectlanguagePopUp;
+
+    @FindBy(xpath = "//button[@class='close evg-close evg-btn-dismissal']")
+    public WebElement closeBtnForCallBack;
+
+    public By getLanguageSelector(String language) {
+        return By.xpath("//div[@class='langSelection']/div/div/a[@data-name='" + language + "']");
+    }
 
     public void ClickAcceptCookies()
     {

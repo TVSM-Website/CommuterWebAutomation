@@ -26,6 +26,10 @@ public class ExplicitWait
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 
     }
+    public static void waitUntilLoaderDisappears(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader_ajax")));
+    }
 
 
 

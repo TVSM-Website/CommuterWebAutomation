@@ -1,5 +1,9 @@
 package Utils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.Normalizer;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

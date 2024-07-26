@@ -11,8 +11,9 @@ import org.junit.runner.RunWith;
         },
 
          //tags = "@testRideCampaign or @testRide", //NtorqtestRide
-        tags = "@priceValidation",
+        //tags = "@ApacheSeries",//"@matchedElement or @Raider or @ApacheSeries",
 
+        tags = "@matchedElement or @Raider or @ApacheSeries",
 
 //          dryRun = true,
 

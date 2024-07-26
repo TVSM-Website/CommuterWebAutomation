@@ -1,157 +1,522 @@
 package StepDefs;
 
+import Utils.ExcelUtils;
+import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.PriceSectionPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static APIs.PriceAPI.OrpDetails;
+import static APIs.PriceApiPROD.OrpDetailsPROD;
+import static APIs.PriceApiUAT.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
-import static Utils.Utilities.properties;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
-public class PriceValidationStepDef
-{
+public class PriceValidationStepDef extends Utilities {
     private static final Logger log = LogManager.getLogger(TestRideStepDef.class);
+
+    private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
+        return ExcelUtils.readExcelData(filePath, sheetName);
+    }
 
     private final WebDriver driver;
     PriceSectionPage priceSectionPage;
     WebElement AcceptCookie;
     WebElement stateDropdown;
+    WebElement selectlanguagePopUp;
     By states;
+    By statesRaider;
     String SelectedVehicle;
+    String selectedVehicleUrl;
     Map<String, String> uiPrices = new HashMap<>();
-
+    List<Map<String, Object>> apiPrices;
+    String env;
+    Response response;
     String state;
-    public PriceValidationStepDef()
-    {
+    WebElement roninStateDropdown;
+    WebElement raiderPriceSection;
+    WebElement stateDropdownRaider;
+    //By selectedVariant;
+    String selectedVariant;
+
+    public PriceValidationStepDef() {
         this.driver = WebDriverManager.getDriver();
-        priceSectionPage= new PriceSectionPage(driver);
-        AcceptCookie=priceSectionPage.AcceptCookie;
-        stateDropdown=priceSectionPage.stateDropdown;
-        states=priceSectionPage.states;
+        priceSectionPage = new PriceSectionPage(driver);
+        AcceptCookie = priceSectionPage.AcceptCookie;
+        stateDropdown = priceSectionPage.stateDropdown;
+        states = priceSectionPage.states;
+        selectlanguagePopUp = priceSectionPage.selectlanguagePopUp;
+        roninStateDropdown = priceSectionPage.roninStateDropdown;
+        raiderPriceSection = priceSectionPage.raiderPriceSection;
+        stateDropdownRaider = priceSectionPage.stateDropdownRaider;
+        statesRaider = priceSectionPage.statesRaider;
+        //selectedVariant = priceSectionPage.selectedVariant;
     }
-    @Given("navigate to the tvs brand {string} page")
-    public void navigate_to_the_tvs_pages(String vehicle) throws IOException
-    {
-        SelectedVehicle=vehicle;
-        FileInputStream fileInputStream = new FileInputStream("src/test/Resources/BrandPageUrl.properties");
-        properties.load(fileInputStream);
-        String selectedVehicle=properties.getProperty(SelectedVehicle);
-        driver.get(selectedVehicle);
 
-        //WebElement AcceptCookie=driver.findElement(By.xpath("//div[@class='cookie_but']/a"));
-
-
+    @Given("navigate to the tvs brand {string} page in {string}")
+    public void navigateToTheTvsBrandPageIn(String vehicle, String environment) throws IOException {
+        env = environment;
+        SelectedVehicle = vehicle;
+        selectedVehicleUrl = Utilities.getVehicleUrl(vehicle, env);
+        driver.get(selectedVehicleUrl);
     }
 
     @When("user navigated to the price section and accept the cookies pop up")
-    public void user_navigated_to_the_price_section()
-    {
-        if(AcceptCookie.isDisplayed())
-        {
-            priceSectionPage.ClickAcceptCookies();
+    public void user_navigated_to_the_price_section() {
+        // Check if the language selection pop-up is displayed
+        try {
+            if (selectlanguagePopUp.isDisplayed()) {
+                By languageSelector = priceSectionPage.getLanguageSelector("English");
+                WebElement languageElement = driver.findElement(languageSelector);
+                waitForElementToBeClickable(driver, languageElement, 15);
+                languageElement.click();
+            } else {
+                System.out.println("Language selection pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Language selection pop-up not found on the page.");
         }
-        else
-        {
-            log.info("Pop-Up not displayed");
+        try {
+            if (priceSectionPage.isDisplayed()) {
+                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                priceSectionPage.clickDismiss();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("BookNow pop-up not displayed on the page");
         }
-        waitForElementToBeClickable(driver,stateDropdown,10);
 
+        // Check if the cookies acceptance pop-up is displayed
+        try {
+            if (AcceptCookie.isDisplayed()) {
+                priceSectionPage.ClickAcceptCookies();
+            } else {
+                System.out.println("Cookies acceptance pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Cookies acceptance pop-up not found on the page.");
+        }
+        waitForElementToBeClickable(driver, stateDropdown, 15);
     }
+
     @When("click on the state dropdown and select the state")
     public void click_on_the_state_dropdown_and_select_the_state() throws InterruptedException {
+        //Thread.sleep(1500);
         priceSectionPage.ClickStateDropdown();
-        visibilityOfElementLocated(driver, states,10);
-
+        visibilityOfElementLocated(driver, states, 15);
     }
 
-    @Then("get the prices for ex-showroom for the variants")
-    public void getThePricesForExShowroomForTheVariantsFrom() throws InterruptedException
-    {
+    @Then("get the On-Road prices for all the states and variants")
+    public void getThePricesForExShowroomForTheVariantsFrom() throws InterruptedException, IOException {
+
         List<WebElement> stateList = driver.findElements(states);//driver.findElements(By.xpath("//div[@id='bs-select-1']//ul/li/a/span"));
+        for (int i = 0; i < stateList.size(); i++) {
+            stateList = driver.findElements(priceSectionPage.states);
+            System.out.println("\n state: " + stateList.get(i).getText());
+            state = stateList.get(i).getText();
 
-        for (int i = 0; i < stateList.size(); i++)
-        {
-            stateList = driver.findElements(states);
-            System.out.println("states: " + stateList.get(i).getText());
-            state=stateList.get(i).getText();
-            Thread.sleep(1000);
+            //System.out.println("state -" + state);
 
-            stateList.get(i).click();
-            //Thread.sleep(2000);
-
-            waitForLoaderToDisappear(driver, By.className("loader_ajax"),10);
-            priceSectionPage.ClickOnRoadPrice();
-
-            Thread.sleep(2000);
-            waitForLoaderToDisappear(driver, By.className("loader_ajax"),10);
-
-            priceSectionPage.ClickStateDropdown();
-            //Keys escape = Keys.ESCAPE;
-            //div[@id='on-road']/dl[@class='row']/dt[@class='col-xs-6']- onroad models
-            //div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price'] - onroad prices
-            //List<WebElement> models = driver.findElements(By.xpath("//div[@id='priceTable']/dl[@class='row']//dt[@class='col-xs-6 variant-ext']"));
-            //List<WebElement> prices = driver.findElements(By.xpath("//div[@id='priceTable']/dl[@class='row']//dd[@class='col-xs-6 price']"));
-
-            List<WebElement> OnRoadModels = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dt[@class='col-xs-6']"));
-            List<WebElement> OnRoadPrices = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price']"));
-
-            uiPrices.clear();
-            for (int j = 0; j < OnRoadModels.size(); j++) {
-                String model = OnRoadModels.get(j).getText();
-                String priceText = OnRoadPrices.get(j).getText().replace("*", "").replace("₹", "").replace(",", "").trim();
-                //int price = Integer.parseInt(priceText);
-                String finalPrice=priceText.replace(" ","");
-                uiPrices.put(model, finalPrice);
+            WebElement stateElement = stateList.get(i);
+            if (!state.isEmpty()) {
+                stateElement.click();
+            } else {
+                break;
             }
 
-            System.out.println("git check");
-            System.out.println("uiprices -"+uiPrices);
+            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+            priceSectionPage.ClickOnRoadPrice();
+            //priceSectionPage.ClickOnExshowRoomPrice();
 
-            JsonPath json= new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
-            //System.out.println("state-"+state);
-            System.out.println("val-"+"stateCodes."+state);
-            String stateCode=json.getString("stateCodes."+state.replace(" ",""));
-            System.out.println("stateCode-"+stateCode);
-            OrpDetails(SelectedVehicle.replace("_"," "),stateCode);
-//            List<WebElement> model_price=driver.findElements(By.xpath("//div[@id='priceTable']/dl[@class='row']"));
-//            for(WebElement mp:model_price)
-//            {
-//                System.out.println(mp.getText());
-//            }
+            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
 
-//            List<WebElement> models=driver.findElements(By.xpath("//div[@id='priceTable']/dl[@class='row']//dt[@class='col-xs-6 variant-ext']"));
-//            for(WebElement model:models)
-//            {
-//                System.out.println("model: "+model.getText());
-//            }
-//
-//            List<WebElement> prices=driver.findElements(By.xpath("//div[@id='priceTable']/dl[@class='row']//dd[@class='col-xs-6 price']"));
-//            for(WebElement price:prices)
-//            {
-//                System.out.println("price: "+price.getText());
-//            }
-//            String Ex_ShowroomPrice=driver.findElement(By.xpath("//div[@id='priceTable']/dl[@class='row']//dd[@class='col-xs-6 price']")).getText();
-//            System.out.println("price -"+Ex_ShowroomPrice);
-//            div[@id='priceTable']/dl[@class='row']//dt[@class='col-xs-6 variant-ext']
-//            div[@id='priceTable']/dl[@class='row']//dd[@class='col-xs-6 price']
+            if (i < stateList.size() - 1) {
+                priceSectionPage.ClickStateDropdown();
+            }
+
+
+            Thread.sleep(2000);
+            List<WebElement> OnRoadModels = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dt[@class='col-xs-6']"));
+
+            //List<WebElement>OnRoadModels=driver.findElements(By.xpath("//div[@id='ex-showroom']/div/dl[@class='row']/dt"));
+            //div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price']
+            List<WebElement> OnRoadPrices = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dd/span"));
+
+            //List<WebElement>OnRoadPrices=driver.findElements(By.xpath("//div[@id='ex-showroom']/div/dl/dd/span"));
+
+            uiPrices.clear();
+            if (OnRoadModels.isEmpty() || OnRoadPrices.isEmpty()) {
+                System.out.println("No prices available in UI for state: " + state);
+            } else {
+                for (int j = 0; j < OnRoadModels.size(); j++) {
+                    String model = OnRoadModels.get(j).getText();
+                    String priceText = OnRoadPrices.get(j).getText().replace("*", "").replace("₹", "").replace(",", "").trim();
+                    //int price = Integer.parseInt(priceText);
+                    String finalPrice = priceText.replace(" ", "");
+                    uiPrices.put(model, finalPrice);
+                }
+            }
+            //System.out.println("uiPrices -" + uiPrices);
+
+            JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+            String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
+            if (env.equalsIgnoreCase("UAT")) {
+                response = OrpDetailsUAT(SelectedVehicle.replace("_", " "), stateCode);
+            } else if (env.equalsIgnoreCase("PROD")) {
+                response = OrpDetailsPROD(SelectedVehicle.replace("_", " "), stateCode);
+            }
+            if (response.getStatusCode() == 204) {
+                System.out.println("No content in API response for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if API call fails
+            }
+
+            String responseBody = response.getBody().asString();
+            if (responseBody == null || responseBody.isEmpty() || response.getStatusCode() == 204) {
+                System.out.println("API response is empty for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if API response is empty
+            }
+            try {
+                apiPrices = response.jsonPath().getList("");
+            } catch (Exception e) {
+                System.out.println("Failed to parse API response for state: " + state);
+                continue; // Skip to the next state if parsing fails
+            }
+
+            if (uiPrices.isEmpty() && apiPrices.isEmpty()) {
+                System.out.println("Both UI and API have no prices for state: " + state);
+                continue; // Both UI and API have no prices, skip to the next state
+            }
+
+            if (apiPrices.isEmpty()) {
+                System.out.println("No prices available in API for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if no prices are found in API
+            }
+            for (Map<String, Object> apiPrice : apiPrices) {
+                String variantName = (String) apiPrice.get("VariantName");
+                int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
+
+                // Handle cases where the UI does not have the variant present in the API
+                if (uiPrices.containsKey(variantName)) {
+                    int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
+                    System.out.println("Comparing prices for model: " + variantName);
+                    System.out.println(("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice));
+                    assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+
+                } else {
+                    System.out.println("Model " + variantName + " not found in UI data");
+                }
+            }
         }
     }
+
+    @When("the user navigates to the price section and accepts the cookies pop-up")
+    public void userNavigatedToRoninPriceSectionAndAcceptTheCookiesPopUp() {
+        // Check if the language selection pop-up is displayed
+        try {
+            if (selectlanguagePopUp.isDisplayed()) {
+                By languageSelector = priceSectionPage.getLanguageSelector("English");
+                WebElement languageElement = driver.findElement(languageSelector);
+                waitForElementToBeClickable(driver, languageElement, 15);
+                languageElement.click();
+            } else {
+                System.out.println("Language selection pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Language selection pop-up not found on the page.");
+        }
+        try {
+            if (priceSectionPage.isDisplayed()) {
+                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                priceSectionPage.clickDismiss();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("BookNow pop-up not displayed on the page");
+        }
+
+        // Check if the cookies acceptance pop-up is displayed
+        try {
+            if (AcceptCookie.isDisplayed()) {
+                priceSectionPage.ClickAcceptCookies();
+            } else {
+                System.out.println("Cookies acceptance pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Cookies acceptance pop-up not found on the page.");
+        }
+        waitForElementToBeClickable(driver, roninStateDropdown, 15);
+
+    }
+
+    @When("click the state dropdown and select the state")
+    public void clickTheStateDropdownAndSelectTheState() {
+        priceSectionPage.ClickStateDropdown();
+        visibilityOfElementLocated(driver, states, 15);
+
+    }
+
+    @Then("get the On-Road prices for all the states and variants for ronin")
+    public void getTheOnRoadPricesForAllTheStatesAndVariantsForRonin() throws InterruptedException {
+        List<WebElement> stateList = driver.findElements(states);//driver.findElements(By.xpath("//div[@id='bs-select-1']//ul/li/a/span"));
+        for (int i = 0; i < stateList.size(); i++) {
+            stateList = driver.findElements(priceSectionPage.states);
+            System.out.println("\n states: " + stateList.get(i).getText());
+            state = stateList.get(i).getText();
+
+            WebElement stateElement = stateList.get(i);
+            if (!state.isEmpty()) {
+                stateElement.click();
+            } else {
+                break;
+            }
+
+            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+            priceSectionPage.ClickOnRoadPrice();
+
+            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+
+            if (i < stateList.size() - 1) {
+                priceSectionPage.clickRoninStateDropdown();
+            }
+
+
+            Thread.sleep(2000);
+            List<WebElement> OnRoadModels = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dt[@class='col-xs-6']"));
+
+            //div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price']
+            List<WebElement> OnRoadPrices = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dd/span"));
+
+            uiPrices.clear();
+            if (OnRoadModels.isEmpty() || OnRoadPrices.isEmpty()) {
+                System.out.println("No prices available in UI for state: " + state);
+            } else {
+                for (int j = 0; j < OnRoadModels.size(); j++) {
+                    String model = OnRoadModels.get(j).getText();
+                    String priceText = OnRoadPrices.get(j).getText().replace("*", "").replace("₹", "").replace(",", "").trim();
+                    //int price = Integer.parseInt(priceText);
+                    String finalPrice = priceText.replace(" ", "");
+                    uiPrices.put(model, finalPrice);
+                }
+            }
+            //System.out.println("uiPrices -" + uiPrices);
+
+            JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+            String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
+            Response response = OrpDetailsUAT(SelectedVehicle.replace("_", " "), stateCode);
+
+            if (response.getStatusCode() == 204) {
+                System.out.println("No content in API response for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if API call fails
+            }
+
+            String responseBody = response.getBody().asString();
+            if (responseBody == null || responseBody.isEmpty() || response.getStatusCode() == 204) {
+                System.out.println("API response is empty for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if API response is empty
+            }
+            try {
+                apiPrices = response.jsonPath().getList("");
+            } catch (Exception e) {
+                System.out.println("Failed to parse API response for state: " + state);
+                continue; // Skip to the next state if parsing fails
+            }
+
+            if (uiPrices.isEmpty() && apiPrices.isEmpty()) {
+                System.out.println("Both UI and API have no prices for state: " + state);
+                continue; // Both UI and API have no prices, skip to the next state
+            }
+
+            if (apiPrices.isEmpty()) {
+                System.out.println("No prices available in API for state: " + state);
+                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                continue; // Skip to the next state if no prices are found in API
+            }
+            for (Map<String, Object> apiPrice : apiPrices) {
+                String variantName = (String) apiPrice.get("VariantName");
+                int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
+
+                // Handle cases where the UI does not have the variant present in the API
+                if (uiPrices.containsKey(variantName)) {
+                    int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
+                    System.out.println("Comparing prices for model: " + variantName);
+                    System.out.println(("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice));
+                    assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+                } else {
+                    System.out.println("Model " + variantName + " not found in UI data");
+                }
+            }
+        }
+    }
+
+
+    @When("the user navigates to the price section of raider page and accepts the cookies pop-up")
+    public void theUserNavigatesToThePriceSectionOfRaiderPageAndAcceptsTheCookiesPopUp() {
+        // Check if the language selection pop-up is displayed
+        try {
+            if (selectlanguagePopUp.isDisplayed()) {
+                By languageSelector = priceSectionPage.getLanguageSelector("English");
+                WebElement languageElement = driver.findElement(languageSelector);
+                waitForElementToBeClickable(driver, languageElement, 15);
+                languageElement.click();
+            } else {
+                System.out.println("Language selection pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Language selection pop-up not found on the page.");
+        }
+        try {
+            if (priceSectionPage.isDisplayed()) {
+                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                priceSectionPage.clickDismiss();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("BookNow pop-up not displayed on the page");
+        }
+
+        // Check if the cookies acceptance pop-up is displayed
+        try {
+            if (AcceptCookie.isDisplayed()) {
+                priceSectionPage.ClickAcceptCookies();
+            } else {
+                System.out.println("Cookies acceptance pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Cookies acceptance pop-up not found on the page.");
+        }
+        Utilities.scrollToElement(raiderPriceSection);
+        waitForElementToBeClickable(driver, stateDropdownRaider, 15);
+    }
+
+    @Then("get the On-Road prices for all the states and variants for raider")
+    public void getTheOnRoadPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException {
+        for (int c = 0; c < 4; c++) {
+            // Click the right arrow to navigate to the next variant
+            if (c > 0) {
+                priceSectionPage.clickRightArrow();
+                Thread.sleep(2000);
+            }
+
+            //visibilityOfElementLocated(driver, selectedVariant, 10);
+            selectedVariant = driver.findElement(By.cssSelector("div[class='item active'] h4")).getText();
+
+
+            // wait for the state dropdown to be visible and click it
+            visibilityOfElementLocated(driver, states, 15);
+            priceSectionPage.clickRaiderStateDropdown();
+
+            List<WebElement> stateList = driver.findElements(statesRaider);
+            for (int i = 0; i < stateList.size(); i++) {
+                stateList = driver.findElements(priceSectionPage.statesRaider);
+                System.out.println("\n states: " + stateList.get(i).getText());
+                state = stateList.get(i).getText();
+
+                WebElement stateElement = stateList.get(i);
+                if (!state.isEmpty()) {
+                    stateElement.click();
+                } else {
+                    break;
+                }
+
+                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                priceSectionPage.ClickOnRoadPriceRaider();
+
+                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+
+                if (i < stateList.size() - 1) {
+                    priceSectionPage.clickRaiderStateDropdown();
+                }
+
+                Thread.sleep(2000);
+                WebElement OnRoadModel = driver.findElement(By.cssSelector("div[class='item active'] h4"));
+                WebElement OnRoadPrice = driver.findElement(By.xpath("//div[@class='item active']//i[@id='priceLable']"));
+
+                uiPrices.clear();
+                if (!OnRoadModel.isDisplayed() || !OnRoadPrice.isDisplayed() || OnRoadPrice.getText().equalsIgnoreCase("ORP not available")) {
+                    System.out.println("No prices available in UI for state: " + state);
+                } else {
+
+                    String model = OnRoadModel.getText();
+                    String priceText = OnRoadPrice.getText().replace("*", "").replace("₹", "").replace(",", "").trim();
+                    String finalPrice = priceText.replace(" ", "");
+
+                    //System.out.println("model -" + model);
+                    //System.out.println("price -" + finalPrice);
+                    uiPrices.put(model, finalPrice);
+                }
+                //System.out.println("uiPrices -" + uiPrices);
+                JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+                String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
+                Response response = OrpDetailsUAT(SelectedVehicle.replace("_", " "), stateCode);
+
+                if (response.getStatusCode() == 204) {
+                    System.out.println("No content in API response for state: " + state);
+                    assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                    continue; // Skip to the next state if API call fails
+                }
+                String responseBody = response.getBody().asString();
+                if (responseBody == null || responseBody.isEmpty() || response.getStatusCode() == 204) {
+                    System.out.println("API response is empty for state: " + state);
+                    assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                    continue; // Skip to the next state if API response is empty
+                }
+                try {
+                    apiPrices = response.jsonPath().getList("");
+                } catch (Exception e) {
+                    System.out.println("Failed to parse API response for state: " + state);
+                    continue; // Skip to the next state if parsing fails
+                }
+
+                if (uiPrices.isEmpty() && apiPrices.isEmpty()) {
+                    System.out.println("Both UI and API have no prices for state: " + state);
+                    continue; // Both UI and API have no prices, skip to the next state
+                }
+
+                if (apiPrices.isEmpty()) {
+                    System.out.println("No prices available in API for state: " + state);
+                    assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                    continue; // Skip to the next state if no prices are found in API
+                }
+                //System.out.println("apiprice "+apiPrices);
+                apiPrices = apiPrices.stream()
+                        .filter(apiPrice -> selectedVariant.equals(apiPrice.get("VariantName")))
+                        .collect(Collectors.toList());
+                for (Map<String, Object> apiPrice : apiPrices) {
+                    String variantName = (String) apiPrice.get("VariantName");
+                    int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
+
+                    System.out.println("variantName -" + variantName);
+                    // Handle cases where the UI does not have the variant present in the API
+                    if (uiPrices.containsKey(variantName)) {
+                        System.out.println(uiPrices.containsKey(variantName));
+                        int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
+                        System.out.println("Comparing prices for model: " + variantName);
+                        System.out.println(("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice));
+                        assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+                    } else {
+                        System.out.println("Model " + variantName + " not found in UI data");
+                    }
+                }
+            }
+        }
+    }
+
+
 }

@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class PriceAPI
+public class PriceApiUAT
 {
     public static String getAuthToken()
     {
@@ -31,19 +31,19 @@ public class PriceAPI
         return token;
     }
 
-    public static String OrpDetails(String Vehicle, String stateCode)
+    public static Response OrpDetailsUAT(String Vehicle, String stateCode)
     {
         String authToken = getTokenResp(getAuthToken());
         //System.out.println("tokenres-"+authToken);
-        String response = given()
+        Response response = given()
                 .header("Content-Type","application/json")
                 .header("Authorization","Bearer " + authToken)
                 .body("{\n" +
                 "  \"VehicleName\": \""+Vehicle+"\",\n" +
                 "  \"BrandStateCode\": "+stateCode+"\n" +
-                "}").log().all().when()
+                "}").when()
                 .post("https://uat-corp-api.tvsmotor.net/api/TVSORP/TVSORPs")
-                .then().log().all().extract().response().asString();
+                .then().extract().response();
         return response;
     }
 

@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 13, 2024 12:07:00 AM</span></a>
+<a href="#"><span class="badge badge-primary">Jul 26, 2024 04:19:57 PM</span></a>
 </li>
 </ul>
 </div>
@@ -57,6 +57,11 @@
 <span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
 </ul>
 </div>
 </div>      <div class="vcontainer">
@@ -66,25 +71,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 13, 2024 12:07:00 AM</h3>
+<h3>Jul 26, 2024 04:19:57 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 13, 2024 12:09:53 AM</h3>
+<h3>Jul 26, 2024 05:01:16 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -100,12 +105,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -123,9 +128,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='91%'><b>11</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='8%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -143,10 +148,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>4</b> steps passed</small></div>
+<div><small data-tooltip='95%'><b>45</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='2%'><b>1</b> steps failed,
+<b>1</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -162,7 +167,7 @@
 </div></div>
 <script>
 var timeline = {
-"Validating Onroad and Ex-showroom price updated correctly on brand pages":172.762
+"Validating On-Road and Ex-showroom price updated correctly on brand pages":2478.779
 };
 </script>
 <div class="row">
@@ -173,7 +178,31 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@priceValidation</td>
+<td>13</td>
 <td>2</td>
+<td>0</td>
+<td>0</td>
+<td>86.667%</td>
+</tr>
+<tr>
+<td>@Raider</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@matchedElement</td>
+<td>7</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>77.778%</td>
+</tr>
+<tr>
+<td>@ApacheSeries</td>
+<td>4</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -210,21 +239,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 0,
+passChild: 11,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 4,
-failGrandChild: 0,
+passGrandChild: 45,
+failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 1,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -238,7 +267,7 @@ eventsCount: 5,
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -246,31 +275,31 @@ eventsCount: 5,
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@priceValidation</a>
+<a class="dropdown-item" href="#">@priceValidation</a><a class="dropdown-item" href="#">@Raider</a><a class="dropdown-item" href="#">@matchedElement</a><a class="dropdown-item" href="#">@ApacheSeries</a>
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Validating Onroad and Ex-showroom price updated correctly on brand pages</p>
+            <p class="name">Validating On-Road and Ex-showroom price updated correctly on brand pages</p>
             <p class="text-sm">
-              <span>12:07:00 AM</span> / <span>00:02:52:762</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>4:19:58 PM</span> / <span>00:41:18:779</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Validating Onroad and Ex-showroom price updated correctly on brand pages</h5>
-<span class='badge badge-success'>06.13.2024 12:07:00 AM</span>
-<span class='badge badge-danger'>06.13.2024 12:09:53 AM</span>
-<span class='badge badge-default'>00:02:52:762</span>
+<h5 class="test-status text-fail">Validating On-Road and Ex-showroom price updated correctly on brand pages</h5>
+<span class='badge badge-success'>07.26.2024 4:19:58 PM</span>
+<span class='badge badge-danger'>07.26.2024 5:01:16 PM</span>
+<span class='badge badge-default'>00:41:18:779</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -282,19 +311,19 @@ eventsCount: 5,
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
       </div>
     </div>
-        <div class="scenario_outline collapse">
+        <div class="scenario_outline ">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
                   <div class="step pass-bg">
-                    <span>Given navigate to the tvs brand "JUPITER_125" page</span>
+                    <span>Given navigate to the tvs brand "JUPITER_125" page in "PROD"</span>
       <div>
       </div>
                   </div>
@@ -309,7 +338,369 @@ eventsCount: 5,
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then get the prices for ex-showroom for the variants</span>
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="8"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "JUPITER" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="13"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_NTORQ_125" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="18"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_Zest_110" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="23"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_RADEON_110" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="28"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "StarCity+" page in "UAT"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="33"><span class="badge log fail-bg mr-2">Fail</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_SPORT" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <div class="filter-option">...</div> is not clickable at point (206, 11). Other element would receive the click: <div class="container-fluid">...</div>
+  (Session info: chrome=127.0.6533.72)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8b500e0ca8e07abae013131696263597, clickElement {id=f.3CC4760F94E11CED13DC9DD54C3ACAF7.d.B4A84A1F4D8042F3EB3E41A165FCC19D.e.172}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.72, chrome: {chromedriverVersion: 127.0.6533.72 (9755e24ca85a..., userDataDir: C:\Users\CHETHA~1.WAL\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59343}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59343/devtoo..., se:cdpVersion: 127.0.6533.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (8b500e0ca8e07abae013131696263597)] -> xpath: //div[@class='filter-option']]
+Session ID: 8b500e0ca8e07abae013131696263597
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy24.click(Unknown Source)
+	at com.tvs.pages.PriceSectionPage.ClickStateDropdown(PriceSectionPage.java:96)
+	at StepDefs.PriceValidationStepDef.click_on_the_state_dropdown_and_select_the_state(PriceValidationStepDef.java:119)
+	at ✽.click on the state dropdown and select the state(file:///C:/Users/chethan.wali/Documents/DomesticCommuterUI/src/test/Resources/features/TvsPriceValdidation.feature:9)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>Step skipped
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="38"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for all states on TVS brand pages for all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_XL_100" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the state dropdown and select the state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="43"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="44"><span class="badge log pass-bg mr-2">Pass</span>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the tvs brand "TVS_Raider" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When the user navigates to the price section of raider page and accepts the cookies pop-up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and variants for raider</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="48"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for ApacheSeries brand page with all variants</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="49"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for ApacheSeries brand page with all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the "TVSApacheSeries" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the apache price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the dropdowns to select "Apache RTR 310" and state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and models for apache series</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="54"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for ApacheSeries brand page with all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the "TVSApacheSeries" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the apache price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the dropdowns to select "Apache RR 310" and state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and models for apache series</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="59"><span class="badge log pass-bg mr-2">Pass</span>Verify On-Road prices for ApacheSeries brand page with all variants</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given navigate to the "TVSApacheSeries" page in "PROD"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user navigated to the apache price section and accept the cookies pop up</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on the dropdowns to select "Apache RTR 160 2V" and state</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then get the On-Road prices for all the states and models for apache series</span>
       <div>
       </div>
                   </div>
@@ -333,21 +724,199 @@ eventsCount: 5,
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">4</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>2</span>
+<span class='badge log pass-bg'>13</span>
+<span class='badge log badge-danger'>2</span>
 </span>
 <p class="name">@priceValidation</p>
-<p class="duration text-sm">2 tests</p>
+<p class="duration text-sm">15 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>@priceValidation</h4>
+<span status="pass" class='badge log pass-bg'>13 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:19:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:19:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='8'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:53 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='18'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:31:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='23'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:34:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='28'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:37:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='33'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:37:52 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='38'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:40:50 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='43'>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and On-Road prices for Ronin TVS brand page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:40:50 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='44'>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and On-Road prices for Ronin TVS brand page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:52:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='48'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:52:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='49'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:55:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='54'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:58:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='59'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">@Raider</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Raider</h4>
 <span status="pass" class='badge log pass-bg'>2 passed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -361,21 +930,257 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>00:07:00 AM</td>
+<td>16:40:50 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</a>
+<a href="#" class="linked" test-id='1' id='43'>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</a>
 <div class="">
-<span class="badge badge-default">Validating Onroad and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and Onroad prices for all states on TVS brand pages</span>
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and On-Road prices for Ronin TVS brand page</span>
 </div>
 </td>
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>00:07:00 AM</td>
+<td>16:40:50 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>Verify Ex-showroom and Onroad prices for all states on TVS brand pages</a>
+<a href="#" class="linked" test-id='1' id='44'>Verify Ex-showroom and On-Road prices for Ronin TVS brand page</a>
 <div class="">
-<span class="badge badge-default">Validating Onroad and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and Onroad prices for all states on TVS brand pages</span>
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify Ex-showroom and On-Road prices for Ronin TVS brand page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>7</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@matchedElement</p>
+<p class="duration text-sm">9 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@matchedElement</h4>
+<span status="pass" class='badge log pass-bg'>7 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:19:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:19:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='8'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:53 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='18'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:31:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='23'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:34:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='28'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:37:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='33'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:37:52 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='38'>Verify On-Road prices for all states on TVS brand pages for all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>4</span>
+</span>
+<p class="name">@ApacheSeries</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@ApacheSeries</h4>
+<span status="pass" class='badge log pass-bg'>4 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:52:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='48'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:52:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='49'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:55:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='54'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:58:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='59'>Verify On-Road prices for ApacheSeries brand page with all variants</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for ApacheSeries brand page with all variants</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.ElementClickInterceptedException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.ElementClickInterceptedException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:37:51 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='36'>When click on the state dropdown and select the state</a>
+<div class="">
+<span class="badge badge-default">Validating On-Road and Ex-showroom price updated correctly on brand pages.Verify On-Road prices for all states on TVS brand pages for all variants.When click on the state dropdown and select the state</span>
 </div>
 </td>
 </tr>

@@ -41,7 +41,6 @@ Feature: Test ride submission for different TVS vehicles
       | Jupiter125    |
 
 
-
   @testRidePos
   Scenario Outline: Submit Ride forms for TVS Vehicles with Valid Details
     Given Navigate to Test Ride page for "<vehicle>"

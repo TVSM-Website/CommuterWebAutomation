@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverManager
 {
-        private static WebDriver driver;
+        static WebDriver driver;
 
         private WebDriverManager() {
             // Private constructor to prevent instantiation

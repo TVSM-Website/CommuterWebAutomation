@@ -9,7 +9,6 @@ public class DataBaseConnection
     public static String database = "tvsmazwebsdbuat01-corp-transaction";
     public static String username = "sqladmin";
     public static String password = "BFwVqmKq2D6NwGUmjjV3fExQPreProd";
-    // Method to establish database connection
     public static Connection getConnection(String server, String database, String username, String password) throws ClassNotFoundException, SQLException {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -32,7 +31,8 @@ public class DataBaseConnection
             if (resultSet != null) resultSet.close();
             if (statement != null) statement.close();
             if (connection != null) connection.close();
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }

@@ -98,3 +98,6 @@ Feature: Test ride submission for different TVS vehicles
 #    Examples:
 #      | name                 | mobileNumber | pinCode |
 #      | Test ride Automation | 8088059296   | 590015  |
+
+
+  Scenario: test ride form submission for multiple language

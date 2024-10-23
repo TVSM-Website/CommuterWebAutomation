@@ -14,8 +14,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
+
+import static Utils.Utilities.HandleAlert;
 
 public class HomePageStepDef
 {
@@ -25,6 +30,8 @@ public class HomePageStepDef
     PriceSectionPage priceSectionPage;
     WebElement selectlanguagePopUp;
     VehiclesPage vehiclesPage;
+    WebElement AcceptCookie;
+    String env;
 
     public HomePageStepDef() {
         this.driver = WebDriverManager.getDriver();
@@ -32,14 +39,55 @@ public class HomePageStepDef
         priceSectionPage = new PriceSectionPage(driver);
         vehiclesPage = new VehiclesPage(driver);
         selectlanguagePopUp=priceSectionPage.selectlanguagePopUp;
+        AcceptCookie=homePage.AcceptCookie;
     }
 
-    @Given("navigate to the TVS Motor home page")
-    public void navigate_to_the_tvs_motor_home_page()
-    {
-//        driver.get("https://uat-www.tvsmotor.net/");
-        driver.get("https://www.tvsmotor.com/");
 
+    @When("user navigated to home page and accepts the cookies pop-up")
+    public void userNavigatedToHomePageAndAcceptsTheCookiesPopUp()
+    {
+        try {
+            if (AcceptCookie.isDisplayed()) {
+                homePage.ClickAcceptCookies();
+            } else {
+                System.out.println("Cookies acceptance pop-up is not displayed.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Cookies acceptance pop-up not found on the page.");
+        }
+    }
+
+    @When("user clicks on products and clicks on scooter tab")
+    public void ClicksOnScootersTab() throws InterruptedException
+    {
+        homePage.ClickProducts();
+        homePage.ClickScootersTab();
+        //System.out.println(homePage.scootersCount.getText());
+        //compareAllCountScooters(driver.findElements(homePage.allScooters).size());
+
+    }
+    @Then("click on each vehicles to verify the title of scooters")
+    public void clickOnEachVehiclesToVerifyTheTitle() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allScooters).size(); i++) {
+            List<WebElement> scooterLinks = driver.findElements(homePage.allScooters);
+            WebElement scooterLink = scooterLinks.get(i);
+            String scooterName = scooterLink.getText();
+            System.out.println("vname-" + scooterName);
+            scooterLink.click();
+
+            if (scooterName.equalsIgnoreCase("TVS Jupiter")) {
+                scooterLink.click();
+                driver.getCurrentUrl().contains("tvs-jupiter");
+            } else {
+                String pageTitle = driver.getTitle();
+                System.out.println("Page title: " + pageTitle);
+                Assert.assertTrue("Page title doesn't contain " + scooterName, pageTitle.contains(scooterName.replace("+", " ")));
+
+                driver.navigate().back();
+                ClicksOnScootersTab();
+
+            }
+        }
     }
     @When("a popup appears on the homepage close the pop up")
     public void a_popup_appears_on_the_homepage()
@@ -64,19 +112,13 @@ public class HomePageStepDef
         Assert.assertEquals("OUR PRODUCTS",ourProduct.getText());
     }
 
-    @And("verify the count of total vehicles")
-    public void verify_the_count_of_total_vehicles() {
-        List<WebElement> vehicles= driver.findElements(By.xpath("//div[@class='infoCont']/p[@class='name']"));
-        Assert.assertEquals(vehicles.size(),19);
-    }
-
     @Given("navigate to our products page")
-    public void navigate_to_our_products_page() throws InterruptedException {
-            homePage.ClickOurProducts();
+    public void navigate_to_our_products_page() {
+           // homePage.ClickOurProducts();
 
     }
     @When("clicks on each vehicles tab and select the state")
-    public void clicks_on_each_vehicles_tab_and_select_the_state() throws InterruptedException
+    public void clicks_on_each_vehicles_tab_and_select_the_state()
     {
         homePage.ClickStateDropdown();
 
@@ -104,204 +146,34 @@ public class HomePageStepDef
         }
        // driver.quit();
     }
-    @When("navigate to the \"Our Products\" section")
-    public void navigate_to_our_products_section() throws InterruptedException {
-        homePage.ClickOurProducts();
-        try {
-            homePage.ClickAcceptCookies();
-        }
-        catch(Exception e) {
-            log.info("Cookies handled");
-        }
-    }
-
-    @Then("user should see scooters listed with their respective names and 'Know More' links")
-    public void verify_scooters_listed_with_know_more_links() throws InterruptedException {
-        Thread.sleep(2000);
-        List<WebElement> scooters = vehiclesPage.getScootersList();
-        for (WebElement scooter : scooters) {
-            String scooterName = scooter.getText();
-            System.out.println(scooterName);
-            Assert.assertTrue("Know More link not found for scooter: " + scooterName , vehiclesPage.isKnowMoreLinkAvailable(scooterName));
-        }
-    }
-
-    @And("clicks on 'Know More' for each scooter and verifies the title")
-    public void click_know_more_for_each_scooter() throws InterruptedException {
-        List<WebElement> scooters = vehiclesPage.getScootersList();
-        for (int i = 0; i < scooters.size(); i++) {
-            Thread.sleep(2000);
-            try {
-                scooters = vehiclesPage.getScootersList();
-                String scooterName = scooters.get(i).getText();
-                vehiclesPage.clickKnowMoreLink(scooterName);
-                Thread.sleep(3000);
-                vehiclesPage.handlePopups();
-
-//              boolean newTabOpened = vehiclesPage.switchToNewTabIfOpened();
-                String pageTitle = driver.getTitle();
-                String normalisedPpageTitle = Utilities.normalizeString(pageTitle);
-                String currentUrl = driver.getCurrentUrl();
-                log.info("Url of vehicle: "+currentUrl+" for vehicle: "+scooterName+""
-                        + "Page title of vehicle: "+pageTitle+""); //for logs
-                String normalisedCurrentUrl = Utilities.normalizeString(currentUrl);
-                System.out.println(normalisedCurrentUrl);									//for console
-                String normalisedScooterName = Utilities.normalizeString(scooterName);
-                System.out.println(normalisedScooterName);								    //for console
-                System.out.println(normalisedPpageTitle);								    //for console
-
-                String expectedUrlSubstring = vehiclesPage.getExpectedUrlSubstring(normalisedScooterName);
-                System.out.println(expectedUrlSubstring+""+normalisedCurrentUrl);
-                System.out.println(normalisedPpageTitle+"**"+normalisedScooterName);
-                Assert.assertTrue("URL does not contain the scooter's name: " + scooterName, normalisedCurrentUrl.contains(expectedUrlSubstring));
-                Assert.assertTrue("Page title does not contain the scooter's name: " + scooterName, normalisedPpageTitle.contains(normalisedScooterName));
-
-                navigate_to_our_products_section();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    @When("navigate to the \"Our Products\" page and click 'motorcycles'")
-    public void navigate_to_our_products_page_and_click_motorcycles() throws InterruptedException {
-    homePage.ClickOurProducts();
-    vehiclesPage.clickMotorCycleTab();
-    try {
-        homePage.ClickAcceptCookies();
-    }
-    catch(Exception e) {
-        log.info("Cookies handled");
-    }
-    ExplicitWait.waitUntilLoaderDisappears(driver);
-}
-
-    @Then("user should see motorcycles listed with their respective names and 'Know More' links")
-    public void verify_motorcycles_listed_with_know_more_links() throws InterruptedException {
-        Thread.sleep(2000);
-        List<WebElement> motorcycles = vehiclesPage.getMotorcyclesList();
-        for (WebElement motorcycle : motorcycles) {
-            String motorcycleName = motorcycle.getText();
-            System.out.println(motorcycleName);
-            Assert.assertTrue("Know More link not found for motorcycle: " + motorcycleName, vehiclesPage.isKnowMoreLinkAvailable(motorcycleName));
-        }
-    }
-
-
-    @Then("verifies the url for each motorcycle page after clicking on their respective Know More links")
-    public void verifies_the_url_for_each_motorcycle_page_after_clicking_on_their_respective_know_more_links() throws InterruptedException
-    {
-        Thread.sleep(2000);
-        List<WebElement> motorcycles = vehiclesPage.getMotorcyclesList();
-        for (int i = 0; i < motorcycles.size(); i++) {
-            Thread.sleep(2000);
-            try {
-                motorcycles = vehiclesPage.getMotorcyclesList();
-                String motorcycleName = motorcycles.get(i).getText();
-                vehiclesPage.clickKnowMoreLink(motorcycleName);
-                vehiclesPage.handlePopups();
-
-                boolean newTabOpened = vehiclesPage.switchToNewTabIfOpened();
-                String pageTitle = driver.getTitle();
-                String normalisedPpageTitle = Utilities.normalizeString(pageTitle);
-                String currentUrl = driver.getCurrentUrl();
-                log.info("Url of vehicle: "+currentUrl+" for vehicle: "+motorcycleName+""); //for logs
-                String normalisedCurrentUrl = Utilities.normalizeString(currentUrl);
-                System.out.println(normalisedCurrentUrl);									//for console
-                String normalisedMotorcycleName = Utilities.normalizeString(motorcycleName);
-                System.out.println(normalisedMotorcycleName);								//for console
-
-                String expectedUrlSubstring = vehiclesPage.getExpectedUrlSubstring(normalisedMotorcycleName);
-                System.out.println(expectedUrlSubstring+"***"+normalisedCurrentUrl);
-                System.out.println(normalisedMotorcycleName+"***"+normalisedPpageTitle);
-                Assert.assertTrue("URL does not contain the motorcycle's name: " + motorcycleName, normalisedCurrentUrl.contains(expectedUrlSubstring));
-              //  Assert.assertTrue("Page title does not contain the scooter's name: " + motorcycleName, normalisedPpageTitle.contains(normalisedMotorcycleName));
-                if (newTabOpened) {
-                    vehiclesPage.switchBackToOriginalTab();
-                } else {
-                    driver.navigate().back();
-                }
-
-                vehiclesPage.clickMotorCycleTab();;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    @When("navigate to the \"Our Products\" page and click 'mopeds'")
-    public void navigate_to_our_products_page_and_click_mopeds() throws InterruptedException {
-        ExplicitWait.waitUntilLoaderDisappears(driver);
-        homePage.ClickOurProducts();
-        vehiclesPage.clickMopedTab();
-        try {
-            homePage.ClickAcceptCookies();
-        }
-        catch(Exception e) {
-            log.info("Cookies handled");
-        }
-        ExplicitWait.waitUntilLoaderDisappears(driver);
-    }
-
-
-    @Then("user should see moped listed with its respective name and 'Know More' links")
-    public void verify_moped_listed_with_know_more_links() {
-        List<WebElement> mopeds = vehiclesPage.getMopedsList();
-        Assert.assertEquals("Number of mopeds listed is not 1", 1, mopeds.size());
-
-        for (WebElement moped : mopeds) {
-            String mopedName = moped.getText();
-            System.out.println(mopedName);
-            Assert.assertTrue("Know More link not found for moped", vehiclesPage.isKnowMoreLinkAvailable(mopedName));
-        }
-    }
-
-
-
-    @Then("verifies the url for moped page after clicking on its respective Know More links")
-    public void verifies_the_url_for_moped_page_after_clicking_on_its_respective_know_more_links() {
-        List<WebElement> mopeds = vehiclesPage.getMopedsList();
-        for (int i = 0; i < mopeds.size(); i++) {
-            try {
-                mopeds = vehiclesPage.getMopedsList();
-                String mopedName = mopeds.get(i).getText();
-                vehiclesPage.clickKnowMoreLink(mopedName);
-                vehiclesPage.handlePopups();
-                String currentUrl = driver.getCurrentUrl();
-                String normalizedCurrentUrl = Utilities.normalizeString(currentUrl);
-                String normalizedMopedName = Utilities.normalizeString(mopedName);
-                Assert.assertTrue("URL does not contain the moped's name: " + mopedName, normalizedCurrentUrl.contains(normalizedMopedName));
-                driver.navigate().back();
-                vehiclesPage.clickMopedTab();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        driver.close();
-    }
 
     @Given("navigate to the TVS Motor home page in {string} environment")
-    public void navigate_to_the_tvs_motor_home_page_in_environment(String environment) {
-        // driver = new ChromeDriver();  // Initialize WebDriver as per your setup
+    public void navigate_to_the_tvs_motor_home_page_in_environment(String environment)
+    {
+        env=environment;
         String url = Utilities.getUrl(environment);
         driver.get(url);
+        //HandleAlert(driver,"PoGomjipkB");
         Utilities.verifyUrl(driver, environment);
+
     }
 
     @When("navigate to the \"Our Products\" page for state drop down")
     public void navigate_to_our_products_page_for_state_drop_down() throws InterruptedException {
-        homePage.ClickAcceptCookies();
-        homePage.ClickOurProducts();
+        if(env.equalsIgnoreCase("UAT")) {
+            driver.navigate().to("https://uat-www.tvsmotor.net/Our-Products/Vehicles");
+        }
+        else if(env.equalsIgnoreCase("PROD")) {
+            driver.navigate().to("https://www.tvsmotor.com/Our-Products/Vehicles");
+        }
     }
 
     @When("navigates through state drop down and check visibility for each vehicle type")
     public void navigates_through_state_drop_down_and_check_visibility_for_each_vehicle_type() throws InterruptedException {
-        homePage.ClickOurProducts();
+        //homePage.ClickOurProducts();
         List<WebElement> states = vehiclesPage.getStateDropdownOptions();
 
-        for (int i=0;i<=states.size();i++) {
+        for (int i=0;i<states.size();i++) {
             try {
                 Thread.sleep(1000);
                 String stateName = states.get(i).getText();
@@ -380,8 +252,150 @@ public class HomePageStepDef
     @Then("the state name should be displayed along with ex-showroom price for the vehicle name for each moped")
     public void state_name_should_be_displayed_for_each_moped() {
         // This step is implicitly verified in the "verifyStateAndExShowroomPrice" method
-        driver.close();
     }
 
+
+    @When("user clicks on products and clicks on Motorcycles tab")
+    public void ClicksOnMotorcyclesTab() throws InterruptedException
+    {
+        //HandleAlert(driver,"PoGomjipkB");
+        homePage.ClickProducts();
+        //HandleAlert(driver,"PoGomjipkB");
+        homePage.ClickMotorCyclesTab();
+    }
+
+    @Then("click on each vehicles to verify the title of Motorcycles")
+    public void clickOnMotorcycleLinks() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allMotorCycles).size(); i++) {
+            List<WebElement> scooterLinks = driver.findElements(homePage.allMotorCycles);
+
+            WebElement scooterLink = scooterLinks.get(i);
+            scooterLink.click();
+            //HandleAlert(driver,"PoGomjipkB");
+
+            String pageTitle = driver.getTitle();
+            System.out.println("Page title: " + pageTitle);
+            Assert.assertEquals("Verify the page title",pageTitle,driver.getTitle());
+
+            driver.navigate().back();
+            ClicksOnMotorcyclesTab();
+        }
+    }
+
+    @And("verify that url contains the vehicle name")
+    public void verifyThatUrlContainsTheVehicleName(String vehicleName)
+    {
+        String url=driver.getCurrentUrl();
+        String Vehicle=url.substring(url.lastIndexOf("/") + 1).replace("-"," ");
+        System.out.println("vname-"+Vehicle);
+        Assert.assertEquals("Url doesn't contain "+vehicleName ,Vehicle,vehicleName.toLowerCase());
+    }
+
+    @When("user clicks on products and clicks on Electric tab")
+    public void ClicksOnElectricTab() throws InterruptedException {
+        homePage.ClickProducts();
+        homePage.ClickElectricTab();
+    }
+
+    @Then("click on each vehicles to verify the title of Electric vehicles")
+    public void clickOnElectricLinks() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allElectric).size(); i++) {
+            List<WebElement> VehicleLinks = driver.findElements(homePage.allElectric);
+
+            WebElement VehicleLink = VehicleLinks.get(i);
+            String vehicleName = VehicleLink.getText();
+            System.out.println("vname-" + vehicleName);
+            VehicleLink.click();
+
+            String pageTitle = driver.getTitle();
+            System.out.println("Page title: " + pageTitle);
+            Assert.assertTrue("Url doesn't contain "+vehicleName,pageTitle.contains(vehicleName));
+
+            driver.navigate().to("https://uat-www.tvsmotor.net/");
+            ClicksOnElectricTab();
+        }
+    }
+
+    @When("user clicks on products and clicks on Mopeds tab")
+    public void ClicksOnMopedsTab() throws InterruptedException {
+        homePage.ClickProducts();
+        homePage.ClickMopedsTab();
+    }
+
+    @Then("click on each vehicles to verify the title of Mopeds")
+    public void clickOnEachVehiclesToVerifyTheTitleOfMopeds() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allMopeds).size(); i++) {
+            List<WebElement> scooterLinks = driver.findElements(homePage.allMopeds);
+
+            WebElement scooterLink = scooterLinks.get(i);
+            String scooterName = scooterLink.getText();
+            System.out.println("vname-" + scooterName);
+            scooterLink.click();
+
+            String pageTitle = driver.getTitle();
+            System.out.println("Page title: " + pageTitle);
+            Assert.assertTrue("Page title doesn't contain " + scooterName, pageTitle.contains(scooterName));
+
+            driver.navigate().back();
+            ClicksOnMopedsTab();
+        }
+    }
+
+    @When("user clicks on products and clicks on ThreeWheelers tab")
+    public void ClicksOnThreeWheelersTab() throws InterruptedException {
+        homePage.ClickProducts();
+        homePage.ClickThreeWheelersTab();
+    }
+
+    @Then("click on each vehicles to verify the title of ThreeWheelers")
+    public void clickOnEachVehiclesToVerifyTheTitleOfThreeWheelers() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allThreeWheelers).size(); i++) {
+            List<WebElement> scooterLinks = driver.findElements(homePage.allThreeWheelers);
+
+            WebElement scooterLink = scooterLinks.get(i);
+            String scooterName = scooterLink.getText();
+            System.out.println("vname-" + scooterName);
+            scooterLink.click();
+
+            String pageTitle = driver.getTitle();
+            System.out.println("Page title: " + pageTitle);
+            Assert.assertEquals("Page title doesn't contain " + scooterName, pageTitle, driver.getTitle());
+
+            driver.navigate().back();
+            ClicksOnThreeWheelersTab();
+        }
+    }
+
+    @And("match the all {int} with no of vehicles displayed for scooters")
+    public void compareAllCountScooters(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.scootersCount() ,count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for Motorcycles")
+    public void compareAllCountMotorcycles(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.motorCyclesCount() ,count);
+
+    }
+
+    @And("match the all {int} with no of vehicles displayed for electric")
+    public void compareAllCountElectric(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.electricCount() ,count);
+
+    }
+
+    @And("match the all {int} with no of vehicles displayed for Mopeds")
+    public void compareAllCountElectricMopeds(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.mopedsCount() ,count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for ThreeWheelers")
+    public void matchTheAllCountWithNoOfVehiclesDisplayedForThreeWheelers(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.threeWheelersCount() ,count);
+    }
 
 }

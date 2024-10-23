@@ -2,48 +2,46 @@
 <extentreports>
     <configuration>
         <!-- report theme -->
-        <!-- standard, dark -->
         <theme>standard</theme>
-
         <!-- document encoding -->
-        <!-- defaults to UTF-8 -->
         <encoding>UTF-8</encoding>
-
-        <!-- protocol for script and stylesheets -->
-        <!-- defaults to https -->
-        <protocol>https</protocol>
-
-        <!-- title of the document -->
-        <documentTitle>ExtentReports 2.0</documentTitle>
-
         <!-- report name - displayed at top-nav -->
-        <reportName></reportName>
-
+        <reportName>TVS Motor Automation Report</reportName>
+        <!-- protocol for script and stylesheets -->
+        <protocol>https</protocol>
+        <!-- enable timeline -->
+        <timelineEnabled>true</timelineEnabled>
+        <!-- title of the document -->
+        <documentTitle>Extent Report</documentTitle>
         <!-- report headline - displayed at top-nav, after reportHeadline -->
         <reportHeadline>Automation Report</reportHeadline>
-
+        <!-- test view chart location -->
+        <testViewChartLocation>top</testViewChartLocation>
+        <!-- show passed tests -->
+        <showPassedTests>true</showPassedTests>
+        <!-- show failed tests -->
+        <showFailedTests>true</showFailedTests>
+        <!-- show skipped tests -->
+        <showSkippedTests>true</showSkippedTests>
+        <!-- enable timeline -->
+        <enableTimeline>true</enableTimeline>
         <!-- global date format override -->
-        <!-- defaults to yyyy-MM-dd -->
         <dateFormat>yyyy-MM-dd</dateFormat>
-
         <!-- global time format override -->
-        <!-- defaults to HH:mm:ss -->
         <timeFormat>HH:mm:ss</timeFormat>
-
         <!-- custom javascript -->
         <scripts>
             <![CDATA[
-        $(document).ready(function() {
-
-        });
-      ]]>
+                $(document).ready(function() {
+                    // Custom JS code here
+                });
+            ]]>
         </scripts>
-
         <!-- custom styles -->
         <styles>
             <![CDATA[
-
-      ]]>
+                /* Custom CSS styles here */
+            ]]>
         </styles>
     </configuration>
 </extentreports>

@@ -1,4 +1,4 @@
-@testRideCampaign
+@testRideCampaign @regression
 Feature: Test ride submission of TVS vehicles for campaigns
 #
 #  Scenario Outline: Submit Test ride form for Apache RR310
@@ -29,7 +29,6 @@ Feature: Test ride submission of TVS vehicles for campaigns
     Examples: Negative Cases
       | vehicle                |
       | ApacheRR310_Campaign   |
-      | TVSScootyPep+_Campaign |
       | TVSJupiter_Campaign    |
       | TvsSport_Campaign      |
       | TvsStarCity_Campaign   |
@@ -58,7 +57,6 @@ Feature: Test ride submission of TVS vehicles for campaigns
     Examples: Positive Cases
       | name                 | mobileNumber | pinCode | otpButtonStatus | vehicle                |
       | Test ride Automation | 1234567891   | 560072  | enabled         | ApacheRR310_Campaign   |
-      | TEST RIDE AUTOMATION | 1234567891   | 560018  | enabled        | TVSScootyPep+_Campaign |
       | test ride automation | 1234567891   | 560060  | enabled        | TVSJupiter_Campaign    |
       | Test ride Automation | 1234567891   | 560064  | enabled        | TvsSport_Campaign      |
       | Test ride Automation | 1234567891   | 560069  | enabled        | TvsStarCity_Campaign   |

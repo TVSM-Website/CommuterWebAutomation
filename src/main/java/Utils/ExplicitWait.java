@@ -31,6 +31,17 @@ public class ExplicitWait
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader_ajax")));
     }
 
+    public static Boolean visibilityOfElementLocated(WebDriver driver, WebElement locator, int timeoutInSeconds, String text) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.textToBePresentInElement((WebElement) locator,text));
+    }
+
+    public static void waitForElementToBeVisible(WebDriver driver, WebElement element, int timeoutInSeconds, String text) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+
+    }
+
 
 
 }

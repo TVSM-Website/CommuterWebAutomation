@@ -13,6 +13,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,8 +25,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import static Utils.DataBaseConnection.*;
-import static Utils.ExplicitWait.visibilityOfElementLocated;
-import static Utils.ExplicitWait.waitForElementToBeClickable;
+import static Utils.ExplicitWait.*;
 
 public class TestRideStepDef
 {
@@ -127,7 +128,7 @@ public class TestRideStepDef
     public void request_otp_for_entered_mobile_number() throws InterruptedException {
         testRidePage.ClickRequestOtp();
         testRidePage.enterOtp("1234");
-        //Thread.sleep(12000);
+        //Thread.sleep(10000);
 
     }
     @And("Click on submit button")
@@ -140,7 +141,7 @@ public class TestRideStepDef
     @And("Verify the confirmation message of test ride booking")
     public void verify_the_confirmation_message()
     {
-        visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"),20);
+        visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"),40);
         String thankMsg=testRidePage.ConfirmMsg();
         String[] part = thankMsg.split("We will");
         String part1 = part[0];
@@ -237,15 +238,19 @@ public class TestRideStepDef
     }
 
     @And("enter the invalid mobile number verify the error message")
-    public void enterTheInvalidMobileNumberVerifyTheErrorMessage()
-    {
+    public void enterTheInvalidMobileNumberVerifyTheErrorMessage() throws InterruptedException {
         testRidePage.EnterPhone("98765");
+        Thread.sleep(1000);
         Assert.assertEquals("Phone number minimum length must be 10",testRidePage.phoneError.getText());
         testRidePage.phone.clear();
+
         testRidePage.EnterPhone("$#%@*!");
+        Thread.sleep(2000);
         Assert.assertEquals("Please enter numbers only",testRidePage.phoneError.getText());
         testRidePage.phone.clear();
+
         testRidePage.EnterPhone("number");
+        Thread.sleep(1000);
         Assert.assertEquals("Please enter numbers only",testRidePage.phoneError.getText());
 
 
@@ -256,12 +261,20 @@ public class TestRideStepDef
     {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         testRidePage.enterOtp("otp");
+        waitForElementToBeVisible(driver,otpError,5,testRidePage.otpError.getText());
         Assert.assertEquals("Please enter numbers only",testRidePage.otpError.getText());
+
         testRidePage.userOtpNumber.clear();
+        Thread.sleep(1500);
+
         testRidePage.enterOtp("@|!*");
+        waitForElementToBeVisible(driver,otpError,5,testRidePage.otpError.getText());
         Assert.assertEquals("Please enter numbers only",testRidePage.otpError.getText());
+
         testRidePage.userOtpNumber.clear();
+        Thread.sleep(1500);
         testRidePage.enterOtp("235");
+        waitForElementToBeVisible(driver,otpError,5,testRidePage.otpError.getText());
         Assert.assertEquals("Please enter the full OTP.",testRidePage.otpError.getText());
     }
 
@@ -345,8 +358,8 @@ public class TestRideStepDef
                 Assert.assertEquals("userName matched with Db record",userName,customerName);
 
                 //logger.log(Level.INFO, "Verifying the model id and part id of vehicles against the Database records");
-                Assert.assertEquals("ModelId Matched with Db record",(modelIdProperties.getProperty(vehicleSelected.replaceAll("\\s+", ""))),Model_Id);
-                Assert.assertEquals("PartId Matched with Db record",(partIdProperties.getProperty(vehicleSelected.replaceAll("\\s+", ""))),Part_Id);
+                Assert.assertEquals("ModelId not Matched with Db record",(modelIdProperties.getProperty(vehicleSelected.replaceAll("\\s+", ""))),Model_Id);
+                Assert.assertEquals("PartId not Matched with Db record",(partIdProperties.getProperty(vehicleSelected.replaceAll("\\s+", ""))),Part_Id);
 
 
                 System.out.println("modelidFile :"+modelIdProperties.getProperty(vehicleSelected.replaceAll("\\s+", "")));

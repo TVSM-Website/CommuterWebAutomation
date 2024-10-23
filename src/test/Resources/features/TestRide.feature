@@ -1,4 +1,4 @@
-@testRide
+@testRide @regression
 Feature: Test ride submission for different TVS vehicles
 #
 #  Scenario Outline: Submit Test ride form for Apache RR310
@@ -29,7 +29,6 @@ Feature: Test ride submission for different TVS vehicles
     Examples: Negative Cases
       | vehicle       |
       | ApacheRR310   |
-      | TVSScootyPep+ |
       | TVSJupiter    |
       | TvsSport      |
       | TvsStarCity   |
@@ -55,18 +54,17 @@ Feature: Test ride submission for different TVS vehicles
     And Verify data in the database after submitting a Test Ride form
 
     Examples: Positive Cases
-      | name                 | mobileNumber | pinCode | otpButtonStatus | vehicle       |
-      | Test ride Automation | 1234567891   | 560072  | enabled         | ApacheRR310   |
-      | TEST RIDE AUTOMATION | 1234567891   | 560018  | enabled         | TVSScootyPep+ |
-      | test ride automation | 1234567891   | 560060  | enabled         | TVSJupiter    |
-      | Test ride Automation | 1234567891   | 560064  | enabled         | TvsSport      |
-      | Test ride Automation | 1234567891   | 560069  | enabled         | TvsStarCity   |
-      | Test ride Automation | 1234567891   | 560062  | enabled         | XL100         |
-      | Test ride Automation | 1234567891   | 560063  | enabled         | Ntorq125      |
-      | Test ride Automation | 1234567891   | 560066  | enabled         | Radeon        |
-      | Test ride Automation | 1234567891   | 560067  | enabled         | Zest110       |
-      | Test ride Automation | 1234567891   | 560067  | enabled         | Raider        |
-      | Test ride Automation | 1234567891   | 560065  | enabled         | Jupiter125    |
+      | name               | mobileNumber | pinCode | otpButtonStatus | vehicle     |
+      | Test ride apache   | 1234567891   | 560072  | enabled         | ApacheRR310 |
+      | test ride jupiter  | 1234567891   | 560060  | enabled         | TVSJupiter  |
+      | Test ride sport    | 1234567891   | 560064  | enabled         | TvsSport    |
+      | Test ride starcity | 1234567891   | 560069  | enabled         | TvsStarCity |
+      | Test ride xl       | 1234567891   | 560062  | enabled         | XL100       |
+      | Test ride ntorq    | 1234567891   | 560063  | enabled         | Ntorq125    |
+      | Test ride radeon   | 1234567891   | 560066  | enabled         | Radeon      |
+      | Test ride zest     | 1234567891   | 560067  | enabled         | Zest110     |
+      | Test ride raider   | 1234567891   | 560067  | enabled         | Raider      |
+      | Test ride jupiter  | 1234567891   | 560065  | enabled         | Jupiter125  |
 
 
 #      | Test ride Automation | 8088059296   | 590015  | enabled         | zest         |

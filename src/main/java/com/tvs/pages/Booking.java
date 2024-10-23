@@ -26,7 +26,7 @@ public class Booking
     @FindBy(xpath ="//div[@id='slick-slide02']//div//a")
     private WebElement jupiterVehicle;
 
-    @FindBy(xpath="//ul[@class='nav nav-pills nav-fill iqube-fill']/li[3]/a")
+    @FindBy(xpath="//ul[@class='nav nav-pills nav-fill iqube-fill']/li[2]/a")
     private WebElement variant;
 
     @FindBy(id="submitVariant")
@@ -104,7 +104,7 @@ public class Booking
 
     public void submitDealer()
     {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement clickdealerNext = wait.until(ExpectedConditions.elementToBeClickable(submitDealer));
         Actions actions= new Actions(driver);
         actions.scrollToElement(submitDealer).build().perform();

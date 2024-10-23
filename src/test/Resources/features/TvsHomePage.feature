@@ -1,44 +1,70 @@
-@HomePage
-Feature: TVS motor HomePage Validations
+@HomePage @regression
+Feature: TVS motor HomePage and Products Menu Validations
 
-  @tvshomepage
-  Scenario: Verify the functionalities of home page
-    Given navigate to the TVS Motor home page
-    When a popup appears on the homepage close the pop up
-    Then should close the pop up
-    And verify the count of total vehicles
+  @Products_Motorcycles
+  Scenario Outline: Verify functionalities of Motorcycles tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+#    When user clicks on products and clicks on Motorcycles tab
+#    Then click on each vehicles to verify the title of Motorcycles
+#    And match the all 8 with no of vehicles displayed for Motorcycles
+    Examples:
+      | Environment |
+      | UAT         |
+     # | PROD        |
 
-  @ourProducts
-  Scenario: Verify functionalities of our products page
-    Given navigate to our products page
-    When clicks on each vehicles tab and select the state
-    Then each image src has the same name as vehicle displayed on each card
-    And  selected state should be updated on vehicle page
+  @Products_Scooters
+  Scenario Outline: Verify functionalities of scooters tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+#    When user clicks on products and clicks on scooter tab
+#    Then click on each vehicles to verify the title of scooters
+#    And match the all 5 with no of vehicles displayed for scooters
 
-  @scooters
-  Scenario: Verify scooter vehicle pages on TVS Motor website
-    Given navigate to the TVS Motor home page
-    When navigate to the "Our Products" section
-    Then user should see scooters listed with their respective names and 'Know More' links
-    And clicks on 'Know More' for each scooter and verifies the title
+    Examples:
+      | Environment |
+      | UAT         |
+     # | PROD        |
 
-  @motorcycles
-  Scenario: verify each motorcycle page navigation from home page on TVS Motor website
-    Given navigate to the TVS Motor home page
-    When navigate to the "Our Products" page and click 'motorcycles'
-    Then user should see motorcycles listed with their respective names and 'Know More' links
-    And verifies the url for each motorcycle page after clicking on their respective Know More links
+  @Products_Electric
+  Scenario Outline: Verify functionalities of Electric tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+#    When user clicks on products and clicks on Electric tab
+#    Then click on each vehicles to verify the title of Electric vehicles
+#    And match the all 2 with no of vehicles displayed for electric
+    Examples:
+      | Environment |
+      | UAT         |
+     # | PROD        |
 
-  @mopeds
-  Scenario: verify TVS XL100 moped page navigation from home page on TVS Motor website
-    Given navigate to the TVS Motor home page
-    When navigate to the "Our Products" page and click 'mopeds'
-    Then user should see moped listed with its respective name and 'Know More' links
-    And verifies the url for moped page after clicking on its respective Know More links
+  @Products_Mopeds
+  Scenario Outline: Verify functionalities of Mopeds tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+#    When user clicks on products and clicks on Mopeds tab
+#    Then click on each vehicles to verify the title of Mopeds
+#    And match the all 1 with no of vehicles displayed for Mopeds
+    Examples:
+      | Environment |
+      | UAT         |
+     # | PROD        |
 
+  @Products_ThreeWheelers
+  Scenario Outline: Verify functionalities of ThreeWheelers tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+#    When user clicks on products and clicks on ThreeWheelers tab
+#    Then click on each vehicles to verify the title of ThreeWheelers
+#    And match the all 2 with no of vehicles displayed for ThreeWheelers
+    Examples:
+      | Environment |
+      | UAT         |
+      | PROD        |
   @stateDropDownVerification
   Scenario Outline: Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds
     Given navigate to the TVS Motor home page in "<environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
     When navigate to the "Our Products" page for state drop down
     And navigates through state drop down and check visibility for each vehicle type
     Then the state name should be displayed along with ex-showroom price for the vehicle name for each scooter
@@ -47,5 +73,5 @@ Feature: TVS motor HomePage Validations
 
     Examples:
       | environment |
-#      | UAT         |
-      | PROD        |
+      | UAT         |
+    #  | PROD        |

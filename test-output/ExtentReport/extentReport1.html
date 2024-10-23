@@ -1,0 +1,4952 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Extent Report</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">TVS Motor Automation Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Aug 2, 2024 04:22:37 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@testRideNeg</a><a class="dropdown-item" href="#">@ourProducts</a><a class="dropdown-item" href="#">@scooters</a><a class="dropdown-item" href="#">@mopeds</a><a class="dropdown-item" href="#">@HomePage</a><a class="dropdown-item" href="#">@stateDropDownVerification</a><a class="dropdown-item" href="#">@testRidePos</a><a class="dropdown-item" href="#">@campaignTestRidePos</a><a class="dropdown-item" href="#">@testRideCampaignNeg</a><a class="dropdown-item" href="#">@testRideCampaign</a><a class="dropdown-item" href="#">@tvshomepage</a><a class="dropdown-item" href="#">@VehicleBooking</a><a class="dropdown-item" href="#">@testRide</a><a class="dropdown-item" href="#">@motorcycles</a><a class="dropdown-item" href="#">@regression</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Book a vehicle online so that user can conveniently purchase it</p>
+            <p class="text-sm">
+              <span>4:22:37 PM</span> / <span>00:01:01:437</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Book a vehicle online so that user can conveniently purchase it</h5>
+<span class='badge badge-success'>08.02.2024 4:22:37 PM</span>
+<span class='badge badge-danger'>08.02.2024 4:23:39 PM</span>
+<span class='badge badge-default'>00:01:01:437</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Select the vehicle ,variant,location and dealer details</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.navigate_to_the_booking_page()">
+                <span>Given Navigate to the booking page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.select_the_vehicle_and_variant()">
+                <span>When select the vehicle and variant</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.next_button_is_disabled_before_selecting_the_location_and_dealer()">
+                <span>Then next button is disabled before selecting the location and dealer</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.enter_the_location_and_choose_dealership_name()">
+                <span>And enter the location and choose dealership name</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.next_button_is_enabled_after_selecting_the_location_and_dealer()">
+                <span>And next button is enabled after selecting the location and dealer</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="8"><span class="badge log pass-bg mr-2">Pass</span>Fill the details and verify the otp</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="9"><span class="badge log pass-bg mr-2">Pass</span>Fill the details and verify the otp</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>And Marketing updated checkbox should be checked</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify mobile number and otp button should be disabled before filling the details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Enter the personal details "8088059296","Automation Test Booking" and "testAuto@gmail.com"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify mobile number and otp button should be enabled after filling the details</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="14"><span class="badge log fail-bg mr-2">Fail</span>Make a payment and verify the booking status</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.otp_submit_button_should_be_disabled_before_entering_the_otp()">
+                <span>And OTP submit button should be disabled before entering the otp</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.otp_submit_button_should_be_enabled_after_entering_the_otp()">
+                <span>And OTP submit button should be enabled after entering the otp</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.mobile_number_should_be_verified()">
+                <span>And Mobile number should be verified</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.mobile_number_full_name_and_email_id_textboxes_should_be_disabled()">
+                <span>And mobile number,fullName and email id text fields should be disabled</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.BookingPageStepDef.clickOnNetBankingPaymentMode()">
+                <span>Then click on netBanking payment mode</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="StepDefs.BookingPageStepDef.selectTheFromDropdownValues(java.lang.String)">
+                <span>And select the "Avenues Test for New TC" bank from dropdown values</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: Cannot locate option with text: Avenues Test for New TC
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:153)
+	at com.tvs.pages.Booking.selectNetBankingOption(Booking.java:205)
+	at StepDefs.BookingPageStepDef.selectTheFromDropdownValues(BookingPageStepDef.java:148)
+	at ✽.select the "Avenues Test for New TC" bank from dropdown values(file:///C:/Users/chethan.wali/Documents/DomesticCommuterUI/src/test/Resources/features/BookingPage.feature:27)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="StepDefs.BookingPageStepDef.clickOnMakePaymentButton()">
+                <span>And click on Make Payment button</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="22"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Test ride submission of TVS vehicles for campaigns</p>
+            <p class="text-sm">
+              <span>4:23:39 PM</span> / <span>00:03:03:410</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Test ride submission of TVS vehicles for campaigns</h5>
+<span class='badge badge-success'>08.02.2024 4:23:39 PM</span>
+<span class='badge badge-danger'>08.02.2024 4:26:42 PM</span>
+<span class='badge badge-default'>00:03:03:410</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=22</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="23"><span class="badge log fail-bg mr-2">Fail</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="24"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "ApacheRR310_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="30"><span class="badge log fail-bg mr-2">Fail</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TVSJupiter_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+        <textarea disabled class="code-block">org.junit.ComparisonFailure: expected:<P[hone number minimum length must be 10]> but was:<P[lease enter phone number]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at StepDefs.TestRideStepDef.enterTheInvalidMobileNumberVerifyTheErrorMessage(TestRideStepDef.java:243)
+	at ✽.enter the invalid mobile number verify the error message(file:///C:/Users/chethan.wali/Documents/DomesticCommuterUI/src/test/Resources/features/CampaignTestRide.feature:21)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>Step skipped
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="36"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsSport_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="42"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsStarCity_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="48"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "XL100_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="54"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Ntorq125_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="60"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Radeon_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="66"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Zest110_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="72"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Raider_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="78"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Jupiter125_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="84"><span class="badge log fail-bg mr-2">Fail</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="85"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "ApacheRR310_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560072"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="95"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TVSJupiter_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "test ride automation", "1234567891" and "560060"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="105"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsSport_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560064"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="115"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsStarCity_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560069"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="125"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "XL100_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560062"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="135"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Ntorq125_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560063"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="145"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Radeon_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560066"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="155"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Zest110_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560067"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="165"><span class="badge log pass-bg mr-2">Pass</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Raider_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560067"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="175"><span class="badge log fail-bg mr-2">Fail</span>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Jupiter125_Campaign"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560065"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@class='verticleCenter']/p (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.89, chrome: {chromedriverVersion: 127.0.6533.88 (a2d0cb026721..., userDataDir: C:\Users\CHETHA~1.WAL\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61170}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61170/devtoo..., se:cdpVersion: 127.0.6533.89, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a292fb30d3abb3187e57838951043033
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at Utils.ExplicitWait.visibilityOfElementLocated(ExplicitWait.java:21)
+	at StepDefs.TestRideStepDef.verify_the_confirmation_message(TestRideStepDef.java:143)
+	at ✽.Verify the confirmation message of test ride booking(file:///C:/Users/chethan.wali/Documents/DomesticCommuterUI/src/test/Resources/features/CampaignTestRide.feature:53)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>Step skipped
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="185"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Test ride submission for different TVS vehicles</p>
+            <p class="text-sm">
+              <span>4:26:42 PM</span> / <span>00:03:50:514</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Test ride submission for different TVS vehicles</h5>
+<span class='badge badge-success'>08.02.2024 4:26:42 PM</span>
+<span class='badge badge-danger'>08.02.2024 4:30:33 PM</span>
+<span class='badge badge-default'>00:03:50:514</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=185</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="186"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="187"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "ApacheRR310"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="193"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TVSJupiter"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="199"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsSport"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="205"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsStarCity"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="211"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "XL100"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="217"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Ntorq125"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="223"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Radeon"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="229"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Zest110"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="235"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Raider"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="241"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Invalid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Jupiter125"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When click on submit button without filling required details and verify the error messages</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then enter the invalid name and verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid mobile number verify the error message</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And enter the invalid otp to verify error message</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="247"><span class="badge log fail-bg mr-2">Fail</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="248"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "ApacheRR310"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560072"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="258"><span class="badge log fail-bg mr-2">Fail</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TVSJupiter"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "test ride automation", "1234567891" and "560060"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@class='verticleCenter']/p (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.89, chrome: {chromedriverVersion: 127.0.6533.88 (a2d0cb026721..., userDataDir: C:\Users\CHETHA~1.WAL\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61170}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61170/devtoo..., se:cdpVersion: 127.0.6533.89, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a292fb30d3abb3187e57838951043033
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at Utils.ExplicitWait.visibilityOfElementLocated(ExplicitWait.java:21)
+	at StepDefs.TestRideStepDef.verify_the_confirmation_message(TestRideStepDef.java:143)
+	at ✽.Verify the confirmation message of test ride booking(file:///C:/Users/chethan.wali/Documents/DomesticCommuterUI/src/test/Resources/features/TestRide.feature:53)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>Step skipped
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="268"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsSport"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560064"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="278"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "TvsStarCity"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560069"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="288"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "XL100"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560062"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="298"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Ntorq125"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560063"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="308"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Radeon"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560066"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="318"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Zest110"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560067"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="328"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Raider"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560067"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="338"><span class="badge log pass-bg mr-2">Pass</span>Submit Ride forms for TVS Vehicles with Valid Details</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given Navigate to Test Ride page for "Jupiter125"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When Fill the "Test ride Automation", "1234567891" and "560065"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the URL should indicate redirection to the UAT environment</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Request OTP button is "enabled"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Request OTP for entered mobile number and verify OTP</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click on detect button to get live location</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Click on submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify the confirmation message of test ride booking</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And Verify data in the database after submitting a Test Ride form</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="348"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">TVS motor HomePage Validations</p>
+            <p class="text-sm">
+              <span>4:30:33 PM</span> / <span>00:09:55:755</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">TVS motor HomePage Validations</h5>
+<span class='badge badge-success'>08.02.2024 4:30:33 PM</span>
+<span class='badge badge-danger'>08.02.2024 4:40:29 PM</span>
+<span class='badge badge-default'>00:09:55:755</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=348</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="349"><span class="badge log pass-bg mr-2">Pass</span>Verify the functionalities of home page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_the_tvs_motor_home_page()">
+                <span>Given navigate to the TVS Motor home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.a_popup_appears_on_the_homepage()">
+                <span>When a popup appears on the homepage close the pop up</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.should_close_the_pop_up()">
+                <span>Then should close the pop up</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verify_the_count_of_total_vehicles()">
+                <span>And verify the count of total vehicles</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="354"><span class="badge log pass-bg mr-2">Pass</span>Verify functionalities of our products page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_our_products_page()">
+                <span>Given navigate to our products page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.clicks_on_each_vehicles_tab_and_select_the_state()">
+                <span>When clicks on each vehicles tab and select the state</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.each_image_src_has_the_same_name_as_vehicle_displayed_on_each_card()">
+                <span>Then each image src has the same name as vehicle displayed on each card</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.selected_state_should_be_updated_on_vehicle_page()">
+                <span>And selected state should be updated on vehicle page</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="359"><span class="badge log pass-bg mr-2">Pass</span>Verify scooter vehicle pages on TVS Motor website</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_the_tvs_motor_home_page()">
+                <span>Given navigate to the TVS Motor home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_our_products_section()">
+                <span>When navigate to the "Our Products" section</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verify_scooters_listed_with_know_more_links()">
+                <span>Then user should see scooters listed with their respective names and 'Know More' links</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.click_know_more_for_each_scooter()">
+                <span>And clicks on 'Know More' for each scooter and verifies the title</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="364"><span class="badge log pass-bg mr-2">Pass</span>verify each motorcycle page navigation from home page on TVS Motor website</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_the_tvs_motor_home_page()">
+                <span>Given navigate to the TVS Motor home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_our_products_page_and_click_motorcycles()">
+                <span>When navigate to the "Our Products" page and click 'motorcycles'</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verify_motorcycles_listed_with_know_more_links()">
+                <span>Then user should see motorcycles listed with their respective names and 'Know More' links</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verifies_the_url_for_each_motorcycle_page_after_clicking_on_their_respective_know_more_links()">
+                <span>And verifies the url for each motorcycle page after clicking on their respective Know More links</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="369"><span class="badge log pass-bg mr-2">Pass</span>verify TVS XL100 moped page navigation from home page on TVS Motor website</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_the_tvs_motor_home_page()">
+                <span>Given navigate to the TVS Motor home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.navigate_to_our_products_page_and_click_mopeds()">
+                <span>When navigate to the "Our Products" page and click 'mopeds'</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verify_moped_listed_with_know_more_links()">
+                <span>Then user should see moped listed with its respective name and 'Know More' links</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="StepDefs.HomePageStepDef.verifies_the_url_for_moped_page_after_clicking_on_its_respective_know_more_links()">
+                <span>And verifies the url for moped page after clicking on its respective Know More links</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="374"><span class="badge log fail-bg mr-2">Fail</span>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="375"><span class="badge log fail-bg mr-2">Fail</span>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step fail-bg">
+                    <span>Given navigate to the TVS Motor home page in "PROD" environment</span>
+      <div>
+        <textarea disabled class="code-block">io.cucumber.core.exception.CucumberException: Failed to instantiate class StepDefs.HomePageStepDef
+	at io.cucumber.core.backend.DefaultObjectFactory.cacheNewInstance(DefaultObjectFactory.java:67)
+	at io.cucumber.core.backend.DefaultObjectFactory.getInstance(DefaultObjectFactory.java:45)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.junit.PickleRunners$NoStepDescriptions.lambda$run$0(PickleRunners.java:151)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:137)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:137)
+	at io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:148)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:144)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:28)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at io.cucumber.junit.FeatureRunner.run(FeatureRunner.java:137)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:196)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:89)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runFeatures$6(CucumberExecutionContext.java:148)
+	at io.cucumber.core.runtime.CucumberExecutionContext.execute(CucumberExecutionContext.java:163)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runFeatures(CucumberExecutionContext.java:146)
+	at io.cucumber.junit.Cucumber$StartAndFinishTestRun.evaluate(Cucumber.java:226)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:74)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at io.cucumber.core.backend.DefaultObjectFactory.cacheNewInstance(DefaultObjectFactory.java:53)
+	... 46 more
+Caused by: org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a292fb30d3abb3187e57838951043033, getCurrentWindowHandle {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.89, chrome: {chromedriverVersion: 127.0.6533.88 (a2d0cb026721..., userDataDir: C:\Users\CHETHA~1.WAL\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61170}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61170/devtoo..., se:cdpVersion: 127.0.6533.89, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a292fb30d3abb3187e57838951043033
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:592)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:596)
+	at org.openqa.selenium.remote.RemoteWebDriver.getWindowHandle(RemoteWebDriver.java:456)
+	at com.tvs.pages.VehiclesPage.<init>(VehiclesPage.java:32)
+	at StepDefs.HomePageStepDef.<init>(HomePageStepDef.java:33)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	... 49 more
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>When navigate to the "Our Products" page for state drop down</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And navigates through state drop down and check visibility for each vehicle type</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then the state name should be displayed along with ex-showroom price for the vehicle name for each scooter</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And the state name should be displayed along with ex-showroom price for the vehicle name for each motorcycle</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And the state name should be displayed along with ex-showroom price for the vehicle name for each moped</span>
+      <div>Step skipped
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">4</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:26:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='183'>And Verify the confirmation message of test ride booking</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details.And Verify the confirmation message of test ride booking</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:54 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='266'>And Verify the confirmation message of test ride booking</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details.And Verify the confirmation message of test ride booking</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.junit.ComparisonFailure</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.junit.ComparisonFailure</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='34'>And enter the invalid mobile number verify the error message</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details.And enter the invalid mobile number verify the error message</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">io.cucumber.core.exception.CucumberException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>io.cucumber.core.exception.CucumberException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='376'>Given navigate to the TVS Motor home page in "PROD" environment</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds.Given navigate to the TVS Motor home page in "PROD" environment</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.NoSuchElementException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.NoSuchElementException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='20'>And select the "Avenues Test for New TC" bank from dropdown values</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Make a payment and verify the booking status.And select the "Avenues Test for New TC" bank from dropdown values</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">15</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>11</span>
+</span>
+<p class="name">@testRideNeg</p>
+<p class="duration text-sm">11 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testRideNeg</h4>
+<span status="pass" class='badge log pass-bg'>11 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='186'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='187'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:01 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='193'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='199'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:08 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='205'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:12 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='211'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='217'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='223'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='229'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='235'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='241'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@ourProducts</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@ourProducts</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:40 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='354'>Verify functionalities of our products page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify functionalities of our products page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@scooters</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@scooters</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:31:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='359'>Verify scooter vehicle pages on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify scooter vehicle pages on TVS Motor website</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@mopeds</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@mopeds</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:39:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='369'>verify TVS XL100 moped page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify TVS XL100 moped page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>5</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@HomePage</p>
+<p class="duration text-sm">7 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@HomePage</h4>
+<span status="pass" class='badge log pass-bg'>5 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='349'>Verify the functionalities of home page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify the functionalities of home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:40 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='354'>Verify functionalities of our products page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify functionalities of our products page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:31:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='359'>Verify scooter vehicle pages on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify scooter vehicle pages on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:35:07 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='364'>verify each motorcycle page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify each motorcycle page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:39:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='369'>verify TVS XL100 moped page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify TVS XL100 moped page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='374'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='375'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@stateDropDownVerification</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@stateDropDownVerification</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='374'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='375'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>9</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@testRidePos</p>
+<p class="duration text-sm">11 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testRidePos</h4>
+<span status="pass" class='badge log pass-bg'>9 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='247'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='248'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:46 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='258'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='268'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:25 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='278'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='288'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:44 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='298'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:54 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='308'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:04 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='318'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='328'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='338'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>9</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@campaignTestRidePos</p>
+<p class="duration text-sm">11 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@campaignTestRidePos</h4>
+<span status="pass" class='badge log pass-bg'>9 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='84'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='85'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='95'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:59 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='105'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='115'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='125'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:28 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='135'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='145'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='155'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:56 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='165'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:26:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='175'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>9</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@testRideCampaignNeg</p>
+<p class="duration text-sm">11 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testRideCampaignNeg</h4>
+<span status="pass" class='badge log pass-bg'>9 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='23'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='24'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='30'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='36'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:51 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='42'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:55 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='48'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='54'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='60'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='66'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:10 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='72'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='78'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>18</span>
+<span class='badge log badge-danger'>4</span>
+</span>
+<p class="name">@testRideCampaign</p>
+<p class="duration text-sm">22 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testRideCampaign</h4>
+<span status="pass" class='badge log pass-bg'>18 passed</span>
+<span status="fail" class='badge log badge-danger'>4 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='23'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='24'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='30'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='36'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:51 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='42'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:55 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='48'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='54'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='60'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='66'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:10 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='72'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='78'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='84'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='85'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='95'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:59 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='105'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='115'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='125'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:28 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='135'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='145'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='155'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:56 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='165'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:26:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='175'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@tvshomepage</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@tvshomepage</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='349'>Verify the functionalities of home page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify the functionalities of home page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@VehicleBooking</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@VehicleBooking</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:22:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Select the vehicle ,variant,location and dealer details</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Select the vehicle ,variant,location and dealer details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='8'>Fill the details and verify the otp</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Fill the details and verify the otp</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='9'>Fill the details and verify the otp</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Fill the details and verify the otp</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:01 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='14'>Make a payment and verify the booking status</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Make a payment and verify the booking status</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>20</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@testRide</p>
+<p class="duration text-sm">22 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testRide</h4>
+<span status="pass" class='badge log pass-bg'>20 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='186'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='187'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:01 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='193'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='199'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:08 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='205'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:12 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='211'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='217'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='223'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='229'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='235'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='241'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='247'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='248'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:46 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='258'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='268'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:25 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='278'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='288'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:44 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='298'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:54 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='308'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:04 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='318'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='328'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='338'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@motorcycles</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@motorcycles</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:35:07 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='364'>verify each motorcycle page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify each motorcycle page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>46</span>
+<span class='badge log badge-danger'>9</span>
+</span>
+<p class="name">@regression</p>
+<p class="duration text-sm">55 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@regression</h4>
+<span status="pass" class='badge log pass-bg'>46 passed</span>
+<span status="fail" class='badge log badge-danger'>9 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:22:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Select the vehicle ,variant,location and dealer details</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Select the vehicle ,variant,location and dealer details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='8'>Fill the details and verify the otp</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Fill the details and verify the otp</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='9'>Fill the details and verify the otp</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Fill the details and verify the otp</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:01 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='14'>Make a payment and verify the booking status</a>
+<div class="">
+<span class="badge badge-default">Book a vehicle online so that user can conveniently purchase it.Make a payment and verify the booking status</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='23'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='24'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:23:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='30'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='36'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:51 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='42'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:55 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='48'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:23:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='54'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='60'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='66'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:10 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='72'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='78'>Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='84'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='85'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='95'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:24:59 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='105'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='115'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='125'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:28 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='135'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='145'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='155'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:25:56 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='165'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:26:06 PM</td>
+<td>
+<a href="#" class="linked" test-id='22' id='175'>Submit Campaign TesRide forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission of TVS vehicles for campaigns.Submit Campaign TesRide forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='186'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:26:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='187'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:01 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='193'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='199'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:08 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='205'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:12 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='211'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='217'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='223'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='229'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='235'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='241'>Submit Ride forms for TVS Vehicles with Invalid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Invalid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='247'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:28:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='248'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:28:46 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='258'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='268'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:25 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='278'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='288'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:44 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='298'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:29:54 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='308'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:04 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='318'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='328'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:23 PM</td>
+<td>
+<a href="#" class="linked" test-id='185' id='338'>Submit Ride forms for TVS Vehicles with Valid Details</a>
+<div class="">
+<span class="badge badge-default">Test ride submission for different TVS vehicles.Submit Ride forms for TVS Vehicles with Valid Details</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='349'>Verify the functionalities of home page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify the functionalities of home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:30:40 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='354'>Verify functionalities of our products page</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify functionalities of our products page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:31:45 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='359'>Verify scooter vehicle pages on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify scooter vehicle pages on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:35:07 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='364'>verify each motorcycle page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify each motorcycle page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>16:39:47 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='369'>verify TVS XL100 moped page navigation from home page on TVS Motor website</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.verify TVS XL100 moped page navigation from home page on TVS Motor website</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='374'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:40:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='348' id='375'>Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</a>
+<div class="">
+<span class="badge badge-default">TVS motor HomePage Validations.Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Aug 2, 2024 04:22:37 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Aug 2, 2024 04:40:29 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>0</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>4</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>4</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='89%'><b>44</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='10%'><b>5</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='95%'><b>308</b> steps passed</small></div>
+<div>
+<small data-tooltip='1%'><b>5</b> steps failed,
+<b>9</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Book a vehicle online so that user can conveniently purchase it":61.437,"Test ride submission of TVS vehicles for campaigns":183.41,"Test ride submission for different TVS vehicles":230.514,"TVS motor HomePage Validations":595.755
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@testRideNeg</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@ourProducts</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@scooters</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@mopeds</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@HomePage</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>71.429%</td>
+</tr>
+<tr>
+<td>@stateDropDownVerification</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@testRidePos</td>
+<td>9</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>81.818%</td>
+</tr>
+<tr>
+<td>@campaignTestRidePos</td>
+<td>9</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>81.818%</td>
+</tr>
+<tr>
+<td>@testRideCampaignNeg</td>
+<td>9</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>81.818%</td>
+</tr>
+<tr>
+<td>@testRideCampaign</td>
+<td>18</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>81.818%</td>
+</tr>
+<tr>
+<td>@tvshomepage</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@VehicleBooking</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>@testRide</td>
+<td>20</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>90.909%</td>
+</tr>
+<tr>
+<td>@motorcycles</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@regression</td>
+<td>46</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>83.636%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>AppName</td>
+<td>TVS Motor Vehicles</td>
+</tr>
+<tr>
+<td>Engineer</td>
+<td>Chetan Wali</td>
+</tr>
+<tr>
+<td>os</td>
+<td>Windows</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 4,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 44,
+failChild: 5,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 308,
+failGrandChild: 5,
+warningGrandChild: 0,
+skipGrandChild: 9,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

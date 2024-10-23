@@ -6,11 +6,11 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class PriceApiPROD
+public class ORPUATAPI
 {
     public static String getAuthToken()
     {
-        RestAssured.baseURI="https://corp-api.tvsmotor.com";
+        RestAssured.baseURI="https://uat-corp-api.tvsmotor.net";
         String response = given().header("Content-Type","application/json")
                 .body("{\n" +
                         "  \"UserName\": \"getapitoken\",\n" +
@@ -31,7 +31,7 @@ public class PriceApiPROD
         return token;
     }
 
-    public static Response OrpDetailsPROD(String Vehicle, String stateCode)
+    public static Response OrpDetailsUAT(String Vehicle, String stateCode)
     {
         String authToken = getTokenResp(getAuthToken());
         //System.out.println("tokenres-"+authToken);
@@ -42,7 +42,7 @@ public class PriceApiPROD
                 "  \"VehicleName\": \""+Vehicle+"\",\n" +
                 "  \"BrandStateCode\": "+stateCode+"\n" +
                 "}").when()
-                .post("https://corp-api.tvsmotor.com/api/TVSORP/TVSORPs")
+                .post("https://uat-corp-api.tvsmotor.net/api/TVSORP/TVSORPs")
                 .then().extract().response();
         return response;
     }

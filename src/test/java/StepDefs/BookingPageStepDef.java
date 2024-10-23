@@ -15,7 +15,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static Utils.ExplicitWait.visibilityOfElementLocated;
 import static Utils.ExplicitWait.waitForElementToBeClickable;
 
 public class BookingPageStepDef
@@ -47,7 +46,7 @@ public class BookingPageStepDef
     @Given("Navigate to the booking page")
     public void navigate_to_the_booking_page()
     {
-        driver.get("https://uat-www.tvsmotor.net/");
+        driver.get("https://uat-www.tvsmotor.net/book-online");
         homePage.setBooking();
     }
     @When("select the vehicle and variant")
@@ -154,4 +153,6 @@ public class BookingPageStepDef
     {
         Booking.ClickMakePayment();
     }
+
+
 }

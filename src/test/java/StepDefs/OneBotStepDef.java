@@ -9,10 +9,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import Utils.ExplicitWait;
-import Utils.Utilities;
-import Utils.WebDriverManager;
-
 
 public class OneBotStepDef {
 

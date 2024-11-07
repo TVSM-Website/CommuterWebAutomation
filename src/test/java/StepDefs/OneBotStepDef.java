@@ -21,7 +21,7 @@ public class OneBotStepDef {
     }
 
     @Given("navigate to the TVS Motor page in {string}, {string}")
-    public void navigateToThePage(String environment, String url) throws InterruptedException {
+    public void navigateToThePage(String environment, String url)  {
         driver.get(url);
         System.out.println("Navigating to the TVS Motor page in " + environment + " at " + url);
        }

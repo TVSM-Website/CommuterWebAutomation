@@ -66,8 +66,8 @@ public class OneBot {
         return OneBotButton.isDisplayed();
     }
 
-    public void  waitForElement() throws InterruptedException {
-        Thread.sleep(3000);
-       }
+//    public void  waitForElement() throws InterruptedException {
+//        Thread.sleep(3000);
+//       }
 
 }

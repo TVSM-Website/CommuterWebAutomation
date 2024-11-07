@@ -20,6 +20,7 @@ public class OneBot {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//div[@role= 'button']")
     public WebElement OneBotButton;
 
@@ -54,9 +55,25 @@ public class OneBot {
     @FindBy(xpath = "(//div[@class='ori-animated ori-fade-in ori-flex-row ori-flex-wrap ori-outer-btn-container'])[2]/button")
     public List<WebElement> ChatBotButtons;
 
-    public boolean isOneBotButtonDisplayed(){
-        waitForElementToBeClickable(driver, OneBotButton,10);
+    @FindBy(xpath = "//div[@class='ori-lr-pad-5 ori-cursor-ptr']")
+    public WebElement ChatBotCloseButton;
+
+    @FindBy(xpath = "//p[text()='Do you want to close this session?']")
+    public WebElement CloseSessionText;
+
+    @FindBy(xpath = "//span[text()='Confirm']")
+    public WebElement ConfirmButton;
+
+    @FindBy(xpath = "//span[text()='Skip']")
+    public WebElement SkipFeedback;
+
+    public boolean isOneBotButtonDisplayed() {
+        waitForElementToBeClickable(driver, OneBotButton, 10);
         return OneBotButton.isDisplayed();
     }
+
+    public void  waitForElement() throws InterruptedException {
+        Thread.sleep(3000);
+       }
 
 }

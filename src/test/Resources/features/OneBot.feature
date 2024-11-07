@@ -10,6 +10,7 @@ Feature: OneBot on TVS Motor multiple pages
     And verify the welcome text and languages are displayed
     And verify if able to select "<Language>" and how may I address you is displayed
     And verify if able to enter name and check the options displayed
+    And verify if able to close the Chat bot
     Examples:
    #| Environment | url
       | Environment | url                          | Language |

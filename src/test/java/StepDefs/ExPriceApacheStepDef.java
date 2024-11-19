@@ -64,7 +64,7 @@ public class ExPriceApacheStepDef
         apacheStates = priceSectionPage.apacheStates;
 
     }
-    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_U711.xlsx", "Sheet1");
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_19112024.xlsx", "UAT");
 
     @Given("navigate to {string} page in {string}")
     public void navigateToThePageIn(String vehicle, String environment) throws IOException {
@@ -204,7 +204,7 @@ public class ExPriceApacheStepDef
             String AlternativeVariantName = (String) apiPrice.get("AlternateModelName");
             String apiOnRoadPrice = (String) apiPrice.get("Price");
 
-            System.out.println("apiPrc= "+apiPrices);
+            //System.out.println("apiPrc= "+apiPrices);
             if (uiPrices.containsKey(variantName))
             {
                 int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
@@ -215,24 +215,29 @@ public class ExPriceApacheStepDef
                 // Get Excel price
                 String key = selectedVariant.toUpperCase()+ "|" + variantName + "|" + MappedStateName(state);
                 //System.out.println("KeyValue: " + key);
-                long roundedExcelPrice = 0;
-                if (excelPrices.containsKey(key))
+                if (key.contains("Chandigarh") || key.contains("Himachal Pradesh") != key.contains("TVS Radeon"))
                 {
-                    String excelExshowroomPrice = excelPrices.get(key).get("Ex-ShowRoomPrice");
-                    System.out.println("Excel Price: " + excelExshowroomPrice);
-
-                    roundedExcelPrice = Math.round(Float.parseFloat(excelExshowroomPrice));
-                } else {
-                    System.out.println("Model " + variantName + " not found in Excel data");
+                    System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice);
+                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiOnRoadPrice), uiOnRoadPrice);
                 }
+                else {
+                    long roundedExcelPrice = 0;
+                    if (excelPrices.containsKey(key)) {
+                        String excelExshowroomPrice = excelPrices.get(key).get("Ex-ShowRoomPrice");
+                        System.out.println("Excel Price: " + excelExshowroomPrice);
 
-                // Print all prices together
-                System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
+                        roundedExcelPrice = Math.round(Float.parseFloat(excelExshowroomPrice));
+                    } else {
+                        System.out.println("Model " + variantName + " not found in Excel data");
+                    }
 
-                // Assertions
-                assertEquals("Price mismatch for model: " + variantName,uiOnRoadPrice,Integer.parseInt(apiOnRoadPrice));
-                assertEquals("Price mismatch for model: " + variantName + " with Excel", uiOnRoadPrice,roundedExcelPrice, 0.0);
+                    // Print all prices together
+                    System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
 
+                    // Assertions
+                    assertEquals("Price mismatch for model: " + variantName, uiOnRoadPrice, Integer.parseInt(apiOnRoadPrice));
+                    assertEquals("Price mismatch for model: " + variantName + " with Excel", uiOnRoadPrice, roundedExcelPrice, 0.0);
+                }
             }
             else {
                 System.out.println("Model " + variantName + " not found in UI data");

@@ -62,7 +62,7 @@ public class PriceApacheStepDef {
         apacheStates = priceSectionPage.apacheStates;
 
     }
-    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_U711.xlsx", "Sheet1");
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_19112024.xlsx", "UAT");
 
     @Given("navigate to the {string} page in {string}")
     public void navigateToThePageIn(String vehicle, String environment) throws IOException {

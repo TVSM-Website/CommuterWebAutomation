@@ -64,7 +64,7 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
       | Vehicle         | Environment | Variant           |
       #| TVSApacheSeries | UAT        | Apache RTR 310    |
       #| TVSApacheSeries | UAT        | Apache RTR 200 4V |
-      | TVSApacheSeries | UAT        | Apache RR 310     |
+      #| TVSApacheSeries | UAT        | Apache RR 310     |
 #      | TVSApacheSeries | UAT        | Apache RTR 160 2V |
-#      | TVSApacheSeries | UAT        | Apache RTR 160 4V |
+      | TVSApacheSeries | UAT        | Apache RTR 160 4V |
 #      | TVSApacheSeries | UAT        | Apache RTR 180    |

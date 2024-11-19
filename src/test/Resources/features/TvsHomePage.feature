@@ -5,9 +5,9 @@ Feature: TVS motor HomePage and Products Menu Validations
   Scenario Outline: Verify functionalities of Motorcycles tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
-#    When user clicks on products and clicks on Motorcycles tab
-#    Then click on each vehicles to verify the title of Motorcycles
-#    And match the all 8 with no of vehicles displayed for Motorcycles
+    When user clicks on products and clicks on Motorcycles tab
+    Then click on each vehicles to verify the title of Motorcycles
+    And match the all 8 with no of vehicles displayed for Motorcycles
     Examples:
       | Environment |
       | UAT         |
@@ -17,9 +17,9 @@ Feature: TVS motor HomePage and Products Menu Validations
   Scenario Outline: Verify functionalities of scooters tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
-#    When user clicks on products and clicks on scooter tab
-#    Then click on each vehicles to verify the title of scooters
-#    And match the all 5 with no of vehicles displayed for scooters
+    When user clicks on products and clicks on scooter tab
+    Then click on each vehicles to verify the title of scooters
+    And match the all 5 with no of vehicles displayed for scooters
 
     Examples:
       | Environment |
@@ -73,5 +73,18 @@ Feature: TVS motor HomePage and Products Menu Validations
 
     Examples:
       | environment |
+      | UAT         |
+    #  | PROD        |
+
+  @Products_Motorcycles
+  Scenario Outline: Verify functionalities of Motorcycles tab
+    Given navigate to the TVS Motor home page in "<Environment>" environment
+    When user navigated to home page and accepts the cookies pop-up
+    When user clicks on products and clicks on Motorcycles tab
+    Then click on each vehicles to verify the title of Motorcycles
+    And match the all 8 with no of vehicles displayed for Motorcycles
+
+    Examples:
+      | Environment |
       | UAT         |
     #  | PROD        |

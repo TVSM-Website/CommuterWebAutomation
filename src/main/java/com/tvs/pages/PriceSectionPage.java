@@ -21,7 +21,7 @@ public class PriceSectionPage
     @FindBy(xpath = "//div[@class='cookie_but']/a")
     public WebElement AcceptCookie;
 
-    @FindBy(xpath = "//div[@class='filter-option']")
+    @FindBy(xpath = "//div[@class='filter-option']")  //
     public WebElement stateDropdown;
 
     @FindBy(xpath = "(//div[@class='filter-option-inner'])[3]")
@@ -45,8 +45,9 @@ public class PriceSectionPage
     public By apacheStates=By.xpath("(//div[@class='form-group stateDrpDwn'])[2]//div[@class='dropdown-menu open']/ul/li/a/span[@class='text' and not(contains(text(), 'Choose State'))]");
     public By statesRaider =By.xpath("//div[@id='bs-select-1']/ul/li");
 
-    @FindBy(xpath = "//div[@class='langCont']")
+    @FindBy(xpath = "//div[contains(@class, 'langCont')]")
     public WebElement selectlanguagePopUp;
+
 
     @FindBy(xpath = "//div[@class='evg-brand-img']")
     public  WebElement evenBrandImage;
@@ -68,7 +69,7 @@ public class PriceSectionPage
 
     //public final By selectedVariant = By.cssSelector("div[class='item active'] h4");
 
-    @FindBy(xpath="(//button[contains(@class, 'btn dropdown')])[1]")
+    @FindBy(xpath="//button[@class='btn dropdown-toggle btn-default' and @data-id='variant']")
     public WebElement apacheVariantDropdown;
 
     @FindBy(xpath="(//button[contains(@class, 'btn dropdown')])[2]")

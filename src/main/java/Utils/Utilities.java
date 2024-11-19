@@ -165,4 +165,33 @@ public class Utilities
 
     }
 
+    public static String getBrandPageUrl(String vehicle, String env) throws IOException
+    {
+        String propertiesFilePath;
+
+        if (env.equalsIgnoreCase("UAT")) {
+            propertiesFilePath = "src/test/Resources/BrandPageUrlUAT.properties";
+        } else if (env.equalsIgnoreCase("PROD")) {
+            propertiesFilePath = "src/test/Resources/BrandPageUrlProd.properties";
+        } else {
+            throw new IllegalArgumentException("Invalid environment: " + env);
+        }
+
+        // Load the properties file
+        try (FileInputStream fileInputStream = new FileInputStream(propertiesFilePath)) {
+            properties.load(fileInputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Get the URL for the given vehicle
+        String selectedVehicleUrl = properties.getProperty(vehicle);
+
+        if (selectedVehicleUrl == null) {
+            throw new IllegalArgumentException("No URL found for vehicle: " + vehicle);
+        }
+
+        return selectedVehicleUrl;
+    }
+
 }

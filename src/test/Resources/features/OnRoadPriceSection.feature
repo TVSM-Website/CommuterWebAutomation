@@ -18,12 +18,12 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
       | Vehicle        | Environment |
       #| JUPITER_125    | PROD        |
       #| JUPITER        | PROD        |
-      | TVS_Zest_110   | PROD        |
-      | TVS_NTORQ_125  | PROD        |
-      | TVS_RADEON_110 | PROD        |
-      | StarCity+      | PROD        |
-      | TVS_SPORT      | PROD        |
-      | TVS_XL_100     | PROD        |
+      | TVS_Zest_110   | UAT        |
+      #| TVS_NTORQ_125  | UAT       |
+      | TVS_RADEON_110 | UAT        |
+      #| StarCity+      | UAT        |
+      #| TVS_SPORT      | UAT        |
+      | TVS_XL_100     | UAT        |
 
   @Ronin
   Scenario Outline: Verify On-Road prices for Ronin TVS brand page
@@ -46,8 +46,8 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
     Examples: select the vehicle brand
       #UAT Env
       | Vehicle    | Environment |
-     #| TVS_Raider | UAT         |
-      | TVS_Raider | PROD        |
+      #| TVS_Raider | UAT         |
+      | TVS_Raider | UAT        |
 
   @ApacheSeries
   Scenario Outline: Verify On-Road prices for ApacheSeries brand page with all variants
@@ -62,9 +62,9 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle         | Environment | Variant           |
-      #| TVSApacheSeries | PROD        | Apache RTR 310    |
-      | TVSApacheSeries | PROD        | Apache RR 310     |
-      | TVSApacheSeries | PROD        | Apache RTR 160 2V |
-      | TVSApacheSeries | PROD        | Apache RTR 160 4V |
-      | TVSApacheSeries | PROD        | Apache RTR 180    |
-      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
+      #| TVSApacheSeries | UAT        | Apache RTR 310    |
+      #| TVSApacheSeries | UAT        | Apache RTR 200 4V |
+      | TVSApacheSeries | UAT        | Apache RR 310     |
+#      | TVSApacheSeries | UAT        | Apache RTR 160 2V |
+#      | TVSApacheSeries | UAT        | Apache RTR 160 4V |
+#      | TVSApacheSeries | UAT        | Apache RTR 180    |

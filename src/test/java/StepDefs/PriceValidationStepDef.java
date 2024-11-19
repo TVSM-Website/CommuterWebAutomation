@@ -196,7 +196,7 @@ public class PriceValidationStepDef extends Utilities {
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/LatestORP.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Haryana_UAT.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantName");
@@ -550,9 +550,9 @@ public class PriceValidationStepDef extends Utilities {
     @Then("get the On-Road prices for all the states and variants for raider")
     public void getTheOnRoadPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException
     {
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/RaiderOrpprices.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Haryana_UAT.xlsx", "Sheet1");
 
-        for (int c = 0; c < 5; c++) {
+        for (int c = 0; c < 6; c++) {
             // Click the right arrow to navigate to the next variant
             if (c > 0) {
                 priceSectionPage.clickRightArrow();
@@ -677,6 +677,7 @@ public class PriceValidationStepDef extends Utilities {
 
                             // Print all prices together
                             System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
+                            //System.out.println("UI Price: " + uiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
 
                             // Assertions
                             assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);

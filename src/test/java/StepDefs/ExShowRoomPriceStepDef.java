@@ -145,7 +145,7 @@ public class ExShowRoomPriceStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Radeon_UAT.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewpricesE.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");
@@ -193,7 +193,7 @@ public class ExShowRoomPriceStepDef
     @Then("get the Ex-showroom prices for all the states and variants for raider")
     public void getTheExShowroomPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException {
 
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Rajasthan_PROD (2).xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
         for (int c = 0; c < 6; c++) {
             // Click the right arrow to navigate to the next variant
@@ -255,7 +255,7 @@ public class ExShowRoomPriceStepDef
                 JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
                 String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
                 System.out.println("selectedVehicle -" + SelectedVehicle);
-                Response response = GetExshowroomPriceProd(SelectedVehicle.replace("_", " "), stateCode);
+                Response response = GetExshowroomPriceUAT(SelectedVehicle.replace("_", " "), stateCode);
                 if (response.getStatusCode() == 204) {
                     System.out.println("No content in API response for state: " + state);
                     assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());

@@ -17,6 +17,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -398,4 +399,9 @@ public class HomePageStepDef
         Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.threeWheelersCount() ,count);
     }
 
+    @Given("navigate to the TVS Motor brand page with {string}")
+    public void navigateToTheTVSMotorBrandPageWith(String url) throws IOException {
+        String selectedVehicleUrl = Utilities.getProductUrl(url);
+        driver.get(selectedVehicleUrl);
+    }
 }

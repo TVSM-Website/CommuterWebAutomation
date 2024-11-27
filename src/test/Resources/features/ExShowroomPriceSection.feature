@@ -18,12 +18,12 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
       | Vehicle        | Environment |
 #      | JUPITER_125    | UAT        |
 #      | JUPITER        | UAT        |
-#      | TVS_Zest_110   | UAT        |
-#      | TVS_NTORQ_125  | UAT        |
-#      | TVS_RADEON_110 | UAT        |
-#      | StarCity+      | UAT        |
+      | TVS_Zest_110   | PROD        |
+      | TVS_NTORQ_125  | PROD        |
+      #| TVS_RADEON_110 | UAT        |
+      | StarCity+      | PROD        |
       | TVS_SPORT      | PROD        |
-#      | TVS_XL_100     | UAT        |
+      | TVS_XL_100     | PROD        |
 
   @Ronin
   Scenario Outline: Verify On-Road prices for Ronin TVS brand page
@@ -47,7 +47,7 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
       #UAT Env
       | Vehicle    | Environment |
      #| TVS_Raider | UAT         |
-      | TVS_Raider | PROD        |
+      | TVS_Raider | UAT        |
 
   @ApacheSeries_ExPrice
   Scenario Outline: Verify Ex-show room prices for ApacheSeries brand pages for all variants
@@ -69,8 +69,8 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
 #      | TVSApacheSeries | PROD        | Apache RTR 180    |
 #      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
 
-  @TVSSport
-  Scenario Outline: Verify Ex-Road prices for all states on TVS brand pages for all variants
+  @TVSSport_ExPrice
+  Scenario Outline: Verify Ex-Showroom prices for all variants of the TVS Sport brand across all states
     Given navigate to "<Vehicle>" brand page in "<Environment>"
     When user navigated to price section and accept the cookies pop up
     When click on the state dropdown and fetch all states
@@ -81,4 +81,4 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle   | Environment |
-      | TVS_SPORT | UAT         |
+      | TVS_SPORT | PROD         |

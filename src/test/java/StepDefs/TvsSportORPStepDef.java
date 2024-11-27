@@ -1,6 +1,7 @@
 package StepDefs;
 
 import Utils.ExShowRoomExcelUtils;
+import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.TvsSportPricePage;
@@ -25,13 +26,15 @@ import java.util.Map;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
+import static APIs.ORPProdAPI.OrpDetailsPROD;
+import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
-import static Utils.ExplicitWait.waitForElementToBeClickable;
+import static Utils.ExplicitWait.waitForLoaderToDisappear;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class TvsSportExPriceStepDef
+public class TvsSportORPStepDef
 {
     WebDriver driver;
     String SelectedVehicle;
@@ -49,9 +52,9 @@ public class TvsSportExPriceStepDef
     List<Map<String, Object>> apiPrices;
 
     private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
-        return ExShowRoomExcelUtils.readExcelData(filePath, sheetName);
+        return ORPExcelUtils.readExcelData(filePath, sheetName);
     }
-    public TvsSportExPriceStepDef() {
+    public TvsSportORPStepDef() {
         this.driver = WebDriverManager.getDriver();
         sportExPricePage= new TvsSportPricePage(driver);
         states= sportExPricePage.states;
@@ -62,7 +65,7 @@ public class TvsSportExPriceStepDef
     }
 
 
-    @Given("navigate to {string} brand page in {string}")
+    @Given("navigate to {string} brand page on {string}")
     public void navigateToBrandPage(String vehicle, String environment) throws IOException {
         env = environment;
         SelectedVehicle = vehicle;
@@ -70,7 +73,7 @@ public class TvsSportExPriceStepDef
         driver.get(selectedVehicleUrl);
     }
 
-    @When("user navigated to price section and accept the cookies pop up")
+    @When("user navigated to price section and accept the cookies")
     public void userNavigatedToPriceSectionAndAcceptTheCookiesPopUp() throws InterruptedException {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
@@ -111,23 +114,24 @@ public class TvsSportExPriceStepDef
         waitForElementToBeClickable(driver, stateDropdown, 15);
     }
 
-    @When("click on the state dropdown and fetch all states")
+    @When("click on the state dropdown and fetch all the states")
     public void clickOnTheStateDropdownAndFetchAllStates()
     {
         sportExPricePage.ClickStateDropdown();
         visibilityOfElementLocated(driver, states, 15);
     }
 
-    @Then("fetch all states for the selected vehicle")
+    @Then("get all states for the selected vehicle")
     public void fetchAllStatesForTheSelectedVehicle()
     {
         stateList = driver.findElements(sportExPricePage.states);
         System.out.println("List of all states fetched successfully.");
     }
 
-    @Then("iterate through each state to select and get Ex-showRoom prices")
+    @Then("iterate through each state to select and get on-road prices")
     public void iterateThroughEachStateToSelectAndGetExShowRoomPrices() throws IOException, InterruptedException {
-        for (int i = 0; i < stateList.size(); i++) {
+        for (int i = 0; i < stateList.size(); i++)
+        {
             stateList = driver.findElements(sportExPricePage.states);
             state = stateList.get(i).getText();
             System.out.println("\nstate: " + state);
@@ -139,19 +143,23 @@ public class TvsSportExPriceStepDef
             }
 
             waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+            sportExPricePage.ClickOnRoadPrice();
+
             waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
 
             if (i < stateList.size() - 1) {
                 sportExPricePage.ClickStateDropdown();
                 Thread.sleep(2000);
             }
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             fetchExShowroomPricesForTheSelectedStates();
+            //Thread.sleep(2000);
             compareUIAndAPIPricesWithExcelPrice();
         }
+
     }
 
-    @Then("fetch Ex-showroom prices for the selected states")
+    @Then("fetch On-Road prices for the selected states")
     public void fetchExShowroomPricesForTheSelectedStates()
     {
         uiPrices.clear();
@@ -168,19 +176,19 @@ public class TvsSportExPriceStepDef
                 uiPrices.put(model, priceText.replace(" ", ""));
             }
         }
-       // System.out.println("uiprice- "+uiPrices);
+        // System.out.println("uiprice- "+uiPrices);
     }
 
-    @Then("compare UI and API prices with Excel prices for all variants and states")
+    @Then("compare UI and API prices with Excel prices for all the variants and states")
     public void compareUIAndAPIPricesWithExcelPrice() throws IOException {
         JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
         if (env.equalsIgnoreCase("UAT"))
         {
-            response = GetExshowroomPriceUAT(SelectedVehicle.replace("_", " "), stateCode);
+            response = OrpDetailsUAT(SelectedVehicle.replace("_", " "), stateCode);
         } else if (env.equalsIgnoreCase("PROD")) {
-            response = GetExshowroomPriceProd(SelectedVehicle.replace("_", " "), stateCode);
+            response = OrpDetailsPROD(SelectedVehicle.replace("_", " "), stateCode);
         }
 
         if (response.getStatusCode() == 204 || response.getBody().asString().isEmpty()) {
@@ -190,11 +198,11 @@ public class TvsSportExPriceStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewpricesE.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
-            String variantName = (String) apiPrice.get("VariantNameExtension");
-            String apiexShowroomPrice = (String) apiPrice.get("Price");
+            String variantName = (String) apiPrice.get("VariantName");
+            int apiexShowroomPrice = (int) apiPrice.get("OnRoadPrice");
 
             if (uiPrices.containsKey(variantName))
             {
@@ -207,13 +215,13 @@ public class TvsSportExPriceStepDef
                 {
                     System.out.println("Comparing prices for model: " + variantName);
                     System.out.println("UI Price: " + UIexShowRoomPrice + ", API Price: " + apiexShowroomPrice);
-                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiexShowroomPrice), UIexShowRoomPrice);
+                    assertEquals("Price mismatch for model: " + variantName, apiexShowroomPrice, UIexShowRoomPrice);
                 }
                 else
                 {
                     long roundedExcelPrice = 0;
                     if (excelPrices.containsKey(key)) {
-                        String excelExshowroomPrice = excelPrices.get(key).get("Ex-ShowRoomPrice");
+                        String excelExshowroomPrice = excelPrices.get(key).get("OnRoadPrice");
                         roundedExcelPrice = Math.round(Float.parseFloat(excelExshowroomPrice));
 
                     } else {
@@ -225,7 +233,7 @@ public class TvsSportExPriceStepDef
                     System.out.println("UI Price: " + UIexShowRoomPrice + ", API Price: " + apiexShowroomPrice + ", Excel Price: " + roundedExcelPrice);
 
                     // Assertions
-                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiexShowroomPrice), UIexShowRoomPrice);
+                    assertEquals("Price mismatch for model: " + variantName, apiexShowroomPrice, UIexShowRoomPrice);
                     assertEquals("Price mismatch for model: " + variantName + " with Excel", roundedExcelPrice, UIexShowRoomPrice);
 
                 }

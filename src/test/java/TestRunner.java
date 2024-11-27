@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
          //tags = "@testRideCampaign or @testRide", //NtorqtestRide
         //tags = "@regression", //"@matchedElement or @Raider or @ApacheSeries",
         //tags="@Raider or @ApacheSeries",
-        tags = "@OneBot", //"@regression",
+        //tags = "@Raider",AllVehicles
 
-        //tags ="@Products-scooters",
+        tags ="@PageNavigation",
 
 //          dryRun = true,
 

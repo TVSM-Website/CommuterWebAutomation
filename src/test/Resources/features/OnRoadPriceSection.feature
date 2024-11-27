@@ -18,12 +18,12 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
       | Vehicle        | Environment |
       #| JUPITER_125    | PROD        |
       #| JUPITER        | PROD        |
-      | TVS_Zest_110   | UAT        |
-      #| TVS_NTORQ_125  | UAT       |
-      | TVS_RADEON_110 | UAT        |
-      #| StarCity+      | UAT        |
+      | TVS_Zest_110   | PROD        |
+      | TVS_NTORQ_125  | PROD       |
+      #| TVS_RADEON_110 | UAT        |
+      | StarCity+      | PROD        |
       #| TVS_SPORT      | UAT        |
-      | TVS_XL_100     | UAT        |
+      | TVS_XL_100     | PROD        |
 
   @Ronin
   Scenario Outline: Verify On-Road prices for Ronin TVS brand page
@@ -68,3 +68,17 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 #      | TVSApacheSeries | UAT        | Apache RTR 160 2V |
       | TVSApacheSeries | UAT        | Apache RTR 160 4V |
 #      | TVSApacheSeries | UAT        | Apache RTR 180    |
+
+  @TVSSport_ORP
+  Scenario Outline: Verify On-Road prices for all variants of the TVS Sport brand across all states
+    Given navigate to "<Vehicle>" brand page on "<Environment>"
+    When user navigated to price section and accept the cookies
+    When click on the state dropdown and fetch all the states
+    Then get all states for the selected vehicle
+    Then iterate through each state to select and get on-road prices
+    Then fetch On-Road prices for the selected states
+    Then compare UI and API prices with Excel prices for all the variants and states
+
+    Examples: select the vehicle brand
+      | Vehicle   | Environment |
+      | TVS_SPORT | UAT         |

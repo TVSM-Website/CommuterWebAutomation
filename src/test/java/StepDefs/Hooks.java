@@ -15,6 +15,6 @@ public class Hooks {
     @After
     public void tearDown() {
         // Quit the WebDriver after each scenario to prevent lingering sessions
-        WebDriverManager.quitDriver();
+        //WebDriverManager.quitDriver();
     }
 }

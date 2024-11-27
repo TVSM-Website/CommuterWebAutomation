@@ -9,7 +9,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static Utils.WebDriverManager.getDriver;
 
@@ -165,33 +164,25 @@ public class Utilities
 
     }
 
-    public static String getBrandPageUrl(String vehicle, String env) throws IOException
-    {
-        String propertiesFilePath;
-
-        if (env.equalsIgnoreCase("UAT")) {
-            propertiesFilePath = "src/test/Resources/BrandPageUrlUAT.properties";
-        } else if (env.equalsIgnoreCase("PROD")) {
-            propertiesFilePath = "src/test/Resources/BrandPageUrlProd.properties";
-        } else {
-            throw new IllegalArgumentException("Invalid environment: " + env);
-        }
+    public static String getProductUrl(String vehicle) throws IOException {
+        String propertiesFilePath = "src/test/Resources/ProductsUrls.properties";
 
         // Load the properties file
         try (FileInputStream fileInputStream = new FileInputStream(propertiesFilePath)) {
             properties.load(fileInputStream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading properties file: " + propertiesFilePath, e);
         }
 
-        // Get the URL for the given vehicle
-        String selectedVehicleUrl = properties.getProperty(vehicle);
+        if (!vehicle.contains("uat") && !vehicle.contains("prod")) {
+            throw new IllegalArgumentException("Invalid environment in vehicle input: " + vehicle);
+        }
 
+        String selectedVehicleUrl = properties.getProperty(vehicle);
         if (selectedVehicleUrl == null) {
-            throw new IllegalArgumentException("No URL found for vehicle: " + vehicle);
+            throw new IllegalArgumentException("No URL found for key: " + vehicle);
         }
 
         return selectedVehicleUrl;
     }
-
 }

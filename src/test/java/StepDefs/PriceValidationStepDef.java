@@ -196,7 +196,7 @@ public class PriceValidationStepDef extends Utilities {
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Haryana_UAT.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantName");
@@ -443,7 +443,6 @@ public class PriceValidationStepDef extends Utilities {
 
             //div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price']
             List<WebElement> OnRoadPrices = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dd/span"));
-
             uiPrices.clear();
             if (OnRoadModels.isEmpty() || OnRoadPrices.isEmpty()) {
                 System.out.println("No prices available in UI for state: " + state);
@@ -550,7 +549,7 @@ public class PriceValidationStepDef extends Utilities {
     @Then("get the On-Road prices for all the states and variants for raider")
     public void getTheOnRoadPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException
     {
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Haryana_UAT.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
         for (int c = 0; c < 6; c++) {
             // Click the right arrow to navigate to the next variant

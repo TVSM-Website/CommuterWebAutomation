@@ -29,8 +29,8 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
   Scenario Outline: Verify On-Road prices for Ronin TVS brand page
     Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
     When the user navigates to the price section and accepts the cookies pop-up
-#    When click the state dropdown and select the state
-#    Then get the On-Road prices for all the states and variants for ronin
+    When click the state dropdown and select the state
+    Then get the On-Road prices for all the states and variants for ronin
 
     Examples: select the vehicle brand
       #UAT Env

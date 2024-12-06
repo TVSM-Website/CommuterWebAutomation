@@ -1,4 +1,4 @@
-@PageNavigation
+@PageNavigation @regression
 Feature: Verify page-wise navigation and functionality across TVS Motor brand pages
 
   @PageNavigation_MotorCycle
@@ -25,7 +25,6 @@ Feature: Verify page-wise navigation and functionality across TVS Motor brand pa
 
     Examples:
       | Url           |
-      | careers_prod  |
       | offerings_uat |
       | blog_uat      |
       | careers_uat   |

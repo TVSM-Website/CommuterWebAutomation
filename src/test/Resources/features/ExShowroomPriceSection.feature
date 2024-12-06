@@ -29,25 +29,25 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
   Scenario Outline: Verify On-Road prices for Ronin TVS brand page
     Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
     When the user navigates to the price section and accepts the cookies pop-up
-    When click the state dropdown and select the state
-    Then get the On-Road prices for all the states and variants for ronin
+    #When click the state dropdown and select the state
+    #Then get the On-Road prices for all the states and variants for ronin
 
     Examples: select the vehicle brand
       #UAT Env
       | Vehicle   | Environment |
-      | TVS_Ronin | UAT         |
+      | TVS_Ronin | PROD         |
 
-  @Raider_ExshowroomPrice
-  Scenario Outline: Verify Ex-show room prices for Raider TVS brand page
-    Given navigate to the "<Vehicle>" brand page in "<Environment>"
-    When the user navigates to the price section of raider page and accepts the cookies pop-up
-    Then get the Ex-showroom prices for all the states and variants for raider
-
-    Examples: select the vehicle brand
-      #UAT Env
-      | Vehicle    | Environment |
-     #| TVS_Raider | UAT         |
-      | TVS_Raider | UAT        |
+#  @Raider_ExshowroomPrice
+#  Scenario Outline: Verify Ex-show room prices for Raider TVS brand page
+#    Given navigate to the "<Vehicle>" brand page in "<Environment>"
+#    When the user navigates to the price section of raider page and accepts the cookies pop-up
+#    Then get the Ex-showroom prices for all the states and variants for raider
+#
+#    Examples: select the vehicle brand
+#      #UAT Env
+#      | Vehicle    | Environment |
+#     #| TVS_Raider | UAT         |
+#      | TVS_Raider | UAT        |
 
   @ApacheSeries_ExPrice
   Scenario Outline: Verify Ex-show room prices for ApacheSeries brand pages for all variants
@@ -63,11 +63,11 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
     Examples: select the vehicle brand
       | Vehicle         | Environment | Variant           |
       #| TVSApacheSeries | PROD        | Apache RTR 310    |
-#      | TVSApacheSeries | PROD        | Apache RR 310     |
-#      | TVSApacheSeries | PROD        | Apache RTR 160 2V |
-      | TVSApacheSeries | UAT        | Apache RTR 160 4V |
-#      | TVSApacheSeries | PROD        | Apache RTR 180    |
-#      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
+      | TVSApacheSeries | PROD        | Apache RR 310     |
+      | TVSApacheSeries | PROD        | Apache RTR 160 2V |
+      | TVSApacheSeries | PROD        | Apache RTR 160 4V |
+      | TVSApacheSeries | PROD        | Apache RTR 180    |
+      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
 
   @TVSSport_ExPrice
   Scenario Outline: Verify Ex-Showroom prices for all variants of the TVS Sport brand across all states

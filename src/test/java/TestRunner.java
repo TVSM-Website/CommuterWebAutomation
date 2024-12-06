@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         //tags="@Raider or @ApacheSeries",
         //tags = "@Raider",AllVehicles
 
-        tags ="@PageNavigation",
+        tags ="@regression",
 
 //          dryRun = true,
 

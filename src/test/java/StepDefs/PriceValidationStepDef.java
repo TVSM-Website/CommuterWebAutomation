@@ -83,18 +83,22 @@ public class PriceValidationStepDef extends Utilities {
     }
 
     @When("user navigated to the price section and accept the cookies pop up")
-    public void user_navigated_to_the_price_section() {
+    public void user_navigated_to_the_price_section()
+    {
         // Check if the language selection pop-up is displayed
         try {
-            if (selectlanguagePopUp.isDisplayed()) {
+            if (selectlanguagePopUp.isDisplayed())
+            {
                 By languageSelector = priceSectionPage.getLanguageSelector("English");
                 WebElement languageElement = driver.findElement(languageSelector);
                 waitForElementToBeClickable(driver, languageElement, 15);
                 languageElement.click();
-            } else {
+            } else
+            {
                 System.out.println("Language selection pop-up is not displayed.");
             }
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e)
+        {
             System.out.println("Language selection pop-up not found on the page.");
         }
         try {
@@ -413,100 +417,149 @@ public class PriceValidationStepDef extends Utilities {
 
     }
 
-    @Then("get the On-Road prices for all the states and variants for ronin")
-    public void getTheOnRoadPricesForAllTheStatesAndVariantsForRonin() throws InterruptedException {
-        List<WebElement> stateList = driver.findElements(states);//driver.findElements(By.xpath("//div[@id='bs-select-1']//ul/li/a/span"));
-        for (int i = 0; i < stateList.size(); i++) {
-            stateList = driver.findElements(priceSectionPage.states);
-            System.out.println("\n states: " + stateList.get(i).getText());
-            state = stateList.get(i).getText();
+    @Then("get the On-Road prices for all the states and variants for {string}")
+    public void getTheOnRoadPricesForVariant(String variant) throws InterruptedException, IOException
+    {
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
-            WebElement stateElement = stateList.get(i);
-            if (!state.isEmpty()) {
-                stateElement.click();
-            } else {
-                break;
-            }
+        boolean variantFound = false;
+        for (int c = 0; c < 6; c++) { // Assuming a maximum of 6 variants in the slider
+            String currentVariant = driver.findElement(By.cssSelector("div[class='item active'] h4")).getText();
 
-            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
-            priceSectionPage.ClickOnRoadPrice();
+            if (currentVariant.equalsIgnoreCase(variant)) {
+                variantFound = true;
 
-            waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                // Wait for the state dropdown to be visible
+                visibilityOfElementLocated(driver, states, 15);
+                priceSectionPage.clickRaiderStateDropdown();
 
-            if (i < stateList.size() - 1) {
-                priceSectionPage.clickRoninStateDropdown();
-            }
+                List<WebElement> stateList = driver.findElements(statesRaider);
+                for (int i = 0; i < stateList.size(); i++) {
+                    stateList = driver.findElements(priceSectionPage.statesRaider);
+                    System.out.println("\nState: " + stateList.get(i).getText());
+                    state = stateList.get(i).getText();
+
+                    WebElement stateElement = stateList.get(i);
+                    if (!state.isEmpty()) {
+                        stateElement.click();
+                    } else {
+                        break;
+                    }
+
+                    waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                    priceSectionPage.ClickOnRoadPriceRaider();
+
+                    waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+
+                    if (i < stateList.size() - 1) {
+                        priceSectionPage.clickRaiderStateDropdown();
+                    }
+
+                    Thread.sleep(2000);
+                    WebElement OnRoadModel = driver.findElement(By.cssSelector("div[class='item active'] h4"));
+                    WebElement OnRoadPrice = driver.findElement(By.xpath("//div[@class='item active']//i[@id='priceLable']"));
+
+                    uiPrices.clear();
+                    if (!OnRoadModel.isDisplayed() || !OnRoadPrice.isDisplayed() || OnRoadPrice.getText().equalsIgnoreCase("ORP not available")) {
+                        System.out.println("No prices available in UI for state: " + state);
+                    } else {
+                        String model = OnRoadModel.getText();
+                        String priceText = OnRoadPrice.getText().replace("*", "").replace("₹", "").replace(",", "").trim();
+                        String finalPrice = priceText.replace(" ", "");
+
+                        uiPrices.put(model, finalPrice);
+                    }
+
+                    JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+                    String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
+                    Response response = OrpDetailsUAT(selectedVehicle.replace("_", " "), stateCode);
+
+                    if (response.getStatusCode() == 204) {
+                        System.out.println("No content in API response for state: " + state);
+                        assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                        continue;
+                    }
+
+                    String responseBody = response.getBody().asString();
+                    if (responseBody == null || responseBody.isEmpty() || response.getStatusCode() == 204) {
+                        System.out.println("API response is empty for state: " + state);
+                        assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                        continue;
+                    }
+
+                    try {
+                        apiPrices = response.jsonPath().getList("");
+                    } catch (Exception e) {
+                        System.out.println("Failed to parse API response for state: " + state);
+                        continue;
+                    }
+
+                    if (uiPrices.isEmpty() && apiPrices.isEmpty()) {
+                        System.out.println("Both UI and API have no prices for state: " + state);
+                        Assert.assertTrue(uiPrices.isEmpty());
+                        continue;
+                    }
+
+                    if (apiPrices.isEmpty()) {
+                        System.out.println("No prices available in API for state: " + state);
+                        assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
+                        continue;
+                    }
+
+                    apiPrices = apiPrices.stream()
+                            .filter(apiPrice -> variant.equalsIgnoreCase((String) apiPrice.get("VariantName")))
+                            .collect(Collectors.toList());
+
+                    for (Map<String, Object> apiPrice : apiPrices) {
+                        String variantName = ((String) apiPrice.get("VariantName")).toUpperCase();
+
+                        // Fetch the price from API
+                        int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
+
+                        if (uiPrices.containsKey(variantName)) {
+                            int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
+                            System.out.println("Comparing prices for model: " + variantName);
+
+                            // Normalize Excel key lookup
+                            String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantName") + "|" + MappedStateName(state); // Use original casing for VariantName in Excel key
+                            //System.out.println("Excel Key: " + excelKey);
+
+                            long roundedExcelPrice = 0;
+                            if (excelPrices.containsKey(excelKey)) {
+                                double excelOnRoadPrice = Float.parseFloat(excelPrices.get(excelKey).get("OnRoadPrice"));
+                                roundedExcelPrice = Math.round(excelOnRoadPrice);
+                            } else {
+                                System.out.println("Model " + apiPrice.get("VariantName") + " not found in Excel data");
+                            }
+
+                            // Print all prices together
+                            System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
+
+                            // Assertions
+                            assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+                            assertEquals("Price mismatch for model: " + apiPrice.get("VariantName") + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
+                        } else {
+                            System.out.println("Model " + variantName + " not found in UI data. Available models: " + uiPrices.keySet());
+                        }
+                    }
 
 
-            Thread.sleep(2000);
-            List<WebElement> OnRoadModels = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dt[@class='col-xs-6']"));
 
-            //div[@id='on-road']/dl[@class='row']/dd[@class='col-xs-6 price']
-            List<WebElement> OnRoadPrices = driver.findElements(By.xpath("//div[@id='on-road']/dl[@class='row']/dd/span"));
-            uiPrices.clear();
-            if (OnRoadModels.isEmpty() || OnRoadPrices.isEmpty()) {
-                System.out.println("No prices available in UI for state: " + state);
-            } else {
-                for (int j = 0; j < OnRoadModels.size(); j++) {
-                    String model = OnRoadModels.get(j).getText();
-                    String priceText = OnRoadPrices.get(j).getText().replace("*", "").replace("₹", "").replace(",", "").trim();
-                    //int price = Integer.parseInt(priceText);
-                    String finalPrice = priceText.replace(" ", "");
-                    uiPrices.put(model, finalPrice);
                 }
-            }
-            //System.out.println("uiPrices -" + uiPrices);
-
-            JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
-            String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
-            Response response = OrpDetailsUAT(selectedVehicle.replace("_", " "), stateCode);
-
-            if (response.getStatusCode() == 204) {
-                System.out.println("No content in API response for state: " + state);
-                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
-                continue; // Skip to the next state if API call fails
+                break; // Stop processing other slider items once the specified variant is handled
             }
 
-            String responseBody = response.getBody().asString();
-            if (responseBody == null || responseBody.isEmpty() || response.getStatusCode() == 204) {
-                System.out.println("API response is empty for state: " + state);
-                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
-                continue; // Skip to the next state if API response is empty
-            }
-            try {
-                apiPrices = response.jsonPath().getList("");
-            } catch (Exception e) {
-                System.out.println("Failed to parse API response for state: " + state);
-                continue; // Skip to the next state if parsing fails
-            }
-
-            if (uiPrices.isEmpty() && apiPrices.isEmpty()) {
-                System.out.println("Both UI and API have no prices for state: " + state);
-                continue; // Both UI and API have no prices, skip to the next state
-            }
-
-            if (apiPrices.isEmpty()) {
-                System.out.println("No prices available in API for state: " + state);
-                assertTrue("UI prices should also be empty for state: " + state, uiPrices.isEmpty());
-                continue; // Skip to the next state if no prices are found in API
-            }
-            for (Map<String, Object> apiPrice : apiPrices) {
-                String variantName = (String) apiPrice.get("VariantName");
-                int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
-
-                // Handle cases where the UI does not have the variant present in the API
-                if (uiPrices.containsKey(variantName)) {
-                    int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
-                    System.out.println("Comparing prices for model: " + variantName);
-                    //System.out.println(("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice));
-                    assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
-                } else {
-                    System.out.println("Model " + variantName + " not found in UI data");
-                }
+            // If the specified variant is not found yet, click the right arrow to navigate
+            if (!variantFound) {
+                priceSectionPage.clickRightArrow();
+                Thread.sleep(2000);
             }
         }
-    }
 
+        if (!variantFound) {
+            throw new IllegalStateException("Variant " + variant + " not found in the slider.");
+        }
+    }
 
     @When("the user navigates to the price section of raider page and accepts the cookies pop-up")
     public void theUserNavigatesToThePriceSectionOfRaiderPageAndAcceptsTheCookiesPopUp() {

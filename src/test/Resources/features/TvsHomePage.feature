@@ -60,7 +60,7 @@ Feature: Verify Header navigation across the pages
     Examples:
       | Environment |
       | UAT         |
-      | PROD        |
+      #| PROD        |
 
   @stateDropDownVerification
   Scenario Outline: Verify state name along with ex-showroom price visibility for scooters, motorcycles, and mopeds

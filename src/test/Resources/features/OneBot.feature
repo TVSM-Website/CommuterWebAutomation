@@ -1,4 +1,4 @@
-@OneBot
+@OneBot @regression
 Feature: OneBot on TVS Motor multiple pages
 #
 #  @OneBot_Integration

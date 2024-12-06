@@ -37,17 +37,17 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
       | Vehicle   | Environment |
       | TVS_Ronin | UAT         |
 
-  @Raider
-  Scenario Outline: Verify On-Road prices for Raider TVS brand page
+    @RaiderORP
+    Scenario Outline: Verify On-Road prices for Raider TVS brand page
     Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
     When the user navigates to the price section of raider page and accepts the cookies pop-up
-    Then get the On-Road prices for all the states and variants for raider
+    Then get the On-Road prices for all the states and variants for "<Variant>"
 
-    Examples: select the vehicle brand
-      #UAT Env
-      | Vehicle    | Environment |
-      #| TVS_Raider | UAT         |
-      | TVS_Raider | UAT        |
+      Examples: select the vehicle brand
+        | Vehicle    | Environment | Variant |
+        | TVS_Raider | PROD         | DRUM      |
+        | TVS_Raider | PROD         | SX      |
+        | TVS_Raider | PROD         | SSE     |
 
   @ApacheSeries
   Scenario Outline: Verify On-Road prices for ApacheSeries brand page with all variants
@@ -62,12 +62,12 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle         | Environment | Variant           |
-      #| TVSApacheSeries | UAT        | Apache RTR 310    |
-      #| TVSApacheSeries | UAT        | Apache RTR 200 4V |
-      #| TVSApacheSeries | UAT        | Apache RR 310     |
-#      | TVSApacheSeries | UAT        | Apache RTR 160 2V |
-      | TVSApacheSeries | UAT        | Apache RTR 160 4V |
-#      | TVSApacheSeries | UAT        | Apache RTR 180    |
+      | TVSApacheSeries | PROD        | Apache RTR 310    |
+      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
+      | TVSApacheSeries | PROD        | Apache RR 310     |
+      | TVSApacheSeries | PROD        | Apache RTR 160 2V |
+      | TVSApacheSeries | PROD        | Apache RTR 160 4V |
+      | TVSApacheSeries | PROD        | Apache RTR 180    |
 
   @TVSSport_ORP
   Scenario Outline: Verify On-Road prices for all variants of the TVS Sport brand across all states
@@ -81,4 +81,4 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle   | Environment |
-      | TVS_SPORT | UAT         |
+      | TVS_SPORT | PROD         |

@@ -42,6 +42,12 @@ public class ExplicitWait
 
     }
 
+    public static void waitForVisibilityOfElementLocated(WebDriver driver, By element, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+
+    }
+
 
 
 }

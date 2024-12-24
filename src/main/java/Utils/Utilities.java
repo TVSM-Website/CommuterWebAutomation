@@ -60,12 +60,20 @@ public class Utilities
             return "https://uat-www.tvsmotor.net/";
         } else if ("PROD".equalsIgnoreCase(environment)) {
             return "https://www.tvsmotor.com/";
-        } else {
+        }
+        else if ("TestRide_UAT".equalsIgnoreCase(environment)) {
+            return "https://uat-www.tvsmotor.net/book-a-ride";
+        }
+        else if ("TestRide_PROD".equalsIgnoreCase(environment)) {
+            return "https://www.tvsmotor.com/book-a-ride";
+        }
+        else {
             throw new IllegalArgumentException("Invalid environment: " + environment);
         }
     }
 
-    public static void verifyUrl(WebDriver driver, String environment) {
+    public static void verifyUrl(WebDriver driver, String environment)
+    {
         String currentUrl = driver.getCurrentUrl();
         if ("UAT".equalsIgnoreCase(environment)) {
             if (!currentUrl.contains("uat")) {

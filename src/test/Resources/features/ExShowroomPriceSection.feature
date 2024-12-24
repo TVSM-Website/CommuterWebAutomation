@@ -1,7 +1,7 @@
-@ExShowRoomPriceValidation @regression
+@ExShowRoom_AllVehicles @RunAll
 Feature: Validating Ex-Road price updated correctly on brand pages for all the states and variants
 
-  @ExShowRoom_AllVehicles
+  @ExPrice_MultiVehicles
   Scenario Outline: Verify Ex-Road prices for all states on TVS brand pages for all variants
     Given navigate to the "<Vehicle>" brand page in "<Environment>"
     When user navigated to the price section and accept the cookies pop up
@@ -22,20 +22,7 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
       | TVS_NTORQ_125  | PROD        |
       #| TVS_RADEON_110 | UAT        |
       | StarCity+      | PROD        |
-      | TVS_SPORT      | PROD        |
       | TVS_XL_100     | PROD        |
-
-  @Ronin
-  Scenario Outline: Verify On-Road prices for Ronin TVS brand page
-    Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
-    When the user navigates to the price section and accepts the cookies pop-up
-    #When click the state dropdown and select the state
-    #Then get the On-Road prices for all the states and variants for ronin
-
-    Examples: select the vehicle brand
-      #UAT Env
-      | Vehicle   | Environment |
-      | TVS_Ronin | PROD         |
 
 #  @Raider_ExshowroomPrice
 #  Scenario Outline: Verify Ex-show room prices for Raider TVS brand page
@@ -63,7 +50,7 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
     Examples: select the vehicle brand
       | Vehicle         | Environment | Variant           |
       #| TVSApacheSeries | PROD        | Apache RTR 310    |
-      | TVSApacheSeries | PROD        | Apache RR 310     |
+      #| TVSApacheSeries | PROD        | Apache RR 310     |
       | TVSApacheSeries | PROD        | Apache RTR 160 2V |
       | TVSApacheSeries | PROD        | Apache RTR 160 4V |
       | TVSApacheSeries | PROD        | Apache RTR 180    |

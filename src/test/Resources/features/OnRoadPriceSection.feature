@@ -1,7 +1,7 @@
-@priceValidation @regression
+@ORPValidation @RunAll
 Feature: Validating On-Road price updated correctly on brand pages for all the states and variants
 
-  @AllVehicles
+  @ORPMultiVehicles
   Scenario Outline: Verify On-Road prices for all states on TVS brand pages for all variants
     Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
     When user navigated to the price section and accept the cookies pop up
@@ -11,31 +11,15 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
     Then iterate through each state to select and fetch On-Road prices
     Then fetch On-Road prices for the selected state
     Then compare UI and API and Excel prices for all variants in each state
-    #Then validate the prices against Excel data
 
     Examples: select the vehicle brand
       #UAT Env
       | Vehicle        | Environment |
-      #| JUPITER_125    | PROD        |
-      #| JUPITER        | PROD        |
       | TVS_Zest_110   | PROD        |
       | TVS_NTORQ_125  | PROD       |
-      #| TVS_RADEON_110 | UAT        |
+    # | TVS_RADEON_110 | PROD         |
       | StarCity+      | PROD        |
-      #| TVS_SPORT      | UAT        |
       | TVS_XL_100     | PROD        |
-
-  @Ronin
-  Scenario Outline: Verify On-Road prices for Ronin TVS brand page
-    Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
-    When the user navigates to the price section and accepts the cookies pop-up
-#    When click the state dropdown and select the state
-#    Then get the On-Road prices for all the states and variants for ronin
-
-    Examples: select the vehicle brand
-      #UAT Env
-      | Vehicle   | Environment |
-      | TVS_Ronin | UAT         |
 
     @RaiderORP
     Scenario Outline: Verify On-Road prices for Raider TVS brand page
@@ -44,10 +28,13 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
     Then get the On-Road prices for all the states and variants for "<Variant>"
 
       Examples: select the vehicle brand
-        | Vehicle    | Environment | Variant |
-        | TVS_Raider | PROD         | DRUM      |
-        | TVS_Raider | PROD         | SX      |
-        | TVS_Raider | PROD         | SSE     |
+        | Vehicle    | Environment | Variant     |
+        | TVS_Raider | PROD        | DRUM        |
+        | TVS_Raider | PROD        | SINGLE SEAT |
+        | TVS_Raider | PROD        | SPLIT SEAT  |
+        | TVS_Raider | PROD        | iGO         |
+        | TVS_Raider | PROD        | SSE         |
+        | TVS_Raider | PROD        | SX          |
 
   @ApacheSeries
   Scenario Outline: Verify On-Road prices for ApacheSeries brand page with all variants

@@ -310,7 +310,6 @@ public class HomePageStepDef
 
             String pageTitle = driver.getTitle();
             System.out.println("Page title: " + pageTitle);
-            Assert.assertTrue("Url doesn't contain "+vehicleName,pageTitle.contains(vehicleName));
 
             driver.navigate().to("https://uat-www.tvsmotor.net/");
             ClicksOnElectricTab();

@@ -78,7 +78,7 @@ public class TvsSportORPStepDef
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
 
-            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.language-popup.show")));
+            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'langCont')]")));
             if (selectLanguagePopUp.isDisplayed())
             {
                 By languageSelector = sportExPricePage.getLanguageSelector("English");

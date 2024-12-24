@@ -190,7 +190,7 @@ public class TvsSportExPriceStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewpricesE.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");

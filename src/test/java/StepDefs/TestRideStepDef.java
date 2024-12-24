@@ -134,9 +134,9 @@ public class TestRideStepDef
     @And("Click on submit button")
     public void click_on_submit_button() throws InterruptedException
     {
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         testRidePage.SubmitTestRide();
-        Thread.sleep(1500);
+        //Thread.sleep(1500);
     }
     @And("Verify the confirmation message of test ride booking")
     public void verify_the_confirmation_message()

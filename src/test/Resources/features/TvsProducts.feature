@@ -1,4 +1,4 @@
-@PageNavigation @regression
+@PageNavigation @RunAll
 Feature: Verify page-wise navigation and functionality across TVS Motor brand pages
 
   @PageNavigation_MotorCycle

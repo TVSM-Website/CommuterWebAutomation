@@ -1,7 +1,7 @@
-@HomePage @regression
+@HomeNavigation @RunAll
 Feature: Verify Header navigation across the pages
 
-  @HomeMotorcycle @HomeNavigation
+  @HomeMotorcycle
   Scenario Outline: Verify functionalities of Motorcycles tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
@@ -13,7 +13,7 @@ Feature: Verify Header navigation across the pages
       | UAT         |
      # | PROD        |
 
-  @HomeScooters @HomeNavigation
+  @HomeScooters
   Scenario Outline: Verify functionalities of scooters tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
@@ -38,7 +38,7 @@ Feature: Verify Header navigation across the pages
       | UAT         |
      # | PROD        |
 
-  @HomeMopeds @HomeNavigation
+  @HomeMopeds
   Scenario Outline: Verify functionalities of Mopeds tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
@@ -50,7 +50,7 @@ Feature: Verify Header navigation across the pages
       | UAT         |
      # | PROD        |
 
-  @Home3Wheelers @HomeNavigation
+  @Home3Wheelers
   Scenario Outline: Verify functionalities of ThreeWheelers tab
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up

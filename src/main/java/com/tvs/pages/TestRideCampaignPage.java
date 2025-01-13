@@ -1,5 +1,6 @@
 package com.tvs.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,20 +8,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import static Utils.ExplicitWait.waitForElementToBeClickable;
+import static Utils.ExplicitWait.*;
 
-public class TestRideQueryCampPage {
+public class TestRideCampaignPage {
 
 
     WebDriver driver;
 
-    public TestRideQueryCampPage(WebDriver driver) {
+    public TestRideCampaignPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "name")
-    public WebElement name;
+    public By name=By.id("name");
+
+
 
     @FindBy(id = "mobilewithgenerateotp")
     public WebElement phone;
@@ -28,7 +30,10 @@ public class TestRideQueryCampPage {
     @FindBy(xpath = "//button[@class='link-button highlight']")
     public WebElement requestOTP;
 
-    @FindBy(xpath = "//label[@for='otpwithresendbtn']")
+    @FindBy(xpath = "//button[@type='button' and text()='Request OTP']")
+    public WebElement reqOtpdisabled;
+
+    @FindBy(id = "otpwithresendbtn")
     public WebElement userOtpNumber;
 
     @FindBy(id = "pincode")
@@ -37,8 +42,9 @@ public class TestRideQueryCampPage {
     @FindBy(xpath = "//button[@aria-label='testride-submit-button']")
     public WebElement submitTestRide;
 
-    @FindBy(xpath = "//div[@class='verticleCenter']/p")
-    public WebElement ConfirmMsg;
+    public By CampsubmitButton = By.xpath("//button[@class='testride-submit-button ']");
+
+    public By ConfirmMsg= By.xpath("//div[@class='thankyou-wrapper']//h2[contains(text(), 'Thank you')]");
 
 
     @FindBy(xpath = "//a[contains(text(), 'Book a Test Ride')]")
@@ -53,26 +59,40 @@ public class TestRideQueryCampPage {
     @FindBy(xpath = "//div[@class='selectLang']/a[@data-name='English']")
     public WebElement selectLang;
 
-    @FindBy(id = "name-error")
+    @FindBy(xpath = "//div[@class='error-message']")
     public WebElement nameError;
 
-    @FindBy(id = "phone-error")
+    @FindBy(xpath = "//div[text()='Mobile should have exact 10 digits.']")
     public WebElement phoneError;
+
     @FindBy(id = "localityPlaceHolder-error")
     public WebElement pincodeError;
+
     @FindBy(id = "dealer-error")
     public WebElement dealerError;
-    @FindBy(id = "userotpNumber-error")
+
+    @FindBy(xpath = "//div[@class='otp-field-parent']/div/div[@class='error-message']")
     public WebElement otpError;
+
+    @FindBy(xpath = "//div[text()='Otp should have exact 4 digits.']")
+    public WebElement incorrectOtp;
 
     @FindBy(xpath = "//button[text()='Detect']")
     public WebElement locDetect;
 
+    @FindBy(xpath = "//div[text()='Location is required.']")
+    public WebElement locError;
+
+    public By vehicleDropdown = By.xpath("//div[@class='vehicle-selected-area']");
+
+
     @FindBy(id = "dealer")
     private WebElement dealerDropdown;
 
-    public void EnterName(String username) {
-        name.sendKeys(username);
+    public void EnterName(String username)
+    {
+        waitForVisibilityOfElementLocated(driver, name, 10);
+        driver.findElement(name).sendKeys(username);
     }
 
     public void EnterPhone(String mobileNumber) {
@@ -99,10 +119,6 @@ public class TestRideQueryCampPage {
         //submitTestRide.click();
     }
 
-    public String ConfirmMsg() {
-        return ConfirmMsg.getText();
-
-    }
 
     public void ClickLocDetect() {
         locDetect.click();

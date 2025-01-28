@@ -1,7 +1,6 @@
 package StepDefs;
 
 import Utils.ExShowRoomExcelUtils;
-import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.ExshowRoomPricePage;
@@ -10,7 +9,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.apache.poi.ss.formula.functions.T;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,8 +23,6 @@ import java.util.stream.Collectors;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
-import static APIs.ORPProdAPI.OrpDetailsPROD;
-import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;
@@ -49,8 +45,8 @@ public class ExShowRoomPriceStepDef
     List<Map<String, Object>> apiPrices;
     ExshowRoomPricePage exshowRoomPricePage;
 
-    private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
-        return ExShowRoomExcelUtils.readExcelData(filePath, sheetName);
+    private Map<String, Map<String, String>> readExcelPrices(String filePath) throws IOException {
+        return ExShowRoomExcelUtils.readExcelData(filePath, "Sheet1");
     }
     public ExShowRoomPriceStepDef()
     {
@@ -145,7 +141,7 @@ public class ExShowRoomPriceStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");
@@ -193,9 +189,11 @@ public class ExShowRoomPriceStepDef
     @Then("get the Ex-showroom prices for all the states and variants for raider")
     public void getTheExShowroomPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException {
 
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/SingleSeatORP.xlsx");
 
-        for (int c = 0; c < 6; c++) {
+        for (int c = 0; c < 6; c++)
+        {
+
             // Click the right arrow to navigate to the next variant
             if (c > 0) {
                 exshowRoomPricePage.clickRightArrow();
@@ -205,7 +203,7 @@ public class ExShowRoomPriceStepDef
             //visibilityOfElementLocated(driver, selectedVariant, 10);
             selectedVariant = driver.findElement(By.cssSelector("div[class='item active'] h4")).getText();
 
-            System.out.println("Selected Variant: " + selectedVariant);
+            //System.out.println("Selected Variant: " + selectedVariant);
 
             // wait for the state dropdown to be visible and click it
             visibilityOfElementLocated(driver, states, 15);
@@ -233,7 +231,7 @@ public class ExShowRoomPriceStepDef
                     exshowRoomPricePage.clickRaiderStateDropdown();
                 }
 
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 WebElement OnRoadModel = driver.findElement(By.cssSelector("div[class='item active'] h4"));
                 WebElement OnRoadPrice = driver.findElement(By.xpath("//div[@class='item active']//i[@id='priceLable']"));
 
@@ -245,10 +243,6 @@ public class ExShowRoomPriceStepDef
                     String model = OnRoadModel.getText();
                     String priceText = OnRoadPrice.getText().replace("*", "").replace("₹", "").replace(",", "").trim();
                     String finalPrice = priceText.replace(" ", "");
-                    System.out.println("modelname -" + model);
-                    //System.out.println("Fprice -" + finalPrice);
-                    //System.out.println("model -" + model);
-                    //System.out.println("price -" + finalPrice);
                     uiPrices.put(model, finalPrice);
                 }
                 //System.out.println("uiPrices -" + uiPrices);
@@ -384,8 +378,8 @@ public class ExShowRoomPriceStepDef
                                 System.out.println("UI Price: " + UIexShowRoomPrice + ", API Price: " + apiExshowroomPrice + ", Excel Price: " + roundedExcelPrice);
 
                                 // Assertions
-                                assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiExshowroomPrice), UIexShowRoomPrice);
-                                //assertEquals("Price mismatch for model: " + variantName + " with Excel", Integer.parseInt(String.valueOf(roundedExcelPrice)), UIexShowRoomPrice, 0.0);
+                                //assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiExshowroomPrice), UIexShowRoomPrice);
+                                assertEquals("Price mismatch for model: " + variantName + " with Excel", Integer.parseInt(String.valueOf(roundedExcelPrice)), UIexShowRoomPrice, 0.0);
 
                             }
                         }

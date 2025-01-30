@@ -24,7 +24,7 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
       | StarCity+      | PROD        |
       | TVS_XL_100     | PROD        |
 
-  @Raider_ExshowroomPrice
+  @Raider_ExPrice
   Scenario Outline: Verify Ex-show room prices for Raider TVS brand page
     Given navigate to the "<Vehicle>" brand page in "<Environment>"
     When the user navigates to the price section of raider page and accepts the cookies pop-up
@@ -34,7 +34,7 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
       #UAT Env
       | Vehicle    | Environment |
      #| TVS_Raider | UAT         |
-      | TVS_Raider | UAT        |
+      | TVS_Raider | PROD        |
 
   @ApacheSeries_ExPrice
   Scenario Outline: Verify Ex-show room prices for ApacheSeries brand pages for all variants

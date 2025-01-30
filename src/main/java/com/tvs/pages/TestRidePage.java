@@ -99,6 +99,7 @@ public class TestRidePage
     {
 //        JavascriptExecutor js = (JavascriptExecutor)driver;
 //        js.executeScript("window.scrollBy(0,400)");
+
         WebElement clickSubmit=waitForElementToBeClickable(driver, submitTestRide,10);
         clickSubmit.click();
         //submitTestRide.click();

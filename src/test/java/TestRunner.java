@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "src/test/Resources/features",
         glue = {"StepDefs", "Hooks"},
         plugin = {"pretty",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
         },
 
          //tags = "@testRideCampaign or @testRide", //NtorqtestRide
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         //tags="@Raider or @ApacheSeries",
         //tags = "@Raider",AllVehicles
 
-        tags ="@regression",
+        tags ="@Raider_ExPrice",
 
 //          dryRun = true,
 

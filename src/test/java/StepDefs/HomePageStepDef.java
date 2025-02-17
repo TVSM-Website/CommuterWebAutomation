@@ -12,8 +12,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.xmlbeans.GDuration;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,7 +23,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-import static Utils.Utilities.HandleAlert;
+import static Utils.Utilities.*;
 
 public class HomePageStepDef
 {
@@ -34,6 +36,7 @@ public class HomePageStepDef
     WebElement AcceptCookie;
     String env;
 
+    String brandText ="//a[@class='navbar-brand']";
     public HomePageStepDef() {
         this.driver = WebDriverManager.getDriver();
         homePage = new HomePage(driver);
@@ -115,7 +118,7 @@ public class HomePageStepDef
 
     @Given("navigate to our products page")
     public void navigate_to_our_products_page() {
-           // homePage.ClickOurProducts();
+        // homePage.ClickOurProducts();
 
     }
     @When("clicks on each vehicles tab and select the state")
@@ -145,7 +148,7 @@ public class HomePageStepDef
                 System.out.println("State: " + stateText);
             }
         }
-       // driver.quit();
+        // driver.quit();
     }
 
     @Given("navigate to the TVS Motor home page in {string} environment")
@@ -403,4 +406,364 @@ public class HomePageStepDef
         String selectedVehicleUrl = Utilities.getProductUrl(url);
         driver.get(selectedVehicleUrl);
     }
+
+
+
+
+
+    @Then("click on each vehicles to verify the title of Motorcycles with {string} section")
+    public void clickOnFooterMotorcycleLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> motorCycleLinks;
+        String motorCycleText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerMotorCycles.size(); i++) {
+                motorCycleLinks = homePage.footerMotorCycles;
+                WebElement motorCycleLink = motorCycleLinks.get(i);
+                motorCycleText = motorCycleLink.getText();
+                motorCycleLink.click();
+                System.out.println("motorCycleText -> " + motorCycleText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(motorCycleText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+
+
+            }
+
+        }
+    }
+
+
+
+    @Then("click on each vehicles to verify the title of RidesAndEvents with {string} section")
+    public void clickOnFooterRidesAndEventsLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> RidesAndEventsLinks;
+        String RidesAndEventsText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerRidesAndEvents.size(); i++) {
+                RidesAndEventsLinks = homePage.footerRidesAndEvents;
+                WebElement RidesAndEventsLink = RidesAndEventsLinks.get(i);
+                RidesAndEventsText = RidesAndEventsLink.getText();
+                RidesAndEventsLink.click();
+                System.out.println("RidesAndEvents -> " + RidesAndEventsText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(RidesAndEventsText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+    @Then("click on each vehicles to verify the title of Investors with {string} section")
+    public void clickOnFooterInvestorsLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> InvestorsLinks;
+        String InvestorsText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerInvestors.size(); i++) {
+                InvestorsLinks = homePage.footerInvestors;
+                WebElement InvestorsLink = InvestorsLinks.get(i);
+                InvestorsText = InvestorsLink.getText();
+                InvestorsLink.click();
+                System.out.println("InvestorsText -> " + InvestorsText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(InvestorsText);
+//                Thread.sleep(3000);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+    @Then("click on each vehicles to verify the title of TVSDealerLocator with {string} section")
+    public void clickOnFooterTVSDealerLocatorLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> TVSDealerLocatorLinks;
+        String TVSDealerLocatorText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerTVSDealerLocator.size(); i++) {
+                TVSDealerLocatorLinks = homePage.footerTVSDealerLocator;
+                WebElement TVSDealerLocatorLink = TVSDealerLocatorLinks.get(i);
+                TVSDealerLocatorText = TVSDealerLocatorLink.getText();
+                TVSDealerLocatorLink.click();
+                System.out.println("TVSDealerLocatorText -> " + TVSDealerLocatorText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(TVSDealerLocatorText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+    @Then("click on each vehicles to verify the title of AboutUs with {string} section")
+    public void clickOnFooterAboutUsLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> AboutUsLinks;
+        String AboutUsText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerAboutUs.size(); i++) {
+                Thread.sleep(2000);
+                AboutUsLinks = homePage.footerAboutUs;
+                WebElement AboutUsLink = AboutUsLinks.get(i);
+                AboutUsText = AboutUsLink.getText();
+                AboutUsLink.click();
+                System.out.println("AboutUsText -> " + AboutUsText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(AboutUsText);
+
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+
+
+    @Then("click on each vehicles to verify the title of NewsAndMedia with {string} section")
+    public void clickOnFooterNewsAndMediaLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> NewsAndMediaLinks;
+        String NewsAndMediaText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerNewsAndMedia.size(); i++) {
+                Thread.sleep(2000);
+                NewsAndMediaLinks = homePage.footerNewsAndMedia;
+                WebElement NewsAndMediaLink = NewsAndMediaLinks.get(i);
+                NewsAndMediaText = NewsAndMediaLink.getText();
+                NewsAndMediaLink.click();
+                System.out.println("NewsAndMediaText -> " + NewsAndMediaText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(NewsAndMediaText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+    @Then("click on each vehicles to verify the title of SHOP with {string} section")
+    public void clickOnFooterSHOPLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> SHOPLinks;
+        String SHOPText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerSHOP.size(); i++) {
+                Thread.sleep(2000);
+                SHOPLinks = homePage.footerSHOP;
+                WebElement SHOPLink = SHOPLinks.get(i);
+                SHOPText = SHOPLink.getText();
+                SHOPLink.click();
+                System.out.println("SHOPText -> " + SHOPText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(SHOPText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+    @Then("click on each vehicles to verify the title of TvsConnectApp with {string} section")
+    public void clickOnFooterTvsConnectAppLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> TvsConnectAppLinks;
+        String TvsConnectAppText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerTvsConnectApp.size(); i++) {
+                Thread.sleep(2000);
+                TvsConnectAppLinks = homePage.footerTvsConnectApp;
+                WebElement TvsConnectAppLink = TvsConnectAppLinks.get(i);
+                TvsConnectAppText = TvsConnectAppLink.getText();
+                TvsConnectAppLink.click();
+                System.out.println("TvsConnectAppText -> " + TvsConnectAppText);
+                System.out.println("driver.getCurrentUrl() -> " + driver.getCurrentUrl());
+                driver.getCurrentUrl().contains(TvsConnectAppText);
+                driver.navigate().back();
+                Thread.sleep(3000);
+            }
+
+        }
+    }
+
+
+    @Then("click on each vehicles to verify the title of scooters with {string} section")
+    public void clickOnFooterScootersLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> scooterLinks;
+        String scooterText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerScooters.size(); i++) {
+                scooterLinks = homePage.footerScooters;
+                WebElement scooterLink = scooterLinks.get(i);
+                scooterText = scooterLink.getText();
+                scooterLink.click();
+
+                driver.getCurrentUrl().contains(scooterText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+
+
+
+    //    @Then("click on each vehicles to verify the title of mopeds with {string} section")
+    @Then("click on each vehicles to verify the title of mopeds with {string} section")
+    public void clickOnFooterMopedLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> mopedLinks;
+        String mopedText="";
+        System.out.println("Im working fine" + section.equalsIgnoreCase("footer"));
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerMopeds.size(); i++) {
+                mopedLinks = homePage.footerMopeds;
+                WebElement mopedLink = mopedLinks.get(i);
+                mopedText = mopedLink.getText();
+                mopedLink.click();
+                Thread.sleep(2000);
+                System.out.println("Im working fine" + mopedText);
+                driver.getCurrentUrl().contains(mopedText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+        }
+    }
+
+
+
+
+    @Then("click on each vehicles to verify the title of electricScooters with {string} section")
+    public void clickOnFooterElectricScootersLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> electricScootersLinks;
+        String electricScooterText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerElectricScooters.size(); i++) {
+                electricScootersLinks = homePage.footerElectricScooters;
+                WebElement electricScootersLink = electricScootersLinks.get(i);
+                electricScooterText = electricScootersLink.getText();
+                electricScootersLink.click();
+
+                driver.getCurrentUrl().contains(electricScooterText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+
+
+    @Then("click on each vehicles to verify the title of three wheelers with {string} section")
+    public void clickOnFooterThreeWheelersLinksAndValidate(String section) throws InterruptedException    {
+        List<WebElement> threeWheelersLinks;
+        String threeWheelersText="";
+        if (section.equalsIgnoreCase("footer"))
+        {
+            for (int i = 0; i < homePage.footerThreeWheeler.size(); i++) {
+                threeWheelersLinks = homePage.footerThreeWheeler;
+                WebElement threeWheelersLink = threeWheelersLinks.get(i);
+                threeWheelersText = threeWheelersLink.getText();
+                threeWheelersLink.click();
+
+                driver.getCurrentUrl().contains(threeWheelersText);
+                driver.navigate().back();
+                Thread.sleep(5000);
+            }
+
+        }
+    }
+
+
+
+
+
+
+    @And("match the all {int} with no of vehicles displayed for mopeds under footer")
+    public void compareAllFooterCountMopeds(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerMopedsCount() ,count);
+    }
+
+
+    @And("match the all {int} with no of vehicles displayed for electric scooter under footer")
+    public void compareAllFooterCountElectricScooters(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerElectricScootersCount() ,count);
+    }
+
+
+    @And("match the all {int} with no of vehicles displayed for three wheelers under footer")
+    public void compareAllFooterCountThreeWheeler(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerThreeWheelerCount() ,count);
+    }
+
+
+    @And("match the all {int} with no of vehicles displayed for Motorcycles under footer")
+    public void compareAllFooterCountMotorcycles(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerMotorCyclesCount() ,count);
+
+    }
+
+    @And("match the all {int} with no of vehicles displayed for RidesAndEvents under footer")
+    public void compareAllFooterCountRidesAndEvents(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerRidesAndEventsCount(),count);
+
+    }
+
+    @And("match the all {int} with no of vehicles displayed for Investors under footer")
+    public void compareAllFooterCountInvestors(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerInvestorsCount(), count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for TVSDealerLocator under footer")
+    public void compareAllFooterCountTvsDealerLocator(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerTvsDealerLocatorCount(), count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for AboutUs under footer")
+    public void compareAllFooterCountAboutUs(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerAboutUsCount(), count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for NewsAndMedia under footer")
+    public void compareAllFooterCountNewsAndMedia(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerNewsAndMediaCount(), count);
+    }
+
+    @And("match the all {int} with no of vehicles displayed for Shop under footer")
+    public void compareAllFooterCountShop(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerShopCount(), count);
+    }
+
+
+    @And("match the all {int} with no of vehicles displayed for TvsConnectApp under footer")
+    public void compareAllFooterCountTvsConnectApp(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerTvsConnectAppCount(), count);
+    }
+
+
+    @And("match the all {int} with no of vehicles displayed for scooters under footer")
+    public void compareAllFooterCountScooters(int count)
+    {
+        Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerScootersCount() ,count);
+    }
+
 }

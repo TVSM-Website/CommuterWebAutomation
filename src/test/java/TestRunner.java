@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 
         tags ="@regression",
 
-//          dryRun = true,
+//          dryRun = true, comment
 
         monochrome = true
 

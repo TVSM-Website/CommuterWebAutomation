@@ -66,7 +66,7 @@ public class HomePageStepDef
     {
         homePage.ClickProducts();
         homePage.ClickScootersTab();
-        //System.out.println(homePage.scootersCount.getText());
+        //System.out.println(homePage.scootersCount.getText());//comment
         //compareAllCountScooters(driver.findElements(homePage.allScooters).size());
 
     }

@@ -67,6 +67,10 @@ public class Utilities
         else if ("TestRide_PROD".equalsIgnoreCase(environment)) {
             return "https://www.tvsmotor.com/book-a-ride";
         }
+        else if("TestRideCamp_UAT".equalsIgnoreCase(environment))
+        {
+            return "https://www.tvsmotor.com/book-a-ride-campaign";
+        }
         else {
             throw new IllegalArgumentException("Invalid environment: " + environment);
         }

@@ -5,18 +5,18 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/Resources/features/TVSFooterPage.feature",
+        features = "src/test/Resources/features",
         glue = {"StepDefs", "Hooks"},
         plugin = {"pretty",
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
         },
 
-        //tags = "@testRideCampaign or @testRide", //NtorqtestRide
+         //tags = "@testRideCampaign or @testRide", //NtorqtestRide
         //tags = "@regression", //"@matchedElement or @Raider or @ApacheSeries",
         //tags="@Raider or @ApacheSeries",
         //tags = "@Raider",AllVehicles
 
-        //tags ="@TestRide",
+        tags ="@Raider_ExPrice",
 
 //          dryRun = true,
 

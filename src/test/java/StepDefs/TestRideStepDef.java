@@ -134,7 +134,6 @@ public class TestRideStepDef
     @And("Click on submit button")
     public void click_on_submit_button() throws InterruptedException
     {
-        //Thread.sleep(2000);
         testRidePage.SubmitTestRide();
         //Thread.sleep(1500);
     }

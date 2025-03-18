@@ -1,5 +1,6 @@
 package com.tvs.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,8 +33,7 @@ public class Booking
     @FindBy(id="submitVariant")
     private WebElement next;
 
-    @FindBy(id="localityPlaceHolder")
-    private WebElement location;
+    private final By location=By.xpath("//input[@placeholder='Select Pincode / City']");
 
     @FindBy(id="ui-id-44")
     private WebElement city;
@@ -41,26 +41,18 @@ public class Booking
     @FindBy(id="submitDealer")
     public WebElement submitDealer;
 
-    @FindBy(id="number")
-    private static WebElement mobilenumber;
+    private static final By mobileNumber=By.xpath("//input[@type='number']");
+    private final By name=By.xpath("//input[@name='name']");
 
-    @FindBy(id="name")
-    private WebElement name;
-
-    @FindBy(id="email")
-    private WebElement emailid;
+    @FindBy(xpath="//input[@type='email']")
+    private WebElement emailId;
 
     @FindBy(id="verifyotp")
     public WebElement Verifyotp;
 
-    @FindBy(id="btnVerifyOTP")
-    public WebElement submitOtp;
+    @FindBy(xpath="//button[@class='roboto-bold w-100 m-0 btn btn-primary']")
+    private WebElement submitOtp;
 
-    @FindBy(id="PaymentOptionSubmit")
-    public  WebElement submitPayment;
-
-    @FindBy(id="SubmitPaymentSummary")
-    private WebElement pay;
 
     @FindBy(xpath = "//input[@type='checkbox']")
     public WebElement marketCheckmark;
@@ -68,6 +60,56 @@ public class Booking
     @FindBy(xpath = "//div[@class='verify-box']/span")
     public static WebElement MobileVerified;
 
+    @FindBy(xpath = "//input[@id='checkbox-input-privacy']")
+    private WebElement tncCheckBox;
+
+    @FindBy(xpath = "//button[contains(text(),'Verify Mobile Number')]")
+    public WebElement verifyMobileNumber;
+
+    @FindBy(xpath = "//button[contains(text(),'Pay')]")
+    public WebElement payButton;
+
+    @FindBy(xpath = "(//div[@id='buttons']//a[contains(@class, 'cancel')])[1]")
+    public WebElement cancelPayment;
+
+    @FindBy(xpath = "//a[contains(@class,'confirmCancel')]")
+    public WebElement confirmCancel;
+
+    private final By variantNext=By.cssSelector("button.roboto-medium.fw-semibold.btn.btn-primary:nth-of-type(2)");
+
+
+    public void clickConfirmCancel()
+    {
+        confirmCancel.click();
+    }
+    public void clickCancelPayment()
+    {
+        cancelPayment.click();
+    }
+
+    public void clickPayButton()
+    {
+        payButton.click();
+    }
+    public void clickVerifyMobileNumber()
+    {
+        verifyMobileNumber.click();
+    }
+    public void clickTncCheckBox()
+    {
+        tncCheckBox.click();
+    }
+
+
+    public void clickVariantNext()
+    {
+        driver.findElement(variantNext).click();
+    }
+
+    public void submitOtp()
+    {
+        submitOtp.click();
+    }
 
     public void clickVehicle()
     {
@@ -78,21 +120,16 @@ public class Booking
         bookingLink.click();
     }
 
-    public void setVariant()
-    {
-        variant.click();
-    }
-
     public void clickNext() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement nextclick = wait.until(ExpectedConditions.elementToBeClickable(next));
+        WebElement nextClick = wait.until(ExpectedConditions.elementToBeClickable(next));
         Actions actions= new Actions(driver);
         actions.moveToElement(next).click().build().perform();
     }
 
     public void selectLocation(String loc)
     {
-        location.sendKeys(loc);
+        driver.findElement(location).sendKeys(loc);
     }
 
     public void setCity()
@@ -118,17 +155,17 @@ public class Booking
 
     public void EnterNumber(String num)
     {
-        mobilenumber.sendKeys(num);
+        driver.findElement(mobileNumber).sendKeys(num);
     }
 
     public void setName(String custName)
     {
-        name.sendKeys(custName);
+        driver.findElement(name).sendKeys(custName);
     }
 
     public void setEmailid(String email)
     {
-        emailid.sendKeys(email);
+        emailId.sendKeys(email);
     }
 
     public void clickverifyOtp()
@@ -139,51 +176,6 @@ public class Booking
         actions.scrollToElement(Verifyotp).build().perform();
         otpclick.click();
     }
-    public void setSubmitOtp()
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement submitotp = wait.until(ExpectedConditions.elementToBeClickable(submitOtp));
-        Actions actions= new Actions(driver);
-        actions.scrollToElement(submitOtp).build().perform();
-        submitotp.click();
-        //submitOtp.click();
-    }
-
-    public void setSubmitPayment()
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-        Actions actions= new Actions(driver);
-        actions.scrollToElement(submitPayment).build().perform();
-        WebElement submitotp = wait.until(ExpectedConditions.elementToBeClickable(submitPayment));
-        submitotp.click();
-        //submitPayment.click();
-    }
-
-    public void clickPay()
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-        Actions actions= new Actions(driver);
-        actions.scrollToElement(pay).build().perform();
-        WebElement clickpayment = wait.until(ExpectedConditions.elementToBeClickable(pay));
-        clickpayment.click();
-    }
-
-    public static boolean disableNumber()
-    {
-        mobilenumber.isEnabled();
-        return false;
-    }
-
-    public void disableName()
-    {
-        name.isEnabled();
-    }
-
-    public void disableEmailId()
-    {
-        emailid.isEnabled();
-    }
-
 
     @FindBy(xpath = "//div[@id='OPTNBK']//span[text()='Net Banking'][2]")
     private static WebElement netbanking;

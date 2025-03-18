@@ -1,17 +1,7 @@
-@testRideCampaign @regression
+@TestRideCampaign @RunAll
 Feature: Test ride submission of TVS vehicles for campaigns
-#
-#  Scenario Outline: Submit Test ride form for Apache RR310
-#    Given Navigate to test ride page
-#    When Fill the "<name>", "<mobileNumber>" and "<pinCode>"
-#    Then Request OTP for entered mobile number and verify OTP
-#    And Click on submit button
-#    And Verify the confirmation message of test ride booking
-#
-#    Examples:
-#      | name                    | mobileNumber | pinCode |
-#      | Test Booking Automation | 8088059296   | 590015  |
-  @testRideCampaignNeg
+
+  @NegativeTests
   Scenario Outline: Submit Campaign TesRide forms for TVS Vehicles with Invalid Details
     #Given Navigate to Ntorq page Test Ride page
     Given Navigate to Test Ride page for "<vehicle>"
@@ -20,11 +10,9 @@ Feature: Test ride submission of TVS vehicles for campaigns
     Then enter the invalid name and verify the error message
     And enter the invalid mobile number verify the error message
     And enter the invalid otp to verify error message
-#    And request OTP button should be disabled
-#    And click on the reset button
+    And request OTP button should be disabled
+    And click on the reset button
 
-    #Then Request OTP button is "<otpButtonStatus>"
-    #And Verify on submit button is disabled
 
     Examples: Negative Cases
       | vehicle                |
@@ -40,7 +28,7 @@ Feature: Test ride submission of TVS vehicles for campaigns
       | Jupiter125_Campaign    |
 
 
-  @campaignTestRidePos
+  @TestRidePositiveTests
   Scenario Outline: Submit Campaign TesRide forms for TVS Vehicles with Valid Details
     Given Navigate to Test Ride page for "<vehicle>"
     When Fill the "<name>", "<mobileNumber>" and "<pinCode>"
@@ -52,7 +40,7 @@ Feature: Test ride submission of TVS vehicles for campaigns
     And Click on submit button
     And Verify the confirmation message of test ride booking
     And Verify data in the database after submitting a Test Ride form
-    #And Verify campaign data stored in the database
+    And Verify campaign data stored in the database
 
     Examples: Positive Cases
       | name                 | mobileNumber | pinCode | otpButtonStatus | vehicle                |
@@ -66,33 +54,3 @@ Feature: Test ride submission of TVS vehicles for campaigns
       | Test ride Automation | 1234567891   | 560067  | enabled        | Zest110_Campaign       |
       | Test ride Automation | 1234567891   | 560067  | enabled        | Raider_Campaign        |
       | Test ride Automation | 1234567891   | 560065  | enabled        | Jupiter125_Campaign    |
-
-
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | zest         |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | apacheRTR160 |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | ntorqdrum    |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | mulbikes     |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | TVSSRS       |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | TVSSSRX      |
-#      | Test ride Automation | 8088059296   | 590015  | enabled         | SSRX         |
-
-
-
-#      | name                 | mobileNumber | pinCode | otpButtonStatus
-#      |                      | 8088059296   | 590015  | enabled
-#      | Test ride Automation |              | 590015  | enabled
-#      | Test ride Automation | 8088059296   |         | enabled
-#      | InvalidName123       | 8088059296   | 590015  | enabled
-#      | Test ride Automation | 123456789    | 590015  | disabled
-#      | Test ride Automation | 8088059296   |         | enabled
-
-#  Scenario Outline: Submit Test ride form for TVS Jupiter 125
-#    Given Navigate to Ntorq page and click on test ride button
-#    When Fill the "<name>", "<mobileNumber>" and "<pinCode>"
-#    Then Request OTP for entered mobile number and verify OTP
-#    And Click on submit button
-#    And Verify the confirmation message of test ride booking
-#
-#    Examples:
-#      | name                 | mobileNumber | pinCode |
-#      | Test ride Automation | 8088059296   | 590015  |

@@ -5,20 +5,20 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/Resources/features",
+        features = "src/test/Resources/features/TVSFooterPage.feature",
         glue = {"StepDefs", "Hooks"},
         plugin = {"pretty",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
         },
 
-         //tags = "@testRideCampaign or @testRide", //NtorqtestRide
+        //tags = "@testRideCampaign or @testRide", //NtorqtestRide
         //tags = "@regression", //"@matchedElement or @Raider or @ApacheSeries",
         //tags="@Raider or @ApacheSeries",
         //tags = "@Raider",AllVehicles
 
-        tags ="@regression",
+        //tags ="@TestRide",
 
-//          dryRun = true, comment
+//          dryRun = true,
 
         monochrome = true
 

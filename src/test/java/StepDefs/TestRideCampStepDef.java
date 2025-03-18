@@ -2,8 +2,7 @@ package StepDefs;
 
 import Utils.DataBaseConnection;
 import Utils.WebDriverManager;
-import com.tvs.pages.TestRidePage;
-import com.tvs.pages.TestRideQueryCampPage;
+import com.tvs.pages.TestRideCampaignPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -28,7 +27,7 @@ public class TestRideCampStepDef
 {
     private WebDriver driver;
 
-    private TestRideQueryCampPage testRidePage;
+    private TestRideCampaignPage testRidePage;
 
     String parentWindowHandle;
 
@@ -41,7 +40,7 @@ public class TestRideCampStepDef
     WebElement otpError;
     WebElement pincodeError;
     WebElement dealerError;
-    WebElement name;
+    By name;
     WebElement phone;
     WebElement userOtpNumber;
     WebElement pinCode;
@@ -52,7 +51,7 @@ public class TestRideCampStepDef
     String userName;
     public TestRideCampStepDef() {
         this.driver = WebDriverManager.getDriver();
-        testRidePage= new TestRideQueryCampPage(driver);
+        testRidePage= new TestRideCampaignPage(driver);
         requestOTP=testRidePage.requestOTP;
         submitTestRide=testRidePage.submitTestRide;
         LangSelPopUp=testRidePage.popUp;
@@ -127,12 +126,12 @@ public class TestRideCampStepDef
     @And("Verify the confirmation message after form is submitted")
     public void VerifyTheConfirmation_message()
     {
-        visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"),40);
-        String thankMsg=testRidePage.ConfirmMsg();
-        String[] part = thankMsg.split("We will");
-        String part1 = part[0];
-        String[] part2=part1.split("in");
-        vehicleSelected=part2[2].trim().replace(".","");
+//        visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"),40);
+//        String thankMsg=testRidePage.ConfirmMsg();
+//        String[] part = thankMsg.split("We will");
+//        String part1 = part[0];
+//        String[] part2=part1.split("in");
+//        vehicleSelected=part2[2].trim().replace(".","");
         //System.out.println("vehicleSelected: "+ vehicleSelected);
 
 

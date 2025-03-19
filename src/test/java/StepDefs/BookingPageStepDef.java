@@ -165,7 +165,7 @@ public class BookingPageStepDef {
     {
         JavascriptExecutor js= (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 500)");
-       // visibilityOfElementLocated(driver,By.id("verifyotp"),3);
+        // visibilityOfElementLocated(driver,By.id("verifyotp"),3);
         Assert.assertFalse(verifyOtpbtn.isEnabled());
 
     }

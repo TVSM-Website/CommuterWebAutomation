@@ -1,6 +1,8 @@
 package com.tvs.pages;
 
+import Utils.ExplicitWait;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +23,16 @@ public class HomePage
     }
     @FindBy(xpath = "//div[@class='cookie_but']/a")
     public WebElement AcceptCookie;
+
+    @FindBy(xpath = "(//a[contains(text(),'Booking')])[1]")
+    public static WebElement pageBookingBtn;
+
+    @FindBy(xpath = "(//a[contains(text(),'Test Ride')])[1]")
+    public static WebElement pageTestRideBtn;
+
+    @FindBy(xpath = "(//a[contains(text(),'Dealer Locator')])[1]")
+    public static WebElement pageDealerLocatorBtn;
+
     @FindBy(xpath = "//li[@class='childNav']//a[contains(text(),'Products')]")
     private WebElement Products;
 
@@ -30,12 +42,16 @@ public class HomePage
     @FindBy(xpath = "//select[@id='stateDrp']")
     private WebElement stateDropdown;
 
+
+
     //@FindBy(xpath = "//div[@id='Scooters']/div/ul/li/a")
-    public By allScooters=By.xpath("//div[@id='Scooters']/div/ul/li/a");
+    public By allScooters=By.xpath("//div[@id='mCSB_2_container']/div/ul/li/a");
     public By allMotorCycles=By.xpath("//div[@id='Motorcycles']/div/div/div/div/ul/li/a");
-    public By allElectric=By.xpath("//div[@id='Electric']/div/ul/li/a");
-    public By allMopeds=By.xpath("//div[@id='Mopeds']/div/ul/li/a");
-    public By allThreeWheelers=By.xpath("//div[@id='Three-Wheelers']/div/ul/li/a");
+    public By allElectric=By.xpath("//div[@id='mCSB_3_container_wrapper']/div/div/ul/li/a");
+    public By allMopeds=By.xpath("//div[@id='mCSB_9_container']/div/ul/li/a");
+    public By allThreeWheelers=By.xpath("//div[@id='mCSB_10_container']/div/ul/li/a");
+
+    public By langPopUp=By.xpath("//div[contains(@class,'langCont')]");
 
     @FindBy(xpath = "//div[@id='Motorcycles']//div[@class='product-wrap-lg']/h3")
     public WebElement motorCyclesCount;
@@ -77,106 +93,14 @@ public class HomePage
     @FindBy(xpath ="//li[@data-id='#set5']/a")
     private WebElement threewheeler;
 
-    @FindBy(xpath = "//a[@class='testDriveDesk icon-bookVehicle']")
-    private WebElement booking;
+    @FindBy(xpath = "//img[contains(@src, 'Buy-vehicle.svg')]/parent::a")
+    private WebElement BuyVehicle;
 
     @FindBy(xpath = "//div[@class='infoCont']/p[2]")
     private List<WebElement> stateoncards;
 
     @FindBy(xpath = "//div[@class='infoCont']/p[1]")
     private List<WebElement> vehicleName;
-
-
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='motorcycles']//ul/li/a" )
-    public List<WebElement> footerMotorCycles;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='ridesEvents']//ul/li/a" )
-    public List<WebElement> footerRidesAndEvents;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='investors']/ul/li/a" )
-    public List<WebElement> footerInvestors;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='dealerLocator']/ul/li/a" )
-    public List<WebElement> footerTVSDealerLocator;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='aboutUs']/ul/li/a" )
-    public List<WebElement> footerAboutUs;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='newsMedia']/ul/li/a" )
-    public List<WebElement> footerNewsAndMedia;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='shop']/ul/li/a" )
-    public List<WebElement> footerSHOP;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@class='footer-connect-app']/div/a" )
-    public List<WebElement> footerTvsConnectApp;
-
-
-
-
-
-
-
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='scooters']//ul/li/a" )
-    public List<WebElement> footerScooters;
-
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='moped']//ul/li/a" )
-    public List<WebElement> footerMopeds;
-
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='electricScooters']//ul/li/a" )
-    public List<WebElement> footerElectricScooters;
-
-    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='threeWheeler']//ul/li/a" )
-    public List<WebElement> footerThreeWheeler;
-
-
-    @FindBy(xpath = "//div[@id='motorcycles']/ul/li")
-    public List<WebElement> footerMotorCyclesCount;
-
-    @FindBy(xpath = "//div[@id='ridesEvents']//ul/li/a")
-    public List<WebElement> footerRidesAndEventsCount;
-
-    @FindBy(xpath = "//div[@id='investors']/ul/li/a")
-    public List<WebElement> footerInvestorsCount;
-
-    @FindBy(xpath = "//div[@id='dealerLocator']/ul/li/a")
-    public List<WebElement> footerTvsDealerLocatorCount;
-
-    @FindBy(xpath = "//div[@id='aboutUs']/ul/li/a")
-    public List<WebElement> footerAboutUsCount;
-
-    @FindBy(xpath = "//div[@id='newsMedia']/ul/li/a")
-    public List<WebElement> footerNewsAndMediaCount;
-
-    @FindBy(xpath = "//div[@id='shop']/ul/li/a")
-    public List<WebElement> footerShopCount;
-
-    @FindBy(xpath = "//div[@class='footer-connect-app']/div/a")
-    public List<WebElement> footerTvsConnectAppCount;
-
-
-
-
-
-    @FindBy(xpath = "//div[@id='scooters']/ul/li")
-    public List<WebElement> footerScooterCount;
-
-    @FindBy(xpath = "//div[@id='moped']/ul/li")
-    public List<WebElement> footerMopedCount;
-
-
-    @FindBy(xpath = "//div[@id='electricScooters']/ul/li")
-    public List<WebElement> footerElectricScootersCount;
-
-
-
-    @FindBy(xpath = "//div[@id='threeWheeler']/ul/li")
-    public List<WebElement> footerThreeWheelerCount;
-
 
 
     public int scootersCount()
@@ -225,7 +149,7 @@ public class HomePage
     public void ClickProducts() throws InterruptedException
     {
         //Thread.sleep(3000);
-        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 5);
+        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 10);
         ClickProducts.click();
     }
 
@@ -313,9 +237,10 @@ public class HomePage
             }
         }
     }
-    public void setBooking()
+    public void clickBuyVehicle()
     {
-        booking.click();
+        waitForElementToBeClickable(driver, BuyVehicle, 10);
+        BuyVehicle.click();
     }
 
     public void ClickMotorCyclesTab()
@@ -341,68 +266,32 @@ public class HomePage
         Click3WheelerTab.click();
     }
 
-
-    public int footerMotorCyclesCount()
+    public void langPopUpDisappear()
     {
-        return footerMotorCyclesCount.size();
-    }
-
-    public int footerRidesAndEventsCount()
-    {
-        return footerRidesAndEventsCount.size();
-    }
-
-    public int footerInvestorsCount()
-    {
-        return footerRidesAndEventsCount.size();
-    }
-
-    public int footerTvsDealerLocatorCount()
-    {
-        return footerTvsDealerLocatorCount.size();
-    }
-    public int footerAboutUsCount()
-    {
-        return footerAboutUsCount.size();
-    }
-    public int footerNewsAndMediaCount()
-    {
-        return footerNewsAndMediaCount.size();
-    }
-    public int footerShopCount()
-    {
-        return footerShopCount.size();
-    }
-    public int footerTvsConnectAppCount()
-    {
-        return footerTvsConnectAppCount.size();
+        ExplicitWait.waitForLoaderToDisappear(driver, langPopUp, 10);
     }
 
 
-
-
-
-
-
-    public int footerScootersCount()
+    public static void clickBookingBtn(WebDriver driver) throws InterruptedException
     {
-        return footerScooterCount.size();
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageBookingBtn);
+
+
     }
 
-    public int footerMopedsCount()
+    public static void clickTestRideBtn(WebDriver driver) throws InterruptedException
     {
-        return footerMopedCount.size();
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageTestRideBtn);
+
     }
 
-    public int footerElectricScootersCount()
+    public static void clickDealerLocatorBtn(WebDriver driver) throws InterruptedException
     {
-        return footerElectricScootersCount.size();
-    }
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageDealerLocatorBtn);
 
-
-    public int footerThreeWheelerCount()
-    {
-        return footerThreeWheelerCount.size();
     }
 
 

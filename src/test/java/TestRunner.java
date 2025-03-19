@@ -11,12 +11,12 @@ import org.junit.runner.RunWith;
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
         },
 
-         //tags = "@testRideCampaign or @testRide", //NtorqtestRide
+        //tags = "@testRideCampaign or @testRide", //NtorqtestRide
         //tags = "@regression", //"@matchedElement or @Raider or @ApacheSeries",
         //tags="@Raider or @ApacheSeries",
         //tags = "@Raider",AllVehicles
 
-        tags ="@Raider_ExPrice",
+        tags ="@PageSpeed",
 
 //          dryRun = true,
 

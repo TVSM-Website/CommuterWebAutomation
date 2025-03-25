@@ -16,6 +16,13 @@ public class ExplicitWait
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public static Boolean iswebelementvisible(WebDriver driver, WebElement element, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        WebElement Element1 = wait.until(ExpectedConditions.visibilityOf(element));
+        if (Element1.isSelected())  {     return true;        }
+        else {return false;}
+    }
+
     public static WebElement visibilityofwebelement(WebDriver driver, WebElement element, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
         return wait.until(ExpectedConditions.visibilityOf(element));

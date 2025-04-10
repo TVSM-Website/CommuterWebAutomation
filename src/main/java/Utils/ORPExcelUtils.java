@@ -25,7 +25,8 @@ public class ORPExcelUtils
                 columnIndices.put(cell.getStringCellValue(), cell.getColumnIndex());
             }
 
-            while (rowIterator.hasNext()) {
+            while (rowIterator.hasNext())
+            {
                 Row currentRow = rowIterator.next();
                 String model = currentRow.getCell(columnIndices.get("Model")).getStringCellValue();
                 String variant = currentRow.getCell(columnIndices.get("Variant")).getStringCellValue();
@@ -66,5 +67,28 @@ public class ORPExcelUtils
 
     public static String MappedStateName(String state) {
         return stateMapping.getOrDefault(state, state);
+    }
+
+    private static final Map<String, String> stateMappingRaider;
+
+    static {
+        stateMappingRaider = new HashMap<>();
+        stateMappingRaider.put("Andaman And Nicobar Islands", "Andaman");
+        stateMappingRaider.put("Andhra Pradesh", "Andhra pradesh");
+        stateMappingRaider.put("Arunachal Pradesh", "Northeast - Arunachal Pradesh");
+        stateMappingRaider.put("Dadra And Nagar Haveli", "Silvasa");
+        stateMappingRaider.put("Jammu And Kashmir", "Jammu & Kashmir");
+        stateMappingRaider.put("Madhya Pradesh", "Madhya pradesh");
+        stateMappingRaider.put("Manipur", "Northeast - Manipur");
+        stateMappingRaider.put("Mizoram", "Northeast - Mizoram");
+        stateMappingRaider.put("Nagaland", "Northeast - Nagaland");
+        stateMappingRaider.put("Puducherry", "Pondicherry");
+        stateMappingRaider.put("Tamil Nadu", "Tamilnadu");
+        stateMappingRaider.put("Tripura", "Northeast -Tripura");
+        stateMappingRaider.put("Uttar Pradesh", "Uttar pradesh");
+    }
+
+    public static String MappedStateNameRaider(String state) {
+        return stateMappingRaider.getOrDefault(state, state);
     }
 }

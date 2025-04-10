@@ -1,6 +1,8 @@
 package com.tvs.pages;
 
+import Utils.ExplicitWait;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +23,16 @@ public class HomePage
     }
     @FindBy(xpath = "//div[@class='cookie_but']/a")
     public WebElement AcceptCookie;
+
+    @FindBy(xpath = "(//a[contains(text(),'Booking')])[1]")
+    public static WebElement pageBookingBtn;
+
+    @FindBy(xpath = "(//a[contains(text(),'Test Ride')])[1]")
+    public static WebElement pageTestRideBtn;
+
+    @FindBy(xpath = "(//a[contains(text(),'Dealer Locator')])[1]")
+    public static WebElement pageDealerLocatorBtn;
+
     @FindBy(xpath = "//li[@class='childNav']//a[contains(text(),'Products')]")
     private WebElement Products;
 
@@ -30,12 +42,16 @@ public class HomePage
     @FindBy(xpath = "//select[@id='stateDrp']")
     private WebElement stateDropdown;
 
+
+
     //@FindBy(xpath = "//div[@id='Scooters']/div/ul/li/a")
-    public By allScooters=By.xpath("//div[@id='Scooters']/div/ul/li/a");
+    public By allScooters=By.xpath("//div[@id='mCSB_2_container']/div/ul/li/a");
     public By allMotorCycles=By.xpath("//div[@id='Motorcycles']/div/div/div/div/ul/li/a");
-    public By allElectric=By.xpath("//div[@id='Electric']/div/ul/li/a");
-    public By allMopeds=By.xpath("//div[@id='Mopeds']/div/ul/li/a");
-    public By allThreeWheelers=By.xpath("//div[@id='Three-Wheelers']/div/ul/li/a");
+    public By allElectric=By.xpath("//div[@id='mCSB_3_container_wrapper']/div/div/ul/li/a");
+    public By allMopeds=By.xpath("//div[@id='mCSB_9_container']/div/ul/li/a");
+    public By allThreeWheelers=By.xpath("//div[@id='mCSB_10_container']/div/ul/li/a");
+
+    public By langPopUp=By.xpath("//div[contains(@class,'langCont')]");
 
     @FindBy(xpath = "//div[@id='Motorcycles']//div[@class='product-wrap-lg']/h3")
     public WebElement motorCyclesCount;
@@ -77,8 +93,8 @@ public class HomePage
     @FindBy(xpath ="//li[@data-id='#set5']/a")
     private WebElement threewheeler;
 
-    @FindBy(xpath = "//a[@class='testDriveDesk icon-bookVehicle']")
-    private WebElement booking;
+    @FindBy(xpath = "//img[contains(@src, 'Buy-vehicle.svg')]/parent::a")
+    private WebElement BuyVehicle;
 
     @FindBy(xpath = "//div[@class='infoCont']/p[2]")
     private List<WebElement> stateoncards;
@@ -133,7 +149,7 @@ public class HomePage
     public void ClickProducts() throws InterruptedException
     {
         //Thread.sleep(3000);
-        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 5);
+        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 10);
         ClickProducts.click();
     }
 
@@ -221,9 +237,10 @@ public class HomePage
             }
         }
     }
-    public void setBooking()
+    public void clickBuyVehicle()
     {
-        booking.click();
+        waitForElementToBeClickable(driver, BuyVehicle, 10);
+        BuyVehicle.click();
     }
 
     public void ClickMotorCyclesTab()
@@ -247,6 +264,34 @@ public class HomePage
     {
         WebElement Click3WheelerTab=waitForElementToBeClickable(driver,productsThreeWheelers,10);
         Click3WheelerTab.click();
+    }
+
+    public void langPopUpDisappear()
+    {
+        ExplicitWait.waitForLoaderToDisappear(driver, langPopUp, 10);
+    }
+
+
+    public static void clickBookingBtn(WebDriver driver) throws InterruptedException
+    {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageBookingBtn);
+
+
+    }
+
+    public static void clickTestRideBtn(WebDriver driver) throws InterruptedException
+    {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageTestRideBtn);
+
+    }
+
+    public static void clickDealerLocatorBtn(WebDriver driver) throws InterruptedException
+    {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageDealerLocatorBtn);
+
     }
 
 

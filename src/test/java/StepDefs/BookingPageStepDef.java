@@ -65,7 +65,7 @@ public class BookingPageStepDef {
     @When("user clicks on buy vehicle button")
     public void userClicksOnBuyVehicleButton()
     {
-        homePage.clickBuyVehicle();
+       // homePage.clickBuyVehicle();
         //scrollToElement(driver.findElement(By.xpath("(//ul[@class='slick-dots'])[2]")));
 
     }

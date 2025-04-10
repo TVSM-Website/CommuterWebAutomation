@@ -10,6 +10,9 @@ import org.openqa.selenium.*;
 
 import java.io.IOException;
 
+import static Utils.ExplicitWait.iswebelementvisible;
+import static Utils.ExplicitWait.visibilityofwebelement;
+
 public class TVSPagespeedStepDef {
     private final WebDriver driver;
     private final PageSpeedPage pageSpeedPage;
@@ -65,22 +68,24 @@ public class TVSPagespeedStepDef {
 
     @Then("prints the LCP and FCP values from Page Speed with TVS Website for Desktop")
     public void printLCPAndFCPValuesForDesktop() throws IOException {
-
-        if (tvsUrl.contains("book-a-ride")){
-            String LCPValue = pageSpeedPage.BookRide_Desktop_LCP_Text.getText();
-            System.out.println("LCP Value .....  " + LCPValue);
-            PageSpeedExcelUtils.setCellValue(excelPath, LCPValue);
-            String FCPValue = pageSpeedPage.BookRide_Desktop_FCP_Text.getText();
-            System.out.println("FCP Value .....  " + FCPValue);
-            PageSpeedExcelUtils.setCellValue(excelPath, FCPValue);
-        }
-        else {
+//        if (iswebelementvisible(driver,pageSpeedPage.Desktop_LCP_Text, 10))
+        try
+        {
             String LCPValue = pageSpeedPage.Desktop_LCP_Text.getText();
             System.out.println("LCP Value .....  " + LCPValue);
             PageSpeedExcelUtils.setCellValue(excelPath, LCPValue);
             String FCPValue = pageSpeedPage.Desktop_FCP_Text.getText();
             System.out.println("FCP Value .....  " + FCPValue);
             PageSpeedExcelUtils.setCellValue(excelPath, FCPValue);
+        }
+       catch(Exception e) {
+            String LCPValue = pageSpeedPage.Alternate_Desktop_LCP_Text.getText();
+            System.out.println("LCP Value .....  " + LCPValue);
+            PageSpeedExcelUtils.setCellValue(excelPath, LCPValue);
+            String FCPValue = pageSpeedPage.Alternate_Desktop_FCP_Text.getText();
+            System.out.println("FCP Value .....  " + FCPValue);
+            PageSpeedExcelUtils.setCellValue(excelPath, FCPValue);
+
         }
     }
 }

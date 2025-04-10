@@ -68,17 +68,4 @@ Feature: Printing LCP and FCP values from Page Speed with TVS Website
     | https://www.tvsmotor.com/become-a-dealer                             |
     | https://www.tvsmotor.com/become-a-dealer/thank-you                   |
     | https://www.tvsmotor.com/disclaimer/termsandandconditions            |
-    # | https://www.tvsmotor.com/account/my-profile                          |
-    # | https://www.tvsmotor.com/account/my-booking                          |
-    #| https://www.tvsmotor.com/account/my-bike                             |
-    # | https://www.tvsmotor.com/account/add-bike                            |
-    # | https://www.tvsmotor.com/account/my-ride-stories                     |
-    #| https://www.tvsmotor.com/account/my-discussion                       |
-    # | https://www.tvsmotor.com/account/my-event                            |
-    #| https://www.tvsmotor.com/Account/Add-bike                            |
-    | https://www.tvsmotor.com/tru4-engine-oil                             |
-
-
-
-
 

@@ -102,6 +102,95 @@ public class HomePage
     @FindBy(xpath = "//div[@class='infoCont']/p[1]")
     private List<WebElement> vehicleName;
 
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='motorcycles']//ul/li/a" )
+    public List<WebElement> footerMotorCycles;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='ridesEvents']//ul/li/a" )
+    public List<WebElement> footerRidesAndEvents;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='investors']/ul/li/a" )
+    public List<WebElement> footerInvestors;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='dealerLocator']/ul/li/a" )
+    public List<WebElement> footerTVSDealerLocator;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='aboutUs']/ul/li/a" )
+    public List<WebElement> footerAboutUs;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='newsMedia']/ul/li/a" )
+    public List<WebElement> footerNewsAndMedia;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='shop']/ul/li/a" )
+    public List<WebElement> footerSHOP;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@class='footer-connect-app']/div/a" )
+    public List<WebElement> footerTvsConnectApp;
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='scooters']//ul/li/a" )
+    public List<WebElement> footerScooters;
+
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='moped']//ul/li/a" )
+    public List<WebElement> footerMopeds;
+
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='electricScooters']//ul/li/a" )
+    public List<WebElement> footerElectricScooters;
+
+    @FindBy(xpath = "//footer[@class='tvs-corporate-footer']//div[@id='threeWheeler']//ul/li/a" )
+    public List<WebElement> footerThreeWheeler;
+
+
+    @FindBy(xpath = "//div[@id='motorcycles']/ul/li")
+    public List<WebElement> footerMotorCyclesCount;
+
+    @FindBy(xpath = "//div[@id='ridesEvents']//ul/li/a")
+    public List<WebElement> footerRidesAndEventsCount;
+
+    @FindBy(xpath = "//div[@id='investors']/ul/li/a")
+    public List<WebElement> footerInvestorsCount;
+
+    @FindBy(xpath = "//div[@id='dealerLocator']/ul/li/a")
+    public List<WebElement> footerTvsDealerLocatorCount;
+
+    @FindBy(xpath = "//div[@id='aboutUs']/ul/li/a")
+    public List<WebElement> footerAboutUsCount;
+
+    @FindBy(xpath = "//div[@id='newsMedia']/ul/li/a")
+    public List<WebElement> footerNewsAndMediaCount;
+
+    @FindBy(xpath = "//div[@id='shop']/ul/li/a")
+    public List<WebElement> footerShopCount;
+
+    @FindBy(xpath = "//div[@class='footer-connect-app']/div/a")
+    public List<WebElement> footerTvsConnectAppCount;
+
+
+
+
+
+    @FindBy(xpath = "//div[@id='scooters']/ul/li")
+    public List<WebElement> footerScooterCount;
+
+    @FindBy(xpath = "//div[@id='moped']/ul/li")
+    public List<WebElement> footerMopedCount;
+
+
+    @FindBy(xpath = "//div[@id='electricScooters']/ul/li")
+    public List<WebElement> footerElectricScootersCount;
+
+
+
+    @FindBy(xpath = "//div[@id='threeWheeler']/ul/li")
+    public List<WebElement> footerThreeWheelerCount;
+
 
     public int scootersCount()
     {
@@ -136,10 +225,10 @@ public class HomePage
 
 
 
-    public void ClickScootersTab()
-    {
-        WebElement ClickscooterTab=waitForElementToBeClickable(driver,productsScooters,10);
-        ClickscooterTab.click();
+    public void ClickScootersTab() throws InterruptedException {
+        Thread.sleep(3000);
+        WebElement ClickScooterTab=waitForElementToBeClickable(driver,productsScooters,5);
+        ClickScooterTab.click();
     }
     public void ClickViewAllVehicles()
     {
@@ -148,8 +237,8 @@ public class HomePage
 
     public void ClickProducts() throws InterruptedException
     {
-        //Thread.sleep(3000);
-        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 10);
+        Thread.sleep(3000);
+        WebElement ClickProducts=waitForElementToBeClickable(driver, Products, 5);
         ClickProducts.click();
     }
 
@@ -293,6 +382,72 @@ public class HomePage
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", pageDealerLocatorBtn);
 
     }
+
+    public int footerMotorCyclesCount()
+    {
+        return footerMotorCyclesCount.size();
+    }
+
+    public int footerRidesAndEventsCount()
+    {
+        return footerRidesAndEventsCount.size();
+    }
+
+    public int footerInvestorsCount()
+    {
+        return footerRidesAndEventsCount.size();
+    }
+
+    public int footerTvsDealerLocatorCount()
+    {
+        return footerTvsDealerLocatorCount.size();
+    }
+    public int footerAboutUsCount()
+    {
+        return footerAboutUsCount.size();
+    }
+    public int footerNewsAndMediaCount()
+    {
+        return footerNewsAndMediaCount.size();
+    }
+    public int footerShopCount()
+    {
+        return footerShopCount.size();
+    }
+    public int footerTvsConnectAppCount()
+    {
+        return footerTvsConnectAppCount.size();
+    }
+
+
+
+
+
+
+
+    public int footerScootersCount()
+    {
+        return footerScooterCount.size();
+    }
+
+    public int footerMopedsCount()
+    {
+        return footerMopedCount.size();
+    }
+
+    public int footerElectricScootersCount()
+    {
+        return footerElectricScootersCount.size();
+    }
+
+
+    public int footerThreeWheelerCount()
+    {
+        return footerThreeWheelerCount.size();
+    }
+
+
+
 
 
 

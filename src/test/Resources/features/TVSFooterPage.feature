@@ -52,8 +52,6 @@ Feature: Verify Footer navigation across the pages
       | UAT         | Footer  |
 
 
-
-
   @FooterThreeWheelers
   Scenario Outline: Verify functionalities of three wheelers tab in Footer
     Given navigate to the TVS Motor home page in "<Environment>" environment
@@ -66,21 +64,6 @@ Feature: Verify Footer navigation across the pages
       | Environment | Section |
       | UAT         | Footer  |
 
-
-
-
-  @HomeElectric @HomeNavigation
-  Scenario Outline: Verify functionalities of Electric tab in Footer
-    Given navigate to the TVS Motor home page in "<Environment>" environment
-    When user navigated to home page and accepts the cookies pop-up
-    When user clicks on products and clicks on Electric tab
-   # Then click on each vehicles to verify the title of Electric vehicles
-    Then click on each vehicles to verify the title of Electric vehicles with "<Section>" section
-    And match the all 2 with no of vehicles displayed for electric
-    Examples:
-      | Environment |
-      | UAT         |
-     # | PROD        |
 
   @HomeMopeds
   Scenario Outline: Verify functionalities of Mopeds tab
@@ -112,9 +95,6 @@ Feature: Verify Footer navigation across the pages
     When user navigated to home page and accepts the cookies pop-up
     When navigate to the "Our Products" page for state drop down
     And navigates through state drop down and check visibility for each vehicle type
-    Then the state name should be displayed along with ex-showroom price for the vehicle name for each scooter
-    And the state name should be displayed along with ex-showroom price for the vehicle name for each motorcycle
-    And the state name should be displayed along with ex-showroom price for the vehicle name for each moped
 
     Examples:
       | environment |

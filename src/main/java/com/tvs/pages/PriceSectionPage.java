@@ -24,7 +24,7 @@ public class PriceSectionPage
     @FindBy(xpath = "//div[@class='filter-option']")  //
     public WebElement stateDropdown;
 
-    @FindBy(xpath = "(//div[@class='filter-option-inner'])[3]")
+    @FindBy(xpath = "(//div[@class='tvs-state-dropdown'])[2]")
     public WebElement stateDropdownRaider;
 
     @FindBy(xpath = "//div[@id='pricestate']")
@@ -38,9 +38,9 @@ public class PriceSectionPage
 
     //public By states=By.xpath("//div[@id='bs-select-1']/ul/li/a/span");
     //public By states=By.xpath("//div[@class='form-group stateDrpDwn'][1]/div//div[@class='inner open']/ul/li/a/span");
-    //public By states = By.xpath("(//div[@id='pricestate-drop']//ul/li[@value and @data-state-name] | //select[@id='state']/option[@value and normalize-space()] | //div[contains(@class, 'dropdown-menu')]//ul/li[normalize-space()])[position() <= 34]");
+    public By states = By.xpath("(//div[@id='pricestate-drop']//ul/li[@value and @data-state-name] | //select[@id='state']/option[@value and normalize-space()] | //div[contains(@class, 'dropdown-menu')]//ul/li[normalize-space()])[position() <= 34]");
 
-    public By states=By.xpath("(//div[@id='pricestate-drop']//ul/li[@value and @data-state-name] | //select[@id='state']/option[@value and normalize-space()] | //div[contains(@class, 'dropdown-menu')]//ul/li[normalize-space()])[position() <= 34]");
+    //public By states=By.xpath("(//div[contains(@class, 'tvs-state-dropdown-list-item')])[position() > 34]");
 
     public By apacheStates=By.xpath("(//div[@class='form-group stateDrpDwn'])[2]//div[@class='dropdown-menu open']/ul/li/a/span[@class='text' and not(contains(text(), 'Choose State'))]");
     public By statesRaider =By.xpath("//div[@id='bs-select-1']/ul/li");

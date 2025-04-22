@@ -78,7 +78,7 @@ public class TvsSportORPStepDef
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
 
-            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'langCont')]")));
+            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'langCont roboto-bold')]")));
             if (selectLanguagePopUp.isDisplayed())
             {
                 By languageSelector = sportExPricePage.getLanguageSelector("English");
@@ -181,7 +181,7 @@ public class TvsSportORPStepDef
 
     @Then("compare UI and API prices with Excel prices for all the variants and states")
     public void compareUIAndAPIPricesWithExcelPrice() throws IOException {
-        JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+        JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
         if (env.equalsIgnoreCase("UAT"))
@@ -198,7 +198,7 @@ public class TvsSportORPStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_16042025.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantName");

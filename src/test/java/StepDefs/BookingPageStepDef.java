@@ -65,8 +65,8 @@ public class BookingPageStepDef {
     @When("user clicks on buy vehicle button")
     public void userClicksOnBuyVehicleButton()
     {
-       // homePage.clickBuyVehicle();
-        //scrollToElement(driver.findElement(By.xpath("(//ul[@class='slick-dots'])[2]")));
+        homePage.clickBuyVehicle();
+        scrollToElement(driver.findElement(By.xpath("(//ul[@class='slick-dots'])[2]")));
 
     }
 
@@ -111,7 +111,7 @@ public class BookingPageStepDef {
 
     @Then("select the variant {string}")
     public void selectTheVariant(String variant) throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(3500);
         //scrollToElement(driver.findElement(By.xpath("(//div[@class='specification-details-wrap'])[1]")));
         scrollByPixels(220);
         List<WebElement> variantElements = driver.findElements(By.cssSelector(".generic-nav.nav .nav-item a"));
@@ -119,6 +119,7 @@ public class BookingPageStepDef {
         for (WebElement variantElement : variantElements) {
             if (variantElement.getText().trim().equalsIgnoreCase(variant))
             {
+                Thread.sleep(3000);
                 variantElement.click();
                 return; // Exit once the variant is found and clicked
             }
@@ -148,7 +149,7 @@ public class BookingPageStepDef {
             }
         }
 
-        Thread.sleep(3000);
+        Thread.sleep(8000);
 
     }
 
@@ -245,7 +246,7 @@ public class BookingPageStepDef {
     @And("click on the Pay button")
     public void clickOnThePayButton()
     {
-        waitForElementToBeClickable(driver,booking.payButton,10);
+        waitForElementToBeClickable(driver,booking.payButton,12);
         booking.clickPayButton();
     }
 

@@ -1,5 +1,6 @@
 package com.tvs.pages;
 
+import Utils.ExplicitWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -94,6 +95,7 @@ public class Booking
     }
     public void clickVerifyMobileNumber()
     {
+        ExplicitWait.waitForElementToBeClickable(driver,verifyMobileNumber,10);
         verifyMobileNumber.click();
     }
     public void clickTncCheckBox()

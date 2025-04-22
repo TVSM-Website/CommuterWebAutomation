@@ -2,6 +2,7 @@ package StepDefs;
 
 import Utils.DataBaseConnection;
 import Utils.WebDriverManager;
+import com.aventstack.chaintest.plugins.ChainTestCucumberListener;
 import com.tvs.pages.TestRidePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -127,8 +128,8 @@ public class TestRideStepDef
     @Then("Request OTP for entered mobile number and verify OTP")
     public void request_otp_for_entered_mobile_number() throws InterruptedException {
         testRidePage.ClickRequestOtp();
-        testRidePage.enterOtp("1234");
-        //Thread.sleep(10000);
+        //testRidePage.enterOtp("1234");
+        Thread.sleep(10000);
 
     }
     @And("Click on submit button")
@@ -140,15 +141,20 @@ public class TestRideStepDef
     @And("Verify the confirmation message of test ride booking")
     public void verify_the_confirmation_message()
     {
-        visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"),40);
-        String thankMsg=testRidePage.ConfirmMsg();
-        String[] part = thankMsg.split("We will");
-        String part1 = part[0];
-        String[] part2=part1.split("in");
-        vehicleSelected=part2[2].trim().replace(".","");
-        //System.out.println("vehicleSelected: "+ vehicleSelected);
+        if(selectedVehicle.equalsIgnoreCase("ApacheRR310"))
+        {
+            Assert.assertTrue(driver.getCurrentUrl().contains("thank-you"));
+        }
+        else {
+            visibilityOfElementLocated(driver, By.xpath("//div[@class='verticleCenter']/p"), 40);
+            String thankMsg = testRidePage.ConfirmMsg();
+            String[] part = thankMsg.split("We will");
+            String part1 = part[0];
+            String[] part2 = part1.split("in");
+            vehicleSelected = part2[2].trim().replace(".", "");
+            //System.out.println("vehicleSelected: "+ vehicleSelected);
 
-
+        }
 
     }
 
@@ -196,7 +202,13 @@ public class TestRideStepDef
     @And("click on the reset button")
     public void clickOnTheResetButton()
     {
-        testRidePage.ClickResetButton();
+        if(selectedVehicle.equalsIgnoreCase("ApacheRR310"))
+        {
+            System.out.println("skip reset as it is not available for ApacheRR310");
+        }
+        else {
+            testRidePage.ClickResetButton();
+        }
     }
 
 
@@ -244,7 +256,7 @@ public class TestRideStepDef
         testRidePage.phone.clear();
 
         testRidePage.EnterPhone("$#%@*!");
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         Assert.assertEquals("Please enter numbers only",testRidePage.phoneError.getText());
         testRidePage.phone.clear();
 

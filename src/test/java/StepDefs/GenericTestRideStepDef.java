@@ -97,11 +97,14 @@ public class GenericTestRideStepDef
         Select selectVariant = new Select(variantDropdown);
 
         try {
+            Thread.sleep(2000);
             selectVariant.selectByVisibleText(variant);
             System.out.println("Variant selected: " + variant);
         } catch (NoSuchElementException e) {
             System.out.println("Variant '" + variant + "' not found in the dropdown.");
             throw e;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

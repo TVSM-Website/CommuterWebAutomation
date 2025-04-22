@@ -62,7 +62,7 @@ public class PriceApacheStepDef {
         apacheStates = priceSectionPage.apacheStates;
 
     }
-    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_19112024.xlsx", "UAT");
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_16012025.xlsx", "Sheet1");
 
     @Given("navigate to the {string} page in {string}")
     public void navigateToThePageIn(String vehicle, String environment) throws IOException {
@@ -150,6 +150,7 @@ public class PriceApacheStepDef {
 
                 stateElement.click();
                 waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
+                Thread.sleep(1000);
                 priceSectionPage.ClickOnRoadPrice();
                 waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
 
@@ -189,13 +190,13 @@ public class PriceApacheStepDef {
     @Then("for each state get the API On-Road prices")
     public void getAPIOnRoadPrices()
     {
-        JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+        JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
         Response response;
-
         if (env.equalsIgnoreCase("UAT")) {
             //System.out.println("SelectedVar-" + selectedVariant);
             response = OrpDetailsUAT(selectedVariant, stateCode);
+
         } else if (env.equalsIgnoreCase("PROD")) {
             //System.out.println("SelectedVar-" + selectedVariant);
             response = OrpDetailsPROD(selectedVariant, stateCode);
@@ -249,10 +250,9 @@ public class PriceApacheStepDef {
                 //System.out.println(uiPrices.containsKey(variantName));
                 // Get Excel price
                 String key = selectedVariant.toUpperCase()+ "|" + variantName + "|" + MappedStateName(state);
-                //System.out.println("KeyValue: " + key);
                 long roundedExcelPrice = 0;
                 if (excelPrices.containsKey(key)) {
-                    double excelOnRoadPrice = Float.parseFloat(excelPrices.get(key).get("OnRoadPrice"));
+                    double excelOnRoadPrice = Double.parseDouble(excelPrices.get(key).get("OnRoadPrice"));
                     roundedExcelPrice = Math.round(excelOnRoadPrice);
                 } else {
                     System.out.println("Model " + variantName + " not found in Excel data");
@@ -269,29 +269,7 @@ public class PriceApacheStepDef {
             else {
                 System.out.println("Model " + variantName + " not found in UI data");
             }
-//            if (uiPrices.containsKey(AlternativeVariantName))
-//            {
-//                int uiOnRoadPrice = Integer.parseInt(uiPrices.get(AlternativeVariantName));
-//                System.out.println("Comparing prices for model: " + AlternativeVariantName);
-//                String key = selectedVariant+ "|" + variantName + "|" + MappedStateName(state);
-//                long roundedExcelPrice = 0;
-//                if (excelPrices.containsKey(key)) {
-//                    double excelOnRoadPrice = Float.parseFloat(excelPrices.get(key).get("OnRoadPrice"));
-//                    roundedExcelPrice = Math.round(excelOnRoadPrice);
-//                } else {
-//                    System.out.println("Model " + AlternativeVariantName + " not found in Excel data");
-//                }
-//
-//                System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
-//
-//                // Assertions
-//                assertEquals("Price mismatch for model: " + AlternativeVariantName, apiOnRoadPrice, uiOnRoadPrice);
-//                //assertEquals("Price mismatch for model: " + AlternativeVariantName + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
-//            }
-//            else {
-//                System.out.println("---Alt model----");
-//                System.out.println("Model " + AlternativeVariantName + " not found in UI data");
-//            }
+
         }
     }
 

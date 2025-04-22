@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
+import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;
@@ -124,7 +125,7 @@ public class ExShowRoomPriceStepDef
 
     @Then("compare UI and API prices with Excel prices for all variants in each state")
     public void compareUIAPIExcelPrices() throws IOException {
-        JsonPath json = new JsonPath(new File("src/test/Resources/TestData/StateCode.json"));
+        JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
         if (env.equalsIgnoreCase("UAT"))
@@ -141,7 +142,7 @@ public class ExShowRoomPriceStepDef
         }
 
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/orpnewprices.xlsx");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_16042025.xlsx");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");
@@ -187,7 +188,7 @@ public class ExShowRoomPriceStepDef
     }
 
     @Then("get the Ex-showroom prices for all the states and variants for raider")
-    public void getTheExShowroomPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException {
+    public void  getTheExShowroomPricesForAllTheStatesAndVariantsForRaider() throws InterruptedException, IOException {
 
         Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/SingleSeatORP.xlsx");
 

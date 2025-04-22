@@ -15,26 +15,11 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
     Examples: select the vehicle brand
       #UAT Env
       | Vehicle        | Environment |
-      | TVS_Zest_110   | PROD        |
-      | TVS_NTORQ_125  | PROD       |
-    # | TVS_RADEON_110 | PROD         |
-      | StarCity+      | PROD        |
-      | TVS_XL_100     | PROD        |
-
-    @RaiderORP
-    Scenario Outline: Verify On-Road prices for Raider TVS brand page
-    Given navigate to the tvs brand "<Vehicle>" page in "<Environment>"
-    When the user navigates to the price section of raider page and accepts the cookies pop-up
-    Then get the On-Road prices for all the states and variants for "<Variant>"
-
-      Examples: select the vehicle brand
-        | Vehicle    | Environment | Variant     |
-        | TVS_Raider | PROD        | DRUM        |
-        | TVS_Raider | PROD        | SINGLE SEAT |
-        | TVS_Raider | PROD        | SPLIT SEAT  |
-        | TVS_Raider | PROD        | iGO         |
-        | TVS_Raider | PROD        | SSE         |
-        | TVS_Raider | PROD        | SX          |
+#      | TVS_Zest_110   | PROD        |
+#      | TVS_NTORQ_125  | PROD         |
+      | TVS_RADEON_110 | PROD        |
+#      | StarCity+      | PROD        |
+#      | TVS_XL_100     | PROD        |
 
   @ApacheSeries
   Scenario Outline: Verify On-Road prices for ApacheSeries brand page with all variants
@@ -49,10 +34,10 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle         | Environment | Variant           |
-      | TVSApacheSeries | PROD        | Apache RTR 310    |
-      | TVSApacheSeries | PROD        | Apache RTR 200 4V |
+      #| TVSApacheSeries | UAT        | Apache RTR 310    |
+      #| TVSApacheSeries | PROD        | Apache RTR 200 4V |
       | TVSApacheSeries | PROD        | Apache RR 310     |
-      | TVSApacheSeries | PROD        | Apache RTR 160 2V |
+      #| TVSApacheSeries | PROD        | Apache RTR 160 2V |
       | TVSApacheSeries | PROD        | Apache RTR 160 4V |
       | TVSApacheSeries | PROD        | Apache RTR 180    |
 

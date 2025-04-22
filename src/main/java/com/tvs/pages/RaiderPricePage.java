@@ -55,7 +55,7 @@ public class RaiderPricePage
     @FindBy(xpath = "//button[contains(@class, 'evg-btn-dismissal')]")
     public WebElement bookingPopUp;
 
-    @FindBy(id = "brand-page-orp")
+    @FindBy(xpath = "(//li[@id='brand-page-orp']//a)[6]")
     private WebElement brandPageOrp;
 
     @FindBy(xpath = "//a[@href='#ex-showroom']")
@@ -109,8 +109,10 @@ public class RaiderPricePage
     }
     public void ClickOnRoadPrice()
     {
-        WebElement brandOrp=waitForElementToBeClickable(driver,brandPageOrp,10);
-        brandOrp.click();
+//        WebElement brandOrp=waitForElementToBeClickable(driver,brandPageOrp,10);
+//        brandOrp.click();
+        WebElement onRoadTab = driver.findElement(By.xpath("(//li[@id='brand-page-orp']//a)[6]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", onRoadTab);
     }
 
     public void ClickOnExshowRoomPrice()
@@ -139,18 +141,28 @@ public class RaiderPricePage
     }
 
     public void closePopUp() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("evg-propensity-popup")));
-        WebElement closeBtn = popup.findElement(By.cssSelector(".close-popup"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         try {
-            closeBtn.click();
-        } catch (Exception e) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", closeBtn);
+            // Wait for popup to appear - if not present, TimeoutException will be caught
+            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("evg-propensity-popup")));
+
+            WebElement closeBtn = popup.findElement(By.cssSelector(".close-popup"));
+
+            try {
+                closeBtn.click();
+            } catch (Exception e) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click();", closeBtn);
+            }
+
+            // Wait for popup to disappear
+            wait.until(ExpectedConditions.invisibilityOf(popup));
+
+        } catch (TimeoutException e) {
+            // Popup did not appear - safe to skip
+            System.out.println("Popup not found. Continuing without closing it.");
         }
-        wait.until(ExpectedConditions.invisibilityOf(popup));
+
     }
-
-
 }

@@ -43,7 +43,6 @@ Feature: Verify Footer navigation across the pages
   Scenario Outline: Verify functionalities of scooters tab in Footer
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
-
     Then click on each vehicles to verify the title of electricScooters with "<Section>" section
     And match the all 1 with no of vehicles displayed for electric scooter under footer
 
@@ -178,7 +177,6 @@ Feature: Verify Footer navigation across the pages
   Scenario Outline: Verify functionalities of TvsConnectApp tab in Footer
     Given navigate to the TVS Motor home page in "<Environment>" environment
     When user navigated to home page and accepts the cookies pop-up
-
     Then click on each vehicles to verify the title of TvsConnectApp with "<Section>" section
     And match the all 2 with no of vehicles displayed for TvsConnectApp under footer
     Examples:

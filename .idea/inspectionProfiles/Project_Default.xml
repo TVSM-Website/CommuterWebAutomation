@@ -18,6 +18,12 @@
           <option value="org.webjars:jquery:3.7.1" />
           <option value="commons-codec:commons-codec:1.11" />
           <option value="com.google.code.gson:gson:2.8.6" />
+          <option value="io.netty:netty-handler:4.1.110.Final" />
+          <option value="com.google.protobuf:protobuf-java:3.25.1" />
+          <option value="io.netty:netty-common:4.1.110.Final" />
+          <option value="net.minidev:json-smart:2.5.0" />
+          <option value="ch.qos.logback:logback-classic:1.5.9" />
+          <option value="ch.qos.logback:logback-core:1.5.9" />
         </list>
       </option>
       <option name="ignoredReasons">
@@ -25,6 +31,12 @@
           <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+          <option value="Not exploitable" />
+          <option value="Other" />
         </list>
       </option>
     </inspection_tool>

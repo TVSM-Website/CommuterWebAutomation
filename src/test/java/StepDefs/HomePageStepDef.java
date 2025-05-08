@@ -4,7 +4,7 @@ import Utils.ExplicitWait;
 import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.HomePage;
-import com.tvs.pages.PriceSectionPage;
+import com.tvs.pages.PriceSectionPages.PriceSectionPage;
 import com.tvs.pages.VehiclesPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

@@ -1,10 +1,9 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
 import Utils.ExShowRoomExcelUtils;
-import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
-import com.tvs.pages.PriceSectionPage;
+import com.tvs.pages.PriceSectionPages.PriceSectionPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,8 +21,6 @@ import java.util.Map;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
-import static APIs.ORPProdAPI.OrpDetailsPROD;
-import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.waitForLoaderToDisappear;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;

@@ -1,7 +1,6 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
 import Utils.ExShowRoomExcelUtils;
-import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
 import com.tvs.pages.TvsSportPricePage;
@@ -26,15 +25,13 @@ import java.util.Map;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
-import static APIs.ORPProdAPI.OrpDetailsPROD;
-import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
-import static Utils.ExplicitWait.waitForLoaderToDisappear;
+import static Utils.ExplicitWait.waitForElementToBeClickable;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class TvsSportORPStepDef
+public class TvsSportExPriceStepDef
 {
     WebDriver driver;
     String SelectedVehicle;
@@ -52,9 +49,9 @@ public class TvsSportORPStepDef
     List<Map<String, Object>> apiPrices;
 
     private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
-        return ORPExcelUtils.readExcelData(filePath, sheetName);
+        return ExShowRoomExcelUtils.readExcelData(filePath, sheetName);
     }
-    public TvsSportORPStepDef() {
+    public TvsSportExPriceStepDef() {
         this.driver = WebDriverManager.getDriver();
         sportExPricePage= new TvsSportPricePage(driver);
         states= sportExPricePage.states;
@@ -65,7 +62,7 @@ public class TvsSportORPStepDef
     }
 
 
-    @Given("navigate to {string} brand page on {string}")
+    @Given("navigate to {string} brand page in {string}")
     public void navigateToBrandPage(String vehicle, String environment) throws IOException {
         env = environment;
         SelectedVehicle = vehicle;
@@ -73,18 +70,20 @@ public class TvsSportORPStepDef
         driver.get(selectedVehicleUrl);
     }
 
-    @When("user navigated to price section and accept the cookies")
+    @When("user navigated to price section and accept the cookies pop up")
     public void userNavigatedToPriceSectionAndAcceptTheCookiesPopUp() throws InterruptedException {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds timeout
 
-            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'langCont roboto-bold')]")));
+            WebElement selectLanguagePopUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='langCont roboto-bold']")));
             if (selectLanguagePopUp.isDisplayed())
             {
-                By languageSelector = sportExPricePage.getLanguageSelector("English");
-                WebElement languageElement = driver.findElement(languageSelector);
-                waitForElementToBeClickable(driver, languageElement, 15);
-                languageElement.click();
+                //By languageSelector = sportExPricePage.getLanguageSelector("English");
+                //WebElement languageElement = driver.findElement(languageSelector);
+                //waitForElementToBeClickable(driver, languageElement, 15);
+                //languageElement.click();
+                Thread.sleep(6000);
+
             } else {
                 System.out.println("Language selection pop-up is not displayed.");
             }
@@ -114,24 +113,23 @@ public class TvsSportORPStepDef
         waitForElementToBeClickable(driver, stateDropdown, 15);
     }
 
-    @When("click on the state dropdown and fetch all the states")
+    @When("click on the state dropdown and fetch all states")
     public void clickOnTheStateDropdownAndFetchAllStates()
     {
         sportExPricePage.ClickStateDropdown();
         visibilityOfElementLocated(driver, states, 15);
     }
 
-    @Then("get all states for the selected vehicle")
+    @Then("fetch all states for the selected vehicle")
     public void fetchAllStatesForTheSelectedVehicle()
     {
         stateList = driver.findElements(sportExPricePage.states);
         System.out.println("List of all states fetched successfully.");
     }
 
-    @Then("iterate through each state to select and get on-road prices")
+    @Then("iterate through each state to select and get Ex-showRoom prices")
     public void iterateThroughEachStateToSelectAndGetExShowRoomPrices() throws IOException, InterruptedException {
-        for (int i = 0; i < stateList.size(); i++)
-        {
+        for (int i = 0; i < stateList.size(); i++) {
             stateList = driver.findElements(sportExPricePage.states);
             state = stateList.get(i).getText();
             System.out.println("\nstate: " + state);
@@ -143,23 +141,18 @@ public class TvsSportORPStepDef
             }
 
             waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
-            sportExPricePage.ClickOnRoadPrice();
-
             waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
 
             if (i < stateList.size() - 1) {
                 sportExPricePage.ClickStateDropdown();
-                Thread.sleep(2000);
+                Thread.sleep(2500);
             }
-            Thread.sleep(3000);
             fetchExShowroomPricesForTheSelectedStates();
-            //Thread.sleep(2000);
             compareUIAndAPIPricesWithExcelPrice();
         }
-
     }
 
-    @Then("fetch On-Road prices for the selected states")
+    @Then("fetch Ex-showroom prices for the selected states")
     public void fetchExShowroomPricesForTheSelectedStates()
     {
         uiPrices.clear();
@@ -176,19 +169,19 @@ public class TvsSportORPStepDef
                 uiPrices.put(model, priceText.replace(" ", ""));
             }
         }
-        // System.out.println("uiprice- "+uiPrices);
+       // System.out.println("uiprice- "+uiPrices);
     }
 
-    @Then("compare UI and API prices with Excel prices for all the variants and states")
-    public void compareUIAndAPIPricesWithExcelPrice() throws IOException {
+    @Then("compare UI and API prices with Excel prices for all variants and states")
+    public void compareUIAndAPIPricesWithExcelPrice() throws IOException, InterruptedException {
         JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
         if (env.equalsIgnoreCase("UAT"))
         {
-            response = OrpDetailsUAT(SelectedVehicle.replace("_", " "), stateCode);
+            response = GetExshowroomPriceUAT(SelectedVehicle.replace("_", " "), stateCode);
         } else if (env.equalsIgnoreCase("PROD")) {
-            response = OrpDetailsPROD(SelectedVehicle.replace("_", " "), stateCode);
+            response = GetExshowroomPriceProd(SelectedVehicle.replace("_", " "), stateCode);
         }
 
         if (response.getStatusCode() == 204 || response.getBody().asString().isEmpty()) {
@@ -197,12 +190,13 @@ public class TvsSportORPStepDef
             return;
         }
 
+        Thread.sleep(1000);
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_16042025.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_29042025.xlsx", "Sheet1");
 
         for (Map<String, Object> apiPrice : apiPrices) {
-            String variantName = (String) apiPrice.get("VariantName");
-            int apiexShowroomPrice = (int) apiPrice.get("OnRoadPrice");
+            String variantName = (String) apiPrice.get("VariantNameExtension");
+            String apiexShowroomPrice = (String) apiPrice.get("Price");
 
             if (uiPrices.containsKey(variantName))
             {
@@ -215,13 +209,13 @@ public class TvsSportORPStepDef
                 {
                     System.out.println("Comparing prices for model: " + variantName);
                     System.out.println("UI Price: " + UIexShowRoomPrice + ", API Price: " + apiexShowroomPrice);
-                    assertEquals("Price mismatch for model: " + variantName, apiexShowroomPrice, UIexShowRoomPrice);
+                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiexShowroomPrice), UIexShowRoomPrice);
                 }
                 else
                 {
                     long roundedExcelPrice = 0;
                     if (excelPrices.containsKey(key)) {
-                        String excelExshowroomPrice = excelPrices.get(key).get("OnRoadPrice");
+                        String excelExshowroomPrice = excelPrices.get(key).get("Ex-ShowRoomPrice");
                         roundedExcelPrice = Math.round(Float.parseFloat(excelExshowroomPrice));
 
                     } else {
@@ -233,7 +227,7 @@ public class TvsSportORPStepDef
                     System.out.println("UI Price: " + UIexShowRoomPrice + ", API Price: " + apiexShowroomPrice + ", Excel Price: " + roundedExcelPrice);
 
                     // Assertions
-                    assertEquals("Price mismatch for model: " + variantName, apiexShowroomPrice, UIexShowRoomPrice);
+                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiexShowroomPrice), UIexShowRoomPrice);
                     assertEquals("Price mismatch for model: " + variantName + " with Excel", roundedExcelPrice, UIexShowRoomPrice);
 
                 }

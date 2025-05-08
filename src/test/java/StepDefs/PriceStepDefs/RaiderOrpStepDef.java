@@ -1,16 +1,18 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
-import Utils.ExShowRoomExcelUtils;
+import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
-import com.tvs.pages.RaiderPricePage;
+import com.tvs.pages.PriceSectionPages.RaiderPricePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,18 +21,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
+import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
-import static Utils.ExplicitWait.waitForElementToBeClickable;
+import static Utils.ExplicitWait.waitForLoaderToDisappear;
 import static Utils.ORPExcelUtils.MappedStateNameRaider;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
-public class RaiderPriceStepDef
-{
+public class RaiderOrpStepDef {
     private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
-        return ExShowRoomExcelUtils.readExcelData(filePath, sheetName);
+        return ORPExcelUtils.readExcelData(filePath, sheetName);
     }
 
     private final WebDriver driver;
@@ -54,7 +54,7 @@ public class RaiderPriceStepDef
     String selectedVariant;
     private List<WebElement> stateList;
 
-    public RaiderPriceStepDef() {
+    public RaiderOrpStepDef() {
         this.driver = WebDriverManager.getDriver();
         priceSectionPage = new RaiderPricePage(driver);
         AcceptCookie = priceSectionPage.AcceptCookie;
@@ -66,11 +66,10 @@ public class RaiderPriceStepDef
         stateDropdownRaider = priceSectionPage.stateDropdownRaider;
         statesRaider = priceSectionPage.statesRaider;
 
-        //selectedVariant = priceSectionPage.selectedVariant;
     }
 
-    @Given("navigate to the {string} brand page on {string}")
-    public void navigateToTheBrandPageOn(String vehicle, String environment) throws IOException {
+    @Given("user navigate to {string} brand page on {string}")
+    public void userNavigateToBrandPageOn(String vehicle, String environment) throws IOException {
         env = environment;
         selectedVehicle = vehicle;
         selectedVehicleUrl = Utilities.getVehicleUrl(vehicle, env);
@@ -81,62 +80,25 @@ public class RaiderPriceStepDef
 
     }
 
-    @When("the user navigates to the raider price section and accepts the cookies pop-up")
-    public void theUserNavigatesToThePriceSectionOfRaiderPageAndAcceptsTheCookiesPopUp() {
-
-        try {
-            if (selectlanguagePopUp.isDisplayed()) {
-                By languageSelector = priceSectionPage.getLanguageSelector("English");
-                WebElement languageElement = driver.findElement(languageSelector);
-                waitForElementToBeClickable(driver, languageElement, 15);
-                languageElement.click();
-            } else {
-                System.out.println("Language selection pop-up is not displayed.");
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("Language selection pop-up not found on the page.");
-        }
-        try {
-            if (priceSectionPage.isDisplayed()) {
-                waitForLoaderToDisappear(driver, By.className("loader_ajax"), 15);
-                priceSectionPage.clickDismiss();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("BookNow pop-up not displayed on the page");
-        }
-
-        // Check if the cookies acceptance pop-up is displayed
-        try {
-            if (AcceptCookie.isDisplayed()) {
-                priceSectionPage.ClickAcceptCookies();
-            } else {
-                System.out.println("Cookies acceptance pop-up is not displayed.");
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("Cookies acceptance pop-up not found on the page.");
-        }
-        //Utilities.scrollToElement(raiderPriceSection);
-        waitForElementToBeClickable(driver, stateDropdownRaider, 15);
-    }
-
-    @Then("get the Ex-showroom prices for all the states and variants {string}")
-    public void getTheExShowroomPricesForAllTheStatesAndVariants(String variant) throws IOException, InterruptedException
+    @Then("get the On-Road prices for all the states and variants {string}")
+    public void getTheOnRoadPricesForAllTheStatesAndVariants(String variant) throws InterruptedException, IOException
     {
         priceSectionPage.closePopUp();
         Thread.sleep(1500);
         Utilities.scrollToElement(driver.findElement(By.xpath("//section[@class='price-section section-raider']")));
         Thread.sleep(1500);
         waitForElementToBeClickable(driver, stateDropdownRaider, 15);
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_14042025.xlsx", "Sheet1");
-
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_16012025.xlsx", "Sheet1");
         boolean variantFound = false;
         for (int c = 0; c < 6; c++) { // Assuming a maximum of 6 variants in the slider
             String currentVariant = driver.findElement(By.cssSelector("div[class='item active'] h4")).getText();
 
-            if (currentVariant.equalsIgnoreCase(variant)) {
+            if (currentVariant.equalsIgnoreCase(variant))
+            {
                 variantFound = true;
 
                 // Wait for the state dropdown to be visible
+                priceSectionPage.ClickOnRoadPrice();
                 priceSectionPage.clickRaiderStateDropdown();
                 visibilityOfElementLocated(driver, states, 10);
                 //System.out.println("states size: " + driver.findElements(states).size());
@@ -181,8 +143,7 @@ public class RaiderPriceStepDef
                     JsonPath json = new JsonPath(new File("src/test/Resources/RaiderStateCode.json"));
                     String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
                     //System.out.println("State code for " + state + ": " + stateCode);
-                    Response response = GetExshowroomPriceProd(selectedVehicle.replace("_", " "), stateCode);
-                    //System.out.println("API response for state:"+response.asString());
+                    Response response = OrpDetailsUAT(selectedVehicle.replace("_", " "), stateCode);
 
                     if (response.getStatusCode() == 204) {
                         System.out.println("No content in API response for state: " + state);
@@ -217,94 +178,84 @@ public class RaiderPriceStepDef
                     }
 
                     apiPrices = apiPrices.stream()
-                            .filter(apiPrice -> variant.equalsIgnoreCase((String) apiPrice.get("VariantNameExtension")))
+                            .filter(apiPrice -> variant.equalsIgnoreCase((String) apiPrice.get("VariantName")))
                             .collect(Collectors.toList());
 
                     for (Map<String, Object> apiPrice : apiPrices) {
-                        if (((String) apiPrice.get("VariantNameExtension")).equalsIgnoreCase("iGO"))
+                        if (((String) apiPrice.get("VariantName")).equalsIgnoreCase("iGO"))
                         {
-                            String variantName = ((String) apiPrice.get("VariantNameExtension"));
+                            String variantName = ((String) apiPrice.get("VariantName"));
 
                             // Fetch the price from API
-                            String apiOnRoadPrice = (String) apiPrice.get("Price");
+                            int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
 
                             if (uiPrices.containsKey(variantName)) {
                                 int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
                                 System.out.println("Comparing prices for model: " + variantName);
 
                                 // Normalize Excel key lookup
-                                String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantNameExtension") + "|" + MappedStateNameRaider(state);
-                                System.out.println("Excel Key: " + excelKey);
+                                String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantName") + "|" + MappedStateNameRaider(state);
 
                                 if (excelKey.contains("Chandigarh") || excelKey.contains("Himachal Pradesh")) {
                                     System.out.println("Comparing prices for model: " + variantName);
                                     System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice);
-                                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiOnRoadPrice), uiOnRoadPrice);
+                                    assertEquals("Price mismatch for model: " + variantName,apiOnRoadPrice, uiOnRoadPrice);
                                 }
                                 //System.out.println("Excel Key: " + excelKey);
                                 else {
 
                                     long roundedExcelPrice = 0;
-                                    if (excelPrices.containsKey(excelKey))
-                                    {
-                                        System.out.println("Excel Key: " + excelKey);
-                                        double excelOnRoadPrice = Float.parseFloat(excelPrices.get(excelKey).get("Ex-ShowRoomPrice"));
+                                    if (excelPrices.containsKey(excelKey)) {
+                                        double excelOnRoadPrice = Float.parseFloat(excelPrices.get(excelKey).get("OnRoadPrice"));
                                         roundedExcelPrice = Math.round(excelOnRoadPrice);
                                     } else {
-                                        System.out.println("Model " + apiPrice.get("VariantNameExtension") + " not found in Excel data");
+                                        System.out.println("Model " + apiPrice.get("VariantName") + " not found in Excel data");
                                     }
 
                                     // Print all prices together
                                     System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
 
                                     // Assertions
-                                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiOnRoadPrice), uiOnRoadPrice);
-                                    assertEquals("Price mismatch for model: " + apiPrice.get("VariantNameExtension") + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
+                                    assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+                                    assertEquals("Price mismatch for model: " + apiPrice.get("VariantName") + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
                                 }
                             } else {
                                 System.out.println("Model " + variantName + " not found in UI data. Available models: " + uiPrices.keySet());
                             }
                         }
-                        else {
-                            String variantName = ((String) apiPrice.get("VariantNameExtension")).toUpperCase();
-
-                            // Fetch the price from API
-                            String apiOnRoadPrice = (String) apiPrice.get("Price");
-
-                            if (uiPrices.containsKey(variantName)) {
+                        else
+                        {
+                            String variantName = ((String) apiPrice.get("VariantName")).toUpperCase();
+                            int apiOnRoadPrice = (int) apiPrice.get("OnRoadPrice");
+                            // Handle cases where the UI does not have the variant present in the API
+                            if (uiPrices.containsKey(variantName))
+                            {
                                 int uiOnRoadPrice = Integer.parseInt(uiPrices.get(variantName));
                                 System.out.println("Comparing prices for model: " + variantName);
-
-                                // Normalize Excel key lookup
-                                String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantNameExtension") + "|" + MappedStateNameRaider(state); // Use original casing for VariantName in Excel key
-                                System.out.println("Excel Key: " + excelKey);
-
-                                if (excelKey.contains("Chandigarh") || excelKey.contains("Himachal Pradesh")) {
-                                    System.out.println("Comparing prices for model: " + variantName);
-                                    System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice);
-                                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiOnRoadPrice), uiOnRoadPrice);
+                                // Get Excel price
+                                String key = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantName") + "|" + MappedStateNameRaider(state);
+                                //System.out.println("Excel Key: " + key);
+                                long roundedExcelPrice = 0;
+                                if (excelPrices.containsKey(key))
+                                {
+                                    double excelOnRoadPrice = Float.parseFloat(excelPrices.get(key).get("OnRoadPrice"));
+                                    roundedExcelPrice = Math.round(excelOnRoadPrice);
                                 } else {
-                                    long roundedExcelPrice = 0;
-                                    if (excelPrices.containsKey(excelKey))
-                                    {
-                                        System.out.println("Excel Key2: " + excelKey);
-                                        double excelOnRoadPrice = Float.parseFloat(excelPrices.get(excelKey).get("Ex-ShowRoomPrice"));
-                                        roundedExcelPrice = Math.round(excelOnRoadPrice);
-                                    } else {
-                                        System.out.println("Model " + apiPrice.get("VariantNameExtension") + " not found in Excel data");
-                                    }
-
-                                    // Print all prices together
-                                    System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
-
-                                    // Assertions
-                                    assertEquals("Price mismatch for model: " + variantName, Integer.parseInt(apiOnRoadPrice), uiOnRoadPrice);
-                                    assertEquals("Price mismatch for model: " + apiPrice.get("VariantNameExtension") + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
+                                    System.out.println("Model " + variantName + " not found in Excel data");
                                 }
-                            } else {
-                                System.out.println("Model " + variantName + " not found in UI data. Available models: " + uiPrices.keySet());
+
+                                // Print all prices together
+                                System.out.println("UI Price: " + uiOnRoadPrice + ", API Price: " + apiOnRoadPrice + ", Excel Price: " + roundedExcelPrice);
+
+                                // Assertions
+                                assertEquals("Price mismatch for model: " + variantName, apiOnRoadPrice, uiOnRoadPrice);
+                                assertEquals("Price mismatch for model: " + variantName + " with Excel", roundedExcelPrice, uiOnRoadPrice, 0.0);
+                            }
+                            else {
+                                System.out.println("Model " + variantName + " not found in UI data");
                             }
                         }
+
                     }
 
 
@@ -323,6 +274,7 @@ public class RaiderPriceStepDef
         if (!variantFound) {
             throw new IllegalStateException("Variant " + variant + " not found in the slider.");
         }
+
     }
 }
 

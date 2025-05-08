@@ -1,9 +1,10 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
+import StepDefs.TestRideStepDef;
 import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
-import com.tvs.pages.PriceSectionPage;
+import com.tvs.pages.PriceSectionPages.PriceSectionPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -180,7 +181,7 @@ public class PriceValidationStepDef extends Utilities {
     }
 
     @Then("compare UI and API and Excel prices for all variants in each state")
-    public void compareUIAndAPIPricesForAllStates() throws IOException {
+    public void compareUIAndAPIPricesForAllStates() throws IOException, InterruptedException {
         JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
@@ -196,8 +197,9 @@ public class PriceValidationStepDef extends Utilities {
             return;
         }
 
+        Thread.sleep(1000);
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_16012025.xlsx", "Sheet1");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_29042025.xlsx", "Sheet1");
         for (Map<String, Object> apiPrice : apiPrices)
         {
             String variantName = (String) apiPrice.get("VariantName");

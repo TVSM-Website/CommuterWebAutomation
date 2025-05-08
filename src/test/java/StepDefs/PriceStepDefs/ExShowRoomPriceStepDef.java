@@ -1,9 +1,9 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
 import Utils.ExShowRoomExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
-import com.tvs.pages.ExshowRoomPricePage;
+import com.tvs.pages.PriceSectionPages.ExshowRoomPricePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 import static APIs.ExShowroomProdAPI.GetExshowroomPriceProd;
 import static APIs.ExShowroomUATAPI.GetExshowroomPriceUAT;
-import static APIs.ORPUATAPI.OrpDetailsUAT;
 import static Utils.ExplicitWait.*;
 import static Utils.ORPExcelUtils.MappedStateName;
 import static org.junit.Assert.assertEquals;
@@ -82,8 +81,7 @@ public class ExShowRoomPriceStepDef
     }
 
     @Then("iterate through each state to select and fetch Ex-showRoom prices")
-    public void iterateThroughEachStateToSelectAndFetchExShowRoomPrices() throws IOException
-    {
+    public void iterateThroughEachStateToSelectAndFetchExShowRoomPrices() throws IOException, InterruptedException {
         for (int i = 0; i < stateList.size(); i++) {
             stateList = driver.findElements(exshowRoomPricePage.states);
             state = stateList.get(i).getText();
@@ -124,7 +122,7 @@ public class ExShowRoomPriceStepDef
     }
 
     @Then("compare UI and API prices with Excel prices for all variants in each state")
-    public void compareUIAPIExcelPrices() throws IOException {
+    public void compareUIAPIExcelPrices() throws IOException, InterruptedException {
         JsonPath json = new JsonPath(new File("src/test/Resources/StateCode.json"));
         String stateCode = json.getString("stateCodes." + state.replace(" ", ""));
 
@@ -141,8 +139,9 @@ public class ExShowRoomPriceStepDef
             return;
         }
 
+        Thread.sleep(1000);
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_16042025.xlsx");
+        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_29042025.xlsx");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");
@@ -153,7 +152,7 @@ public class ExShowRoomPriceStepDef
                 int UIexShowRoomPrice = Integer.parseInt(uiPrices.get(variantName));
 
                 // Get Excel price
-                String key = SelectedVehicle.replace("_", " ") + "|" + variantName + "|" + MappedStateName(state);
+                String key = SelectedVehicle.replace("_", " ") + "|" + variantName + "|" +ExShowRoomExcelUtils.MappedStateName (state);
 
                 if (key.contains("Chandigarh") || key.contains("Himachal Pradesh") != key.contains("TVS Radeon"))
                 {

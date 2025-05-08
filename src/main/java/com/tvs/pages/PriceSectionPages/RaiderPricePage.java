@@ -1,18 +1,20 @@
-package com.tvs.pages;
+package com.tvs.pages.PriceSectionPages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static Utils.ExplicitWait.waitForElementToBeClickable;
+import java.time.Duration;
 
-public class PriceSectionPage
+import static Utils.ExplicitWait.*;
+
+public class RaiderPricePage
 {
 
     WebDriver driver;
-    public PriceSectionPage(WebDriver driver)
+    public RaiderPricePage(WebDriver driver)
     {
         this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -36,13 +38,10 @@ public class PriceSectionPage
     @FindBy(css = ".right.carousel-control")
     public WebElement rightArrow;
 
-    //public By states=By.xpath("//div[@id='bs-select-1']/ul/li/a/span");
-    //public By states=By.xpath("//div[@class='form-group stateDrpDwn'][1]/div//div[@class='inner open']/ul/li/a/span");
-    public By states = By.xpath("(//div[@id='pricestate-drop']//ul/li[@value and @data-state-name] | //select[@id='state']/option[@value and normalize-space()] | //div[contains(@class, 'dropdown-menu')]//ul/li[normalize-space()])[position() <= 34]");
+    public By enquiryPopUp=By.xpath("//div[@class='popup-details']/button");
 
-    //public By states=By.xpath("(//div[contains(@class, 'tvs-state-dropdown-list-item')])[position() > 34]");
+    public By states=By.xpath("(//div[contains(@class, 'tvs-state-dropdown-list-item')])[position() > 34]");
 
-    public By apacheStates=By.xpath("(//div[@class='form-group stateDrpDwn'])[2]//div[@class='dropdown-menu open']/ul/li/a/span[@class='text' and not(contains(text(), 'Choose State'))]");
     public By statesRaider =By.xpath("//div[@id='bs-select-1']/ul/li");
 
     @FindBy(xpath = "//div[contains(@class, 'langCont')]")
@@ -55,7 +54,7 @@ public class PriceSectionPage
     @FindBy(xpath = "//button[contains(@class, 'evg-btn-dismissal')]")
     public WebElement bookingPopUp;
 
-    @FindBy(id = "brand-page-orp")
+    @FindBy(xpath = "(//li[@id='brand-page-orp']//a)[6]")
     private WebElement brandPageOrp;
 
     @FindBy(xpath = "//a[@href='#ex-showroom']")
@@ -75,8 +74,6 @@ public class PriceSectionPage
     @FindBy(xpath="(//button[contains(@class, 'btn dropdown')])[2]")
     public WebElement apacheStateDropdown;
 
-    public By ApacheVariants=By.xpath("(//div[@class='form-group stateDrpDwn']//ul[contains(@class, 'dropdown-menu inner')]/li[not(contains(@class, 'disabled')) and not(contains(@class, 'bs-title-option'))])[position() <= 6]/a/span[@class='text']");
-
     public By getLanguageSelector(String langName)
     {
 
@@ -86,7 +83,6 @@ public class PriceSectionPage
 
     public void ClickAcceptCookies()
     {
-
         AcceptCookie.click();
     }
 
@@ -112,8 +108,10 @@ public class PriceSectionPage
     }
     public void ClickOnRoadPrice()
     {
-        WebElement brandOrp=waitForElementToBeClickable(driver,brandPageOrp,10);
-        brandOrp.click();
+//        WebElement brandOrp=waitForElementToBeClickable(driver,brandPageOrp,10);
+//        brandOrp.click();
+        WebElement onRoadTab = driver.findElement(By.xpath("(//li[@id='brand-page-orp']//a)[6]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", onRoadTab);
     }
 
     public void ClickOnExshowRoomPrice()
@@ -141,5 +139,29 @@ public class PriceSectionPage
         rightArrow.click();
     }
 
+    public void closePopUp() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
+        try {
+            // Wait for popup to appear - if not present, TimeoutException will be caught
+            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("evg-propensity-popup")));
+
+            WebElement closeBtn = popup.findElement(By.cssSelector(".close-popup"));
+
+            try {
+                closeBtn.click();
+            } catch (Exception e) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click();", closeBtn);
+            }
+
+            // Wait for popup to disappear
+            wait.until(ExpectedConditions.invisibilityOf(popup));
+
+        } catch (TimeoutException e) {
+            // Popup did not appear - safe to skip
+            System.out.println("Popup not found. Continuing without closing it.");
+        }
+
+    }
 }

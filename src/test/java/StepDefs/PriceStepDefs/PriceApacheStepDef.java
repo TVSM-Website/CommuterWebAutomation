@@ -1,9 +1,9 @@
-package StepDefs;
+package StepDefs.PriceStepDefs;
 
 import Utils.ORPExcelUtils;
 import Utils.Utilities;
 import Utils.WebDriverManager;
-import com.tvs.pages.PriceSectionPage;
+import com.tvs.pages.PriceSectionPages.PriceSectionPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

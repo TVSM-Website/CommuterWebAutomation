@@ -15,9 +15,9 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
     Examples: select the vehicle brand
       #UAT Env
       | Vehicle        | Environment |
-#      | TVS_Zest_110   | PROD        |
+      | TVS_Zest_110   | PROD        |
 #      | TVS_NTORQ_125  | PROD         |
-      | TVS_RADEON_110 | PROD        |
+#      | TVS_RADEON_110 | PROD        |
 #      | StarCity+      | PROD        |
 #      | TVS_XL_100     | PROD        |
 
@@ -53,4 +53,4 @@ Feature: Validating On-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle   | Environment |
-      | TVS_SPORT | PROD         |
+      | TVS_SPORT | PROD        |

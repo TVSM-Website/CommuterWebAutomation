@@ -3,8 +3,7 @@ package Utils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.Normalizer;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -196,5 +195,57 @@ public class Utilities
         }
 
         return selectedVehicleUrl;
+    }
+
+
+    public static class VariantMapper
+    {
+
+        // Map to convert UI variants to Excel variant codes
+        private static final Map<String, String> VARIANT_MAP = Map.of(
+                "BASE", "1CH BASE",   // Map UI "BASE" to Excel "1CH BASE"
+                "MID", "2CH MID",     // Map UI "MID" to Excel "2CH MID"
+                "TOP", "2CH TOP"      // Map UI "TOP" to Excel "2CH TOP"
+        );
+
+        // Parse the UI model name to extract variant and color
+        public static String[] parseVariantAndColor(String uiModelName) {
+            String[] parts = uiModelName.split("–"); // Split based on en dash (U+2013)
+            if (parts.length < 2) return new String[] {null, null};
+
+            String variantAndColor = parts[1].trim().toLowerCase(); // e.g., "base lightning black"
+            String[] variantColorParts = variantAndColor.split(" ", 2); // Split into variant and color
+            if (variantColorParts.length < 2) return new String[] {null, null};
+
+            String uiVariant = variantColorParts[0].trim().toLowerCase(); // e.g., "base"
+            String uiColor = variantColorParts[1].trim().toLowerCase();   // e.g., "lightning black"
+
+            // Convert the variant to the Excel format
+            String mappedVariant = VARIANT_MAP.getOrDefault(uiVariant, uiVariant); // Use the map or fallback
+
+            return new String[] {capitalizeFirstLetter(mappedVariant), capitalizeFirstLetter(uiColor)};
+        }
+
+        // Capitalize the first letter of each word in a string
+        public static String capitalizeFirstLetter(String text)
+        {
+            if (text == null || text.isEmpty()) return text;
+            String[] words = text.split(" ");
+            StringBuilder capitalizedText = new StringBuilder();
+            for (String word : words) {
+                capitalizedText.append(word.substring(0, 1).toUpperCase());
+                capitalizedText.append(word.substring(1)).append(" ");
+            }
+            return capitalizedText.toString().trim();
+        }
+    }
+
+    public static String mapVariantFromBase(String variantKeyword) {
+        return switch (variantKeyword.toUpperCase()) {
+            case "BASE" -> "1CH BASE";
+            case "MID" -> "2CH MID";
+            case "TOP" -> "2CH TOP";
+            default -> variantKeyword; // fallback
+        };
     }
 }

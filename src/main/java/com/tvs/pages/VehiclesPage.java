@@ -1,5 +1,6 @@
 package com.tvs.pages;
 
+import com.tvs.pages.PriceSectionPages.PriceSectionPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;

@@ -48,8 +48,10 @@ public class ExShowRoomPriceStepDef
     private Map<String, Map<String, String>> readExcelPrices(String filePath) throws IOException {
         return ExShowRoomExcelUtils.readExcelData(filePath, "Sheet1");
     }
-    public ExShowRoomPriceStepDef()
-    {
+
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_PROD_13052025.xlsx");
+
+    public ExShowRoomPriceStepDef() throws IOException {
         this.driver= WebDriverManager.getDriver();
         exshowRoomPricePage = new ExshowRoomPricePage(driver);
         stateDropdown = exshowRoomPricePage.stateDropdown;
@@ -68,7 +70,6 @@ public class ExShowRoomPriceStepDef
     @When("click on the state dropdown and fetch the states")
     public void clickOnTheStateDropdownAndFetchTheStates()
     {
-        //Utilities.scrollToElement(stateDropdown);
         exshowRoomPricePage.ClickStateDropdown();
         visibilityOfElementLocated(driver, states, 15);
     }
@@ -141,7 +142,6 @@ public class ExShowRoomPriceStepDef
 
         Thread.sleep(1000);
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_29042025.xlsx");
 
         for (Map<String, Object> apiPrice : apiPrices) {
             String variantName = (String) apiPrice.get("VariantNameExtension");

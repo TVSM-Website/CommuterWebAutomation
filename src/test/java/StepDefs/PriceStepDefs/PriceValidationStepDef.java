@@ -37,6 +37,9 @@ public class PriceValidationStepDef extends Utilities {
         return ORPExcelUtils.readExcelData(filePath, sheetName);
     }
 
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_PROD_13052025.xlsx", "Sheet1");
+
+
     private final WebDriver driver;
     PriceSectionPage priceSectionPage;
     WebElement AcceptCookie;
@@ -60,8 +63,7 @@ public class PriceValidationStepDef extends Utilities {
     String variantName;
     int uiOnRoadPrice;
 
-    public PriceValidationStepDef()
-    {
+    public PriceValidationStepDef() throws IOException {
         this.driver = WebDriverManager.getDriver();
         priceSectionPage = new PriceSectionPage(driver);
         AcceptCookie = priceSectionPage.AcceptCookie;
@@ -199,7 +201,6 @@ public class PriceValidationStepDef extends Utilities {
 
         Thread.sleep(1000);
         apiPrices = response.jsonPath().getList("");
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_29042025.xlsx", "Sheet1");
         for (Map<String, Object> apiPrice : apiPrices)
         {
             String variantName = (String) apiPrice.get("VariantName");

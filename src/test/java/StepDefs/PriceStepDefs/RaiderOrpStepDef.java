@@ -32,6 +32,7 @@ public class RaiderOrpStepDef {
     private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
         return ORPExcelUtils.readExcelData(filePath, sheetName);
     }
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Correct_Data_PROD_16052025.xlsx", "Sheet1");
 
     private final WebDriver driver;
     RaiderPricePage priceSectionPage;
@@ -54,7 +55,7 @@ public class RaiderOrpStepDef {
     String selectedVariant;
     private List<WebElement> stateList;
 
-    public RaiderOrpStepDef() {
+    public RaiderOrpStepDef() throws IOException {
         this.driver = WebDriverManager.getDriver();
         priceSectionPage = new RaiderPricePage(driver);
         AcceptCookie = priceSectionPage.AcceptCookie;
@@ -88,7 +89,6 @@ public class RaiderOrpStepDef {
         Utilities.scrollToElement(driver.findElement(By.xpath("//section[@class='price-section section-raider']")));
         Thread.sleep(1500);
         waitForElementToBeClickable(driver, stateDropdownRaider, 15);
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_Prod_16012025.xlsx", "Sheet1");
         boolean variantFound = false;
         for (int c = 0; c < 6; c++) { // Assuming a maximum of 6 variants in the slider
             String currentVariant = driver.findElement(By.cssSelector("div[class='item active'] h4")).getText();

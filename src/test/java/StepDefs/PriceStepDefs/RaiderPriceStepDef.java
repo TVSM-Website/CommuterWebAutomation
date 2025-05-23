@@ -32,6 +32,7 @@ public class RaiderPriceStepDef
     private Map<String, Map<String, String>> readExcelPrices(String filePath, String sheetName) throws IOException {
         return ExShowRoomExcelUtils.readExcelData(filePath, sheetName);
     }
+    Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Correct_Data_PROD_16052025.xlsx", "Sheet1");
 
     private final WebDriver driver;
     RaiderPricePage priceSectionPage;
@@ -54,7 +55,7 @@ public class RaiderPriceStepDef
     String selectedVariant;
     private List<WebElement> stateList;
 
-    public RaiderPriceStepDef() {
+    public RaiderPriceStepDef() throws IOException {
         this.driver = WebDriverManager.getDriver();
         priceSectionPage = new RaiderPricePage(driver);
         AcceptCookie = priceSectionPage.AcceptCookie;
@@ -127,7 +128,6 @@ public class RaiderPriceStepDef
         Utilities.scrollToElement(driver.findElement(By.xpath("//section[@class='price-section section-raider']")));
         Thread.sleep(1500);
         waitForElementToBeClickable(driver, stateDropdownRaider, 15);
-        Map<String, Map<String, String>> excelPrices = readExcelPrices("src/test/Resources/TestData/ORP_Data_14042025.xlsx", "Sheet1");
 
         boolean variantFound = false;
         for (int c = 0; c < 6; c++) { // Assuming a maximum of 6 variants in the slider
@@ -234,7 +234,7 @@ public class RaiderPriceStepDef
 
                                 // Normalize Excel key lookup
                                 String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantNameExtension") + "|" + MappedStateNameRaider(state);
-                                System.out.println("Excel Key: " + excelKey);
+                                //System.out.println("Excel Key: " + excelKey);
 
                                 if (excelKey.contains("Chandigarh") || excelKey.contains("Himachal Pradesh")) {
                                     System.out.println("Comparing prices for model: " + variantName);
@@ -277,7 +277,7 @@ public class RaiderPriceStepDef
 
                                 // Normalize Excel key lookup
                                 String excelKey = selectedVehicle.replace("_", " ") + "|" + apiPrice.get("VariantNameExtension") + "|" + MappedStateNameRaider(state); // Use original casing for VariantName in Excel key
-                                System.out.println("Excel Key: " + excelKey);
+                                //System.out.println("Excel Key: " + excelKey);
 
                                 if (excelKey.contains("Chandigarh") || excelKey.contains("Himachal Pradesh")) {
                                     System.out.println("Comparing prices for model: " + variantName);

@@ -10,6 +10,7 @@ steps:
   inputs:
     versionSpec: '16'
     jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'AzureStorage'
 
 # Run Maven using bash script, making sure JAVA_HOME is set in the environment
 - script: |

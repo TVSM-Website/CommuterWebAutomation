@@ -5,16 +5,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+# Install Java 16
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '21'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 
-- script: |
-    curl -L -o jdk16.tar.gz https://github.com/adoptium/temurin16-binaries/releases/download/jdk-16.0.2+7/OpenJDK16U-jdk_x64_linux_hotspot_16.0.2_7.tar.gz
-    mkdir -p /tmp/jdk16
-    tar -xzf jdk16.tar.gz -C /tmp/jdk16 --strip-components=1
-    echo "##vso[task.setvariable variable=JAVA_HOME]/tmp/jdk16"
-    echo "##vso[task.prependpath]/tmp/jdk16/bin"
-  displayName: 'Install Java 16 manually'
-
-# Run Maven using bash script, making sure JAVA_HOME is set in the environment
+# Run Maven using bash script with Java 16
 - script: |
     echo "Java version:"
     java -version
@@ -29,7 +27,6 @@ steps:
     echo "Listing surefire reports directory:"
     ls -l target/surefire-reports/
 
-    echo "Listing test results XML files:"
+    echo "Listing test result XML files:"
     ls -l target/surefire-reports/TEST-*.xml
-    
-  displayName: 'Run Maven build with Java 21'
+  displayName: 'Run Maven build with Java 16'

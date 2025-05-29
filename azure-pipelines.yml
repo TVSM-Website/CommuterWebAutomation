@@ -6,11 +6,10 @@ pool:
 
 steps:
 # Install Java 21
-- task: JavaToolInstaller@0
+- task: UseJavaVersion@1
   inputs:
-    versionSpec: '16'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+    version: '16'
+    architecture: 'x64'
 
 # Run Maven using bash script, making sure JAVA_HOME is set in the environment
 - script: |

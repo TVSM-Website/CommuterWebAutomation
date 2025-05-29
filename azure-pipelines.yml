@@ -1,8 +1,3 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - none
 
@@ -10,24 +5,22 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+# Install Java 21
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '21'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean test'
-    options: '-Dcucumber.filter.tags="@sanity"'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.21'
-    mavenVersionOption: 'Default'
-    mavenOptions: '-Xmx3072m'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+# Run Maven using bash script, making sure JAVA_HOME is set in the environment
+- script: |
+    echo "Java version:"
+    java -version
 
+    echo "Maven version:"
+    mvn -version
+
+    echo "Running Maven build with cucumber tag @sanity"
+    export PATH=$JAVA_HOME/bin:$PATH
+    mvn clean test -Dcucumber.filter.tags="@sanity"
+  displayName: 'Run Maven build with Java 21'

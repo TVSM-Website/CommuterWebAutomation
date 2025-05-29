@@ -19,13 +19,15 @@ steps:
 
     echo "Maven version:"
     mvn -version
-
+    echo "Listing root directory before running test:"
+    ls -l 
     echo "Running Maven build with cucumber tag @sanity"
     export PATH=$JAVA_HOME/bin:$PATH
     mvn clean test -Dcucumber.filter.tags="@sanity"
 
     echo "Listing root directory:"
-    ls -l 
+    ls -l target/
+    
     
     echo "Listing surefire reports directory:"
     ls -l target/surefire-reports/

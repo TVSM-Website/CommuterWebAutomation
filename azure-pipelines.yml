@@ -24,6 +24,9 @@ steps:
     export PATH=$JAVA_HOME/bin:$PATH
     mvn clean test -Dcucumber.filter.tags="@sanity"
 
+    echo "Listing root directory:"
+    ls -l 
+    
     echo "Listing surefire reports directory:"
     ls -l target/surefire-reports/
 

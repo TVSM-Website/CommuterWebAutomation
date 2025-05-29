@@ -23,9 +23,10 @@ steps:
     options: '-Dcucumber.filter.tags="@sanity"'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'Path'
-    jdkDirectory: $(JAVA_HOME_17_X64)
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
     mavenVersionOption: 'Default'
     mavenOptions: '-Xmx3072m'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
+    sonarQubeRunAnalysis: false

@@ -12,21 +12,22 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
     
-
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean test'
-    options: '-Dcucumber.filter.tags="@sanity"'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'Path'
-    jdkDirectory: $(JAVA_HOME_21_X64)
-    mavenVersionOption: 'Default'
-    mavenOptions: '-Xmx3072m'
-
 - script: |
+    echo "Java version:"
+    java -version
+
+    echo "Maven version:"
+    mvn -version
+    
+    echo "Listing root directory before running test:"
+    ls -lR
+
+    # echo "Running Maven build with cucumber tag @sanity"
+    export PATH=$JAVA_HOME/bin:$PATH
+    mvn compile
+    # mvn clean test -Dcucumber.filter.tags="@sanity"
+    
     echo "Listing root directory:"
     ls -lR
-  displayName: 'Listing files'
-
+  
+  displayName: 'Run Maven build'

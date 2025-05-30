@@ -26,8 +26,13 @@ steps:
     export PATH=$JAVA_HOME/bin:$PATH
     mvn clean install
     mvn compile
-    mvn test -Dcucumber.filter.tags="@PageSpeed"  
   displayName: 'Run Maven build'
+
+- script: |
+    echo "Running tests:"
+    mkdir target/chaintest
+    mvn test -Dcucumber.filter.tags="@PageSpeed"  
+  displayName: 'Run Maven Tests'
 
 - script: |
     echo "Listing root directory:"

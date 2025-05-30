@@ -35,6 +35,7 @@ steps:
 - script: |
     echo "Running Maven build with cucumber tag '${{ parameters.cucumberTag }}'"
     mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}"  
+    mvn resources:testResources
   displayName: 'Run Maven Tests'
 
 - script: |

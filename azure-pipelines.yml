@@ -25,8 +25,8 @@ steps:
 
     echo "Running Maven build with cucumber tag @sanity"
     export PATH=$JAVA_HOME/bin:$PATH
-    mvn clean test -Dcucumber.filter.tags="@sanity"
-
+    mvn test -Dcucumber.filter.tags="@sanity"
+    
     echo "Listing root directory:"
     ls -lR
     

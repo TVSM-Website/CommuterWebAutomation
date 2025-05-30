@@ -155,7 +155,6 @@ public class ExPriceApacheStepDef
         Response response;
 
         if (env.equalsIgnoreCase("UAT")) {
-            //System.out.println("SelectedVar-" + selectedVariant);
             response = GetExshowroomPriceUAT(selectedVariant, stateCode);
         } else if (env.equalsIgnoreCase("PROD")) {
             //System.out.println("SelectedVar-" + selectedVariant);

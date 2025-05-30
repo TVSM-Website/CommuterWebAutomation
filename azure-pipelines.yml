@@ -25,7 +25,6 @@ steps:
     mavenVersionOption: 'Default'
     mavenOptions: '-Xmx3072m'
 
-# Run Maven using bash script with Java 16
 - script: |
     echo "Java version:"
     java -version
@@ -45,5 +44,5 @@ steps:
     
     echo "Listing surefire reports directory:"
     ls -l target/surefire-reports/
-  displayName: 'Run Maven build with Java 21'
+  displayName: 'Listing the Test files'
 

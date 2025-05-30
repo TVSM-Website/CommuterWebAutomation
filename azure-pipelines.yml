@@ -30,7 +30,6 @@ steps:
 
 - script: |
     echo "Running tests:"
-    mkdir target/chaintest
     mvn test -Dcucumber.filter.tags="@PageSpeed"  
   displayName: 'Run Maven Tests'
 

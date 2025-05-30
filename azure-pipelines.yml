@@ -26,23 +26,7 @@ steps:
     mavenOptions: '-Xmx3072m'
 
 - script: |
-    echo "Java version:"
-    java -version
-
-    # echo "Maven version:"
-    # mvn -version
-    
-    # echo "Listing root directory before running test:"
-    # ls -lR
-
-    # echo "Running Maven build with cucumber tag @sanity"
-    # export PATH=$JAVA_HOME/bin:$PATH
-    # mvn clean test -Dcucumber.filter.tags="@sanity"
-    
     echo "Listing root directory:"
     ls -lR
-    
-    echo "Listing surefire reports directory:"
-    ls -l target/surefire-reports/
-  displayName: 'Listing the Test files'
+  displayName: 'Listing files'
 

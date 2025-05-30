@@ -11,28 +11,39 @@ steps:
     versionSpec: '21'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
+    
+
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    options: '-Dcucumber.filter.tags="@sanity"'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'Path'
+    jdkDirectory: $(JAVA_HOME_21_X64)
+    mavenVersionOption: 'Default'
+    mavenOptions: '-Xmx3072m'
 
 # Run Maven using bash script with Java 16
 - script: |
     echo "Java version:"
     java -version
 
-    echo "Maven version:"
-    mvn -version
+    # echo "Maven version:"
+    # mvn -version
     
-    echo "Listing root directory before running test:"
-    ls -lR
+    # echo "Listing root directory before running test:"
+    # ls -lR
 
-    echo "Running Maven build with cucumber tag @sanity"
-    export PATH=$JAVA_HOME/bin:$PATH
-    mvn clean test -Dcucumber.filter.tags="@sanity"
+    # echo "Running Maven build with cucumber tag @sanity"
+    # export PATH=$JAVA_HOME/bin:$PATH
+    # mvn clean test -Dcucumber.filter.tags="@sanity"
     
     echo "Listing root directory:"
     ls -lR
     
     echo "Listing surefire reports directory:"
     ls -l target/surefire-reports/
-
-    echo "Listing test result XML files:"
-    ls -l target/surefire-reports/TEST-*.xml
   displayName: 'Run Maven build with Java 21'
+

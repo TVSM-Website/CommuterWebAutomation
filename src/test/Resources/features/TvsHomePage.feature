@@ -10,7 +10,7 @@ Feature: Verify navigation to brand pages with checkpoint validations
     And match the all 11 with no of vehicles displayed for Motorcycles
     Examples:
       | Environment |
-      | PROD         |
+      | UAT         |
 
   @HomeScooters
   Scenario Outline: Verify functionalities of scooters tab
@@ -24,7 +24,7 @@ Feature: Verify navigation to brand pages with checkpoint validations
 
     Examples:
       | Environment |
-      | PROD         |
+      | UAT         |
 
   @HomeElectric @HomeNavigation
   Scenario Outline: Verify functionalities of Electric tab
@@ -37,7 +37,7 @@ Feature: Verify navigation to brand pages with checkpoint validations
     And match the all 3 with no of vehicles displayed for electric
     Examples:
       | Environment |
-      | PROD         |
+      | UAT         |
 
   @HomeMopeds
   Scenario Outline: Verify functionalities of Mopeds tab
@@ -49,7 +49,7 @@ Feature: Verify navigation to brand pages with checkpoint validations
     And match the all 1 with no of vehicles displayed for Mopeds
     Examples:
       | Environment |
-      | PROD         |
+      | UAT         |
 
   @Home3Wheelers
   Scenario Outline: Verify functionalities of ThreeWheelers tab
@@ -61,6 +61,6 @@ Feature: Verify navigation to brand pages with checkpoint validations
     And match the all 2 with no of vehicles displayed for ThreeWheelers
     Examples:
       | Environment |
-      | PROD         |
+      | UAT         |
 
 

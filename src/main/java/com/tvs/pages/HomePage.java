@@ -48,8 +48,8 @@ public class HomePage
     public By allScooters=By.xpath("//div[@id='mCSB_2_container']/div/ul/li/a");
     public By allMotorCycles=By.xpath("//div[@id='Motorcycles']/div/div/div/div/ul/li/a");
     public By allElectric=By.xpath("//div[@id='mCSB_3_container_wrapper']/div/div/ul/li/a");
-    public By allMopeds=By.xpath("//div[@id='mCSB_9_container']/div/ul/li/a");
-    public By allThreeWheelers=By.xpath("//div[@id='mCSB_10_container']/div/ul/li/a");
+    public By allMopeds=By.xpath("//div[@id='mCSB_4_container']/div/ul/li/a");
+    public By allThreeWheelers=By.xpath("//div[@id='mCSB_5_container']/div/ul/li/a");
 
     public By langPopUp=By.xpath("//div[contains(@class,'langCont')]");
 

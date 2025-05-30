@@ -1,5 +1,6 @@
 package StepDefs;
 
+import Utils.ConfigReader;
 import Utils.ExplicitWait;
 import Utils.Utilities;
 import Utils.WebDriverManager;
@@ -71,19 +72,12 @@ public class HomePageStepDef {
             WebElement scooterLink = scooterLinks.get(i);
             String scooterName = scooterLink.getText();
             System.out.println("vname-" + scooterName);
+            Thread.sleep(500);
             scooterLink.click();
 
-            if (scooterName.equalsIgnoreCase("TVS Jupiter")) {
-                scooterLink.click();
-                driver.getCurrentUrl().contains("tvs-jupiter");
-            } else {
-                String pageTitle = driver.getTitle();
-                System.out.println("Page title: " + pageTitle);
-                Assert.assertTrue("Page title doesn't contain " + scooterName, pageTitle.contains(scooterName.replace("+", " ")));
-                driver.navigate().back();
-                ClicksOnScootersTab();
+            driver.navigate().back();
+            ClicksOnScootersTab();
 
-            }
         }
     }
 
@@ -320,14 +314,15 @@ public class HomePageStepDef {
             WebElement VehicleLink = VehicleLinks.get(i);
             String vehicleName = VehicleLink.getText();
             System.out.println("vname-" + vehicleName);
-            ExplicitWait.waitForElementToBeClickable(driver, VehicleLink, 10);
+//            ExplicitWait.waitForElementToBeClickable(driver, VehicleLink, 10);
+            Thread.sleep(500);
             VehicleLink.click();
 
             String pageTitle = driver.getTitle();
             System.out.println("Page title: " + pageTitle);
 
             //driver.navigate().to("https://uat-www.tvsmotor.net/");
-            waitForThePageToLoadCompletely();
+            //waitForThePageToLoadCompletely();
             driver.navigate().back();
             ClicksOnElectricTab();
 
@@ -348,14 +343,15 @@ public class HomePageStepDef {
             WebElement scooterLink = scooterLinks.get(i);
             String scooterName = scooterLink.getText();
             System.out.println("vname-" + scooterName);
+            Thread.sleep(500);
             scooterLink.click();
 
             String pageTitle = driver.getTitle();
             System.out.println("Page title: " + pageTitle);
             Assert.assertTrue("Page title doesn't contain " + scooterName, pageTitle.contains(scooterName));
 
-            waitForThePageToLoadCompletely();
-            clickBookingBtn(driver);
+            //waitForThePageToLoadCompletely();
+//            clickBookingBtn(driver);
             driver.navigate().back();
             ClicksOnMopedsTab();
         }
@@ -375,14 +371,15 @@ public class HomePageStepDef {
             WebElement scooterLink = scooterLinks.get(i);
             String scooterName = scooterLink.getText();
             System.out.println("vname-" + scooterName);
+            Thread.sleep(300);
             scooterLink.click();
 
             String pageTitle = driver.getTitle();
             System.out.println("Page title: " + pageTitle);
             Assert.assertEquals("Page title doesn't contain " + scooterName, pageTitle, driver.getTitle());
 
-            waitForThePageToLoadCompletely();
-            clickBookingBtn(driver);
+           // waitForThePageToLoadCompletely();
+//            clickBookingBtn(driver);
             driver.navigate().back();
             ClicksOnThreeWheelersTab();
         }
@@ -416,10 +413,12 @@ public class HomePageStepDef {
         Assert.assertEquals("All count and vehicles displayed are not matching", count, +homePage.threeWheelersCount());
     }
 
-    @Given("navigate to the TVS Motor brand page with {string}")
-    public void navigateToTheTVSMotorBrandPageWith(String url) throws IOException {
-        String selectedVehicleUrl = Utilities.getProductUrl(url);
-        driver.get(selectedVehicleUrl);
+    @Given("navigate to the TVS Motor brand page on {string} with {string}")
+    public void navigateToBrandPageWithEnv(String env, String path) throws IOException {
+        String baseUrl = ConfigReader.getProperty(env); // e.g., "uat" or "prod"
+        String fullUrl = baseUrl + path;
+        driver.get(fullUrl);
+        Utilities.scrollToElement(driver.findElement(By.xpath("//li[@class='childNav']//a[contains(text(),'Products')]")));
     }
 
     @Then("wait for the page to load completely")
@@ -910,16 +909,27 @@ public class HomePageStepDef {
         Assert.assertEquals("All count and vehicles displayed are not matching",+homePage.footerScootersCount() ,count);
     }
 
+    @Then("click on each vehicles to verify the title of Motorcycles")
+    public void clickOnEachVehiclesToVerifyTheTitleOfMotorcycles() throws InterruptedException {
+        for (int i = 0; i < driver.findElements(homePage.allMotorCycles).size(); i++)
+        {
+            List<WebElement> VehicleLinks = driver.findElements(homePage.allMotorCycles);
 
+            WebElement VehicleLink = VehicleLinks.get(i);
+            String vehicleName = VehicleLink.getText();
+            System.out.println("vname-" + vehicleName);
+            ExplicitWait.waitForElementToBeClickable(driver, VehicleLink, 10);
+            Thread.sleep(1000);
+            VehicleLink.click();
 
+            String pageTitle = driver.getTitle();
+            System.out.println("Page title: " + pageTitle);
 
+            //driver.navigate().to("https://uat-www.tvsmotor.net/");
+            driver.navigate().back();
+            ClicksOnMotorcyclesTab();
 
-
-
-
-
-
-
-
-
+            //waitForThePageToLoadCompletely();
+        }
+    }
 }

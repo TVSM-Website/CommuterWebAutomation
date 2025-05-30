@@ -15,14 +15,12 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       #UAT Env
-      | Vehicle    | Environment |
-      #| JUPITER_125    | UAT        |
-      #| JUPITER        | UAT        |
-      | TVS_Zest_110   | PROD        |
-      #| TVS_NTORQ_125  | PROD        |
-      #| TVS_RADEON_110 | UAT        |
-      #| StarCity+      | PROD        |
-      #| TVS_XL_100 | UAT         |
+      | Vehicle        | Environment |
+#      | TVS_Zest_110   | PROD        |
+#      | TVS_RADEON_110 | PROD        |
+      | TVS_NTORQ_125  | PROD        |
+#      | StarCity+      | PROD        |
+#      | TVS_XL_100     | PROD        |
 
 
   @ApacheSeries_ExPrice
@@ -57,4 +55,4 @@ Feature: Validating Ex-Road price updated correctly on brand pages for all the s
 
     Examples: select the vehicle brand
       | Vehicle   | Environment |
-      | TVS_SPORT | UAT        |
+      | TVS_SPORT | UAT         |

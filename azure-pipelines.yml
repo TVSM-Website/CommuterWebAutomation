@@ -40,4 +40,4 @@ steps:
 - script: |
     echo "Listing root directory:"
     ls -lR
-displayName: 'Listing files'
+  displayName: 'Listing files'
